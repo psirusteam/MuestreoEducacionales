@@ -1,3 +1,4 @@
+prefacio
 resumen
 introducción-al-xxxxxxx-2019
 definiciones-básicas-del-muestreo
@@ -31,6 +32,7 @@ algoritmo-de-sunter
 algoritmo-de-fan-muller-rezucha
 estratificación
 selección-de-los-reemplazos
+tamaño-de-muestra
 precisión-de-la-inferencia
 tamaño-de-muestra-por-país
 tamaño-de-muestra-para-estimar-un-puntaje-promedio

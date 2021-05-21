@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="es" xml:lang="es">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Minimal Book Example</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <title>Muestreo y análisis de estudios educacionales con R</title>
+  <meta name="description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:title" content="Muestreo y análisis de estudios educacionales con R" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  
+  <meta property="og:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Book Example" />
+  <meta name="twitter:title" content="Muestreo y análisis de estudios educacionales con R" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
   
 
-<meta name="author" content="Yihui Xie" />
+<meta name="author" content="Andrés Gutiérrez" />
 
 
 <meta name="date" content="2021-05-21" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="intro.html"/>
+<link rel="next" href="resumen.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,93 +55,7 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -159,17 +73,108 @@ div.csl-indent {
 <li><a href="./">Muestreo en estudios educacionales</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefacio</a></li>
+<li class="chapter" data-level="2" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i><b>2</b> Resumen</a></li>
+<li class="chapter" data-level="3" data-path="introducción-al-xxxxxxx-2019.html"><a href="introducción-al-xxxxxxx-2019.html"><i class="fa fa-check"></i><b>3</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html"><i class="fa fa-check"></i><b>4</b> Definiciones básicas del muestreo</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-la-población-de-interés"><i class="fa fa-check"></i><b>4.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-las-subpoblaciones-de-interés"><i class="fa fa-check"></i><b>4.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-explícita"><i class="fa fa-check"></i><b>4.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="4.2.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-implícita"><i class="fa fa-check"></i><b>4.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="4.2.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#dominios-poblacionales"><i class="fa fa-check"></i><b>4.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="4.2.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#post-estratos"><i class="fa fa-check"></i><b>4.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="4.2.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#sobremuestras-de-interés"><i class="fa fa-check"></i><b>4.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="4.2.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#medidas-de-tamaño"><i class="fa fa-check"></i><b>4.2.6</b> Medidas de tamaño</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="4.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#marco-de-muestreo"><i class="fa fa-check"></i><b>4.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-muestreo"><i class="fa fa-check"></i><b>4.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="4.3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-observación"><i class="fa fa-check"></i><b>4.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="4.3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-análisis"><i class="fa fa-check"></i><b>4.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="4.3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#periodo-de-referencia"><i class="fa fa-check"></i><b>4.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusiones"><i class="fa fa-check"></i><b>4.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-escuela"><i class="fa fa-check"></i><b>4.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="4.4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-estudiante"><i class="fa fa-check"></i><b>4.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#tasas-de-participación-y-cobertura"><i class="fa fa-check"></i><b>4.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="4.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-de-interés"><i class="fa fa-check"></i><b>4.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-estudiantes"><i class="fa fa-check"></i><b>4.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="4.6.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-docentes-y-escuelas"><i class="fa fa-check"></i><b>4.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html"><i class="fa fa-check"></i><b>5</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-general"><i class="fa fa-check"></i><b>5.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="5.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-cada-etapa"><i class="fa fa-check"></i><b>5.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-las-escuelas"><i class="fa fa-check"></i><b>5.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-dentro-de-las-escuelas"><i class="fa fa-check"></i><b>5.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#definición-de-los-algoritmos-de-selección"><i class="fa fa-check"></i><b>5.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-sunter"><i class="fa fa-check"></i><b>5.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-fan-muller-rezucha"><i class="fa fa-check"></i><b>5.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#estratificación"><i class="fa fa-check"></i><b>5.4</b> Estratificación</a></li>
+<li class="chapter" data-level="5.5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#selección-de-los-reemplazos"><i class="fa fa-check"></i><b>5.5</b> Selección de los reemplazos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html"><i class="fa fa-check"></i><b>6</b> Tamaño de muestra</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#precisión-de-la-inferencia"><i class="fa fa-check"></i><b>6.1</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="6.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-por-país"><i class="fa fa-check"></i><b>6.2</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio"><i class="fa fa-check"></i><b>6.2.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas"><i class="fa fa-check"></i><b>6.2.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx"><i class="fa fa-check"></i><b>6.3</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="6.4" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tablas-de-muestreo"><i class="fa fa-check"></i><b>6.4</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#primer-escenario-m10"><i class="fa fa-check"></i><b>6.4.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#segundo-escenario-m15"><i class="fa fa-check"></i><b>6.4.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tercero-escenario-m20"><i class="fa fa-check"></i><b>6.4.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tratamiento-de-las-escuelas-pequeñas"><i class="fa fa-check"></i><b>6.5</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="6.6" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>6.6</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#afijación-de-la-muestra-en-los-estratos"><i class="fa fa-check"></i><b>6.6.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html"><i class="fa fa-check"></i><b>7</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-de-los-parámetros-de-interés"><i class="fa fa-check"></i><b>7.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="7.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo"><i class="fa fa-check"></i><b>7.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-las-escuelas"><i class="fa fa-check"></i><b>7.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="7.2.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-los-estudiantes"><i class="fa fa-check"></i><b>7.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="7.2.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-house-weight"><i class="fa fa-check"></i><b>7.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="7.2.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight"><i class="fa fa-check"></i><b>7.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="7.2.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto"><i class="fa fa-check"></i><b>7.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ajuste-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>7.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-escuelas"><i class="fa fa-check"></i><b>7.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="7.3.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-estudiantes"><i class="fa fa-check"></i><b>7.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="7.3.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-en-cuestionarios-de-contexto"><i class="fa fa-check"></i><b>7.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-ajustados"><i class="fa fa-check"></i><b>7.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="7.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#calibración-de-los-pesos-de-muestreo-iniciales"><i class="fa fa-check"></i><b>7.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html"><i class="fa fa-check"></i><b>8</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-técnica-de-jackknife"><i class="fa fa-check"></i><b>8.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="8.2" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#el-método-de-las-réplicas-repetidas-balanceadas"><i class="fa fa-check"></i><b>8.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#modificación-de-fay"><i class="fa fa-check"></i><b>8.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-estimación-de-la-varianza-con-valores-plausibles"><i class="fa fa-check"></i><b>8.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="8.4" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#detalles-computacionales"><i class="fa fa-check"></i><b>8.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -182,7 +187,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Muestreo y análisis de estudios educacionales con R</a>
           </h1>
         </div>
 
@@ -191,19 +196,13 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">A Minimal Book Example</h1>
-<p class="author"><em>Yihui Xie</em></p>
+<h1 class="title">Muestreo y análisis de estudios educacionales con R</h1>
+<p class="author"><em>Andrés Gutiérrez</em></p>
 <p class="date" style="margin-top: 1.5em;"><em>2021-05-21</em></p>
 </div>
-<div id="prerequisites" class="section level1" number="1">
-<h1><span class="header-section-number">Capítulo 1</span> Prerequisites</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
+<div id="prefacio" class="section level1" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Prefacio</h1>
+<p>Este es el sitio web de este libro</p>
 
 </div>
             </section>
@@ -212,7 +211,7 @@ div.csl-indent {
         </div>
       </div>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="resumen.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

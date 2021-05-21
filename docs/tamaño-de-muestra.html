@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Tamaño de muestra | Muestreo y análisis de estudios educacionales con R</title>
+  <meta name="description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Tamaño de muestra | Muestreo y análisis de estudios educacionales con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Tamaño de muestra | Muestreo y análisis de estudios educacionales con R" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  
+
+<meta name="author" content="Andrés Gutiérrez" />
+
+
+<meta name="date" content="2021-05-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="diseño-de-muestreo.html"/>
+<link rel="next" href="estrategia-de-estimación.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Muestreo en estudios educacionales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefacio</a></li>
+<li class="chapter" data-level="2" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i><b>2</b> Resumen</a></li>
+<li class="chapter" data-level="3" data-path="introducción-al-xxxxxxx-2019.html"><a href="introducción-al-xxxxxxx-2019.html"><i class="fa fa-check"></i><b>3</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html"><i class="fa fa-check"></i><b>4</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-la-población-de-interés"><i class="fa fa-check"></i><b>4.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-las-subpoblaciones-de-interés"><i class="fa fa-check"></i><b>4.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-explícita"><i class="fa fa-check"></i><b>4.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="4.2.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-implícita"><i class="fa fa-check"></i><b>4.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="4.2.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#dominios-poblacionales"><i class="fa fa-check"></i><b>4.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="4.2.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#post-estratos"><i class="fa fa-check"></i><b>4.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="4.2.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#sobremuestras-de-interés"><i class="fa fa-check"></i><b>4.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="4.2.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#medidas-de-tamaño"><i class="fa fa-check"></i><b>4.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#marco-de-muestreo"><i class="fa fa-check"></i><b>4.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-muestreo"><i class="fa fa-check"></i><b>4.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="4.3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-observación"><i class="fa fa-check"></i><b>4.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="4.3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-análisis"><i class="fa fa-check"></i><b>4.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="4.3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#periodo-de-referencia"><i class="fa fa-check"></i><b>4.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusiones"><i class="fa fa-check"></i><b>4.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-escuela"><i class="fa fa-check"></i><b>4.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="4.4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-estudiante"><i class="fa fa-check"></i><b>4.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#tasas-de-participación-y-cobertura"><i class="fa fa-check"></i><b>4.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="4.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-de-interés"><i class="fa fa-check"></i><b>4.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-estudiantes"><i class="fa fa-check"></i><b>4.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="4.6.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-docentes-y-escuelas"><i class="fa fa-check"></i><b>4.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html"><i class="fa fa-check"></i><b>5</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-general"><i class="fa fa-check"></i><b>5.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="5.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-cada-etapa"><i class="fa fa-check"></i><b>5.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-las-escuelas"><i class="fa fa-check"></i><b>5.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-dentro-de-las-escuelas"><i class="fa fa-check"></i><b>5.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#definición-de-los-algoritmos-de-selección"><i class="fa fa-check"></i><b>5.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-sunter"><i class="fa fa-check"></i><b>5.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-fan-muller-rezucha"><i class="fa fa-check"></i><b>5.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#estratificación"><i class="fa fa-check"></i><b>5.4</b> Estratificación</a></li>
+<li class="chapter" data-level="5.5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#selección-de-los-reemplazos"><i class="fa fa-check"></i><b>5.5</b> Selección de los reemplazos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html"><i class="fa fa-check"></i><b>6</b> Tamaño de muestra</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#precisión-de-la-inferencia"><i class="fa fa-check"></i><b>6.1</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="6.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-por-país"><i class="fa fa-check"></i><b>6.2</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio"><i class="fa fa-check"></i><b>6.2.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas"><i class="fa fa-check"></i><b>6.2.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx"><i class="fa fa-check"></i><b>6.3</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="6.4" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tablas-de-muestreo"><i class="fa fa-check"></i><b>6.4</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#primer-escenario-m10"><i class="fa fa-check"></i><b>6.4.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#segundo-escenario-m15"><i class="fa fa-check"></i><b>6.4.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tercero-escenario-m20"><i class="fa fa-check"></i><b>6.4.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tratamiento-de-las-escuelas-pequeñas"><i class="fa fa-check"></i><b>6.5</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="6.6" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>6.6</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="tamaño-de-muestra.html"><a href="tamaño-de-muestra.html#afijación-de-la-muestra-en-los-estratos"><i class="fa fa-check"></i><b>6.6.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html"><i class="fa fa-check"></i><b>7</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-de-los-parámetros-de-interés"><i class="fa fa-check"></i><b>7.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="7.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo"><i class="fa fa-check"></i><b>7.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-las-escuelas"><i class="fa fa-check"></i><b>7.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="7.2.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-los-estudiantes"><i class="fa fa-check"></i><b>7.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="7.2.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-house-weight"><i class="fa fa-check"></i><b>7.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="7.2.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight"><i class="fa fa-check"></i><b>7.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="7.2.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto"><i class="fa fa-check"></i><b>7.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ajuste-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>7.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-escuelas"><i class="fa fa-check"></i><b>7.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="7.3.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-estudiantes"><i class="fa fa-check"></i><b>7.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="7.3.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-en-cuestionarios-de-contexto"><i class="fa fa-check"></i><b>7.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-ajustados"><i class="fa fa-check"></i><b>7.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="7.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#calibración-de-los-pesos-de-muestreo-iniciales"><i class="fa fa-check"></i><b>7.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html"><i class="fa fa-check"></i><b>8</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-técnica-de-jackknife"><i class="fa fa-check"></i><b>8.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="8.2" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#el-método-de-las-réplicas-repetidas-balanceadas"><i class="fa fa-check"></i><b>8.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#modificación-de-fay"><i class="fa fa-check"></i><b>8.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-estimación-de-la-varianza-con-valores-plausibles"><i class="fa fa-check"></i><b>8.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="8.4" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#detalles-computacionales"><i class="fa fa-check"></i><b>8.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Muestreo y análisis de estudios educacionales con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tamaño-de-muestra" class="section level1" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Tamaño de muestra</h1>
+<p>El diseño muestral propuesto para el XXXXXXX sigue un método de selección por etapas. Los estudiantes en una misma escuela y una misma aula tienden a compartir distintas características, las cuales están relacionadas con los logros de aprendizaje. Esto hace que la variabilidad observada en los resultados <em>dentro</em> de las escuelas sea menor a la observada <em>entre</em> ellas, lo cual puede arrojar una estimación precisa o no, dependiendo del tamaño de la muestra.</p>
+<p>Dado un diseño muestral complejo, si el tamaño de la muestra es muy pequeño, los resultados podrían no ser representativos del país evaluado y podrían indicar niveles de variabilidad poco confiables. Para evitar este problema, los tamaños de muestra se calcularon haciendo uso de la metodología del <em>efecto diseño de Kish</em>, la cual corrige el tamaño de muestra calculado bajo un muestreo aleatorio simple de estudiantes.</p>
+<p>Los tamaños de muestra que se obtienen después de aplicar este factor de ajuste pueden variar en cada país, debido a procesos de sobremuestreo o a ajustes basados en el error muestral estimado de los estratos. Sin embargo, se definirá un número mínimo de escuelas que deben ser evaluadas en cada país participante y, en caso de que un país tenga un menor número de escuelas elegibles, todas deberán participar en el estudio.</p>
+<div id="precisión-de-la-inferencia" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Precisión de la inferencia</h2>
+<p>En el XXXXXXX la precisión de la inferencia sobre el logro de aprendizaje de los estudiantes es primordial. Todas las tareas desde la definición de la población objetivo, incluyendo especialmente la elaboración del marco muestral y la identificación de variables de estratificación implícita y explícita apoyan este objetivo. Para que la prueba cumpla con este propósito se deben alcanzar tasas de participación satisfactorias, tener en cuenta la escala de la prueba con media 700 y desviación estándar 100, y además cumplir algunos criterios estadísticos.</p>
+<p>En TIMSS y PIRSLS, por ejemplo, el error estándar no debe ser mayor a 0,035 desviaciones estándar para el puntaje promedio del país. Con una desviación estándar de 100, esto corresponde a un intervalo de confianza del 95% de más y menos siete puntos (margen de error) para el promedio. Además, las estimaciones de la muestra de cualquier estimación de porcentaje de estudiantes deben tener un intervalo de confianza de más y menos 3.5%.</p>
+<p><strong>La precisión esperada para este estudio piloto estará dada por un margen de error <span class="math inline">\(\delta\)</span> de 0.035 desviaciones estándar sobre la escala de la prueba.</strong></p>
+</div>
+<div id="tamaño-de-muestra-por-país" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Tamaño de muestra por país</h2>
+<p>El proceso de definición del tamaño de la muestra en cada país sigue los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se obtiene el tamaño de muestra de estudiantes por país, suponiendo un muestreo aleatorio simple.</li>
+<li>Se calcula el tamaño de muestra de estudiantes por país corregido por el efecto de diseño <em>DEFF</em>.</li>
+<li>Se calcula el tamaño de muestra de las escuelas.</li>
+<li>Se distribuye el tamaño calculado entre los estratos explícitos (estratos más grandes tendrán asociado un mayor tamaño de muestra).</li>
+<li>Se calculan los errores muestrales para cada estrato y se realizan los ajustes pertinentes.</li>
+<li>Se seleccionan las escuelas dentro de cada estrato y a los estudiantes por grado de interés dentro de cada escuela.</li>
+</ol>
+<p>Nótese que la muestra de estudiantes se obtiene haciendo un submuestreo de los estudiantes por grado de interés en cada escuela. Es decir, el muestreo se realiza entre grupos de estudiantes de una misma escuela, que tienen la misma probabilidad de ser elegidos. Este método facilita la selección de la muestra y presenta errores de muestreo menores a los que se obtendrían muestreando directamente aulas dentro de la escuela.</p>
+<div id="tamaño-de-muestra-para-estimar-un-puntaje-promedio" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Tamaño de muestra para estimar un puntaje promedio</h3>
+<p>La estrategia metodológica que se utilizará en esta propuesta consta de tres pasos y está alineada con propuestas de pruebas algunas otras pruebas estandarizadas a nivel internacional (Foy and Joy, 2015):</p>
+<ol style="list-style-type: decimal">
+<li>Identificar el tamaño de muestra suponiendo un muestreo aleatorio simple sin reemplazo (MAS), de acuerdo a la siguiente expresión:</li>
+</ol>
+<p><span class="math display">\[n_{MAS}=\frac{z^2_{\alpha} S^2_y}{\delta^2 + \frac{z^2_{\alpha} S^2_y}{N}}\]</span></p>
+<p>En donde <span class="math inline">\(z^2_{\alpha}\)</span> representa el pXXXXXXXntil asociado a una densidad normal estándar que cubre el <span class="math inline">\((1-\alpha) \times\)</span> 100% de la distribución, <span class="math inline">\(S^2_y\)</span> es la varianza poblacional de la variable de interés (<span class="math inline">\(y\)</span>), <span class="math inline">\(\delta\)</span> es el máximo error admisible en la escala, <span class="math inline">\(N\)</span> es el número de estudiantes del grado en el país.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Calcular el efecto de diseño asociado a cada país, como función del coeficiente de correlación<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> intraclase <span class="math inline">\(\rho\)</span> y del número de estudiantes <span class="math inline">\(m\)</span> que serán seleccionados en promedio en cada escuela:</li>
+</ol>
+<p><span class="math display">\[DEFF(\rho, m) = 1 + (m-1)\rho \]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Calcular el tamaño de muestra final para un muestreo en dos etapas realizando la multiplicación de las anteriores expresiones:</li>
+</ol>
+<p><span class="math display">\[n_{2E} = n_{MAS} DEFF(\rho, m)\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Calcular el número de escuelas que se deben seleccionar en la primera etapa de la siguiente manera:</li>
+</ol>
+<p><span class="math display">\[n_{I} \approx \frac{n_{2E}}{m}\]</span></p>
+<p>Por ejemplo, en un país con <span class="math inline">\(N=100000\)</span> estudiantes con coeficiente de correlación intraclase <span class="math inline">\(\rho=0.22\)</span> y con desviación estándar de <span class="math inline">\(90\)</span> puntos en la prueba, el tamaño de muestra que garantiza un error de máximo <span class="math inline">\(\delta = 10\)</span> puntos en la prueba, con una confianza estadística del 95% (<span class="math inline">\(z_{\alpha}= 1.96\)</span>), entonces
+<span class="math display">\[n_{MAS}=\frac{1.96^2 * 90^2}{10^2 + \frac{1.96^2 * 90^2}{100000}} = 310\]</span></p>
+<p>Luego, suponiendo una selección promedio de 35 estudiantes por escuela, el tamaño de muestra final será</p>
+<p><span class="math display">\[n_{2E} = 310 * [1 + (35 - 1) 0.22] = 2629\]</span>
+Estos 2629 estudiantes serán seleccionados en <span class="math inline">\(n_{I} = \frac{2629}{35} \approx 75\)</span> escuelas dentro del país.</p>
+</div>
+<div id="tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Tamaño de muestra para estimar el porcentaje de respuestas correctas</h3>
+<p>Por otro lado, en el XXXXXXX también es posible considerar como parámetro de interés el porcentaje de estudiantes que responde acertadamente un ítem. Para calcular el tamaño de muestra necesario para estimar esta proporción con un error máximo admisible de <span class="math inline">\(\delta \times\)</span> 100%, es necesario recurrir a la siguiente expresión para calcular el tamaño de muestra en un MAS</p>
+<p><span class="math display">\[n_{MAS}=\frac{z^2_{\alpha} P(1-P)}{\delta^2 + \frac{z^2_{\alpha} P(1-P)}{N}}\]</span></p>
+<p>En donde <span class="math inline">\(P\)</span> representa la proporción de estudiantes que acierta el ítem, la cual como se supone desconocida se fijará en <span class="math inline">\(P=0.5\)</span>, pues este valor hace máxima la varianza del estimador y por tanto nunca inducirá una subestimación del tamaño de muestra.</p>
+<p>Siguiendo con el ejemplo anterior, para estimar la proporción de estudiantes que aciertan una pregunta, admitiendo un error máximo de <span class="math inline">\(\delta = 5\)</span>%, se tendría que:</p>
+<p><span class="math display">\[n_{MAS}=\frac{1.96^2 * 0.5(1-0.5)}{0.05^2 + \frac{1.96^2 * 0.5(1-0.5)}{100000}}=382\]</span>
+Luego, suponiendo una selección promedio de 35 estudiantes por escuela, el tamaño de muestra final será</p>
+<p><span class="math display">\[n_{2E} = 382 * [1 + (35 - 1) 0.22] = 3239\]</span>
+Estos 3239 estudiantes serían seleccionados en <span class="math inline">\(n_{I} = \frac{3239}{35} \approx 93\)</span> escuelas dentro del país.</p>
+</div>
+</div>
+<div id="coeficientes-de-correlación-intraclase-en-el-txxxxxxx" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Coeficientes de correlación intraclase en el TXXXXXXX</h2>
+<p>Nótese que un insumo fundamental para calcular los tamaños de muestra son los coeficientes de correlación intraclase. Debido a que UNESCO-OREALC ha provisto las bases de datos de los anteriores estudios en la web, es posible calcular estos coeficientes para cada país. La siguiente tabla muestra los coeficientes de correlación intraclase para las pruebas del TXXXXXXX para grado terceroo (lectura, matemáticas) y para grado sexto (lectura, matemáticas y ciencias).</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="15%" />
+<col width="19%" />
+<col width="13%" />
+<col width="17%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>País</th>
+<th>terceroo Lectura</th>
+<th>terceroo Matemáticas</th>
+<th>Sexto Lectura</th>
+<th>Sexto Matemáticas</th>
+<th>Sexto Ciencias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argentina</td>
+<td>0.23</td>
+<td>0.26</td>
+<td>0.21</td>
+<td>0.27</td>
+<td>0.22</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>0.25</td>
+<td>0.34</td>
+<td>0.21</td>
+<td>0.29</td>
+<td>0.21</td>
+</tr>
+<tr class="odd">
+<td>Chile</td>
+<td>0.17</td>
+<td>0.22</td>
+<td>0.15</td>
+<td>0.24</td>
+<td>0.24</td>
+</tr>
+<tr class="even">
+<td>Colombia</td>
+<td>0.31</td>
+<td>0.36</td>
+<td>0.30</td>
+<td>0.32</td>
+<td>0.23</td>
+</tr>
+<tr class="odd">
+<td>Costa Rica</td>
+<td>0.17</td>
+<td>0.19</td>
+<td>0.17</td>
+<td>0.20</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td>Ecuador</td>
+<td>0.24</td>
+<td>0.27</td>
+<td>0.28</td>
+<td>0.30</td>
+<td>0.25</td>
+</tr>
+<tr class="odd">
+<td>Guatemala</td>
+<td>0.30</td>
+<td>0.30</td>
+<td>0.20</td>
+<td>0.21</td>
+<td>0.21</td>
+</tr>
+<tr class="even">
+<td>Honduras</td>
+<td>0.28</td>
+<td>0.35</td>
+<td>0.30</td>
+<td>0.32</td>
+<td>0.25</td>
+</tr>
+<tr class="odd">
+<td>México</td>
+<td>0.24</td>
+<td>0.23</td>
+<td>0.27</td>
+<td>0.22</td>
+<td>0.24</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>0.24</td>
+<td>0.28</td>
+<td>0.20</td>
+<td>0.21</td>
+<td>0.22</td>
+</tr>
+<tr class="odd">
+<td>Panamá</td>
+<td>0.28</td>
+<td>0.37</td>
+<td>0.29</td>
+<td>0.33</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>Paraguay</td>
+<td>0.29</td>
+<td>0.38</td>
+<td>0.33</td>
+<td>0.32</td>
+<td>0.30</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>0.39</td>
+<td>0.45</td>
+<td>0.42</td>
+<td>0.40</td>
+<td>0.35</td>
+</tr>
+<tr class="even">
+<td>República Dominicana</td>
+<td>0.19</td>
+<td>0.26</td>
+<td>0.19</td>
+<td>0.12</td>
+<td>0.14</td>
+</tr>
+<tr class="odd">
+<td>Uruguay</td>
+<td>0.23</td>
+<td>0.23</td>
+<td>0.17</td>
+<td>0.21</td>
+<td>0.17</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tablas-de-muestreo" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Tablas de muestreo</h2>
+<p>Las tablas de muestreo son una herramienta que permite decidir acerca del tamaño de muestra con relación a los costos de la implementación del estudio. Estas tablas están basadas en un diseño de muestreo en dos etapas estratificado. En la primera etapa, se va a seleccionar las escuelas con un algoritmo que le da mayor probabilidad de inclusión a las escuelas más grandes y que permite seleccionar los reemplazos de acuerdo a la estratificación implícita. En la segunda etapa, se
+seleccionan estudiantes dentro de cada escuela seleccionada.</p>
+<p>A modo de ejemplo, tomamos los datos del TXXXXXXX para los países participantes<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> y calculamos el coeficiente de correlación intraclase para todos los países<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> y se generaron distintos escenarios de tamaños de muestra de escuelas, de estudiantes dentro de la escuela, y por ende de estudiantes en el país.</p>
+<p>Todos estos escenarios son calculados para estimar la proporción de respuestas correctas en los ítems de pilotaje. Estas estimaciones finales tendrán un error máximo de 7.5% puntos porcentuales. Note que todos los escenarios inducen el mismo error de muestreo y la única diferencia radica en los costos de aplicación de la prueba. Todas las tablas fueron generadas utilizando las funciones <code>ICC</code>y <code>ss2s4p</code> del paquete <code>samplesize4surveys</code> (Gutiérrez, 2017) del software estadístico <code>R</code>.</p>
+<div id="primer-escenario-m10" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Primer escenario (<span class="math inline">\(m=10\)</span>)</h3>
+<p>La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 10 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Países</th>
+<th>rho</th>
+<th>DEFF(m=10)</th>
+<th>Muestras de escuelas</th>
+<th>Muestra de estudiantes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argentina</td>
+<td>0.27</td>
+<td>3.42</td>
+<td>59</td>
+<td>585</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>0.29</td>
+<td>3.62</td>
+<td>62</td>
+<td>619</td>
+</tr>
+<tr class="odd">
+<td>Chile</td>
+<td>0.24</td>
+<td>3.12</td>
+<td>53</td>
+<td>534</td>
+</tr>
+<tr class="even">
+<td>Colombia</td>
+<td>0.32</td>
+<td>3.9</td>
+<td>67</td>
+<td>667</td>
+</tr>
+<tr class="odd">
+<td>Costa Rica</td>
+<td>0.20</td>
+<td>2.83</td>
+<td>48</td>
+<td>484</td>
+</tr>
+<tr class="even">
+<td>Ecuador</td>
+<td>0.30</td>
+<td>3.72</td>
+<td>64</td>
+<td>636</td>
+</tr>
+<tr class="odd">
+<td>Guatemala</td>
+<td>0.21</td>
+<td>2.85</td>
+<td>49</td>
+<td>487</td>
+</tr>
+<tr class="even">
+<td>Honduras</td>
+<td>0.32</td>
+<td>3.88</td>
+<td>66</td>
+<td>663</td>
+</tr>
+<tr class="odd">
+<td>México</td>
+<td>0.22</td>
+<td>2.99</td>
+<td>51</td>
+<td>511</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>0.21</td>
+<td>2.92</td>
+<td>50</td>
+<td>499</td>
+</tr>
+<tr class="odd">
+<td>Panamá</td>
+<td>0.33</td>
+<td>4.01</td>
+<td>69</td>
+<td>686</td>
+</tr>
+<tr class="even">
+<td>Paraguay</td>
+<td>0.32</td>
+<td>3.87</td>
+<td>66</td>
+<td>662</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>0.40</td>
+<td>4.63</td>
+<td>79</td>
+<td>792</td>
+</tr>
+<tr class="even">
+<td>República Dominicana</td>
+<td>0.12</td>
+<td>2.1</td>
+<td>36</td>
+<td>359</td>
+</tr>
+<tr class="odd">
+<td>Uruguay</td>
+<td>0.21</td>
+<td>2.87</td>
+<td>49</td>
+<td>491</td>
+</tr>
+<tr class="even">
+<td>Venezuela</td>
+<td>0.26</td>
+<td>3.38</td>
+<td>58</td>
+<td>578</td>
+</tr>
+<tr class="odd">
+<td>Cuba</td>
+<td>0.26</td>
+<td>3.38</td>
+<td>58</td>
+<td>578</td>
+</tr>
+<tr class="even">
+<td>El Salvador</td>
+<td>0.26</td>
+<td>3.38</td>
+<td>130</td>
+<td>1298</td>
+</tr>
+<tr class="odd">
+<td>Bolivia</td>
+<td>0.26</td>
+<td>3.38</td>
+<td>130</td>
+<td>1298</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="segundo-escenario-m15" class="section level3" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Segundo escenario (<span class="math inline">\(m=15\)</span>)</h3>
+<p>La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 15 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Países</th>
+<th>rho</th>
+<th>DEFF(m=15)</th>
+<th>Muestras de escuelas</th>
+<th>Muestra de estudiantes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argentina</td>
+<td>0.27</td>
+<td>4.77</td>
+<td>54</td>
+<td>816</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>0.29</td>
+<td>5.07</td>
+<td>58</td>
+<td>867</td>
+</tr>
+<tr class="odd">
+<td>Chile</td>
+<td>0.24</td>
+<td>4.31</td>
+<td>49</td>
+<td>737</td>
+</tr>
+<tr class="even">
+<td>Colombia</td>
+<td>0.32</td>
+<td>5.51</td>
+<td>63</td>
+<td>942</td>
+</tr>
+<tr class="odd">
+<td>Costa Rica</td>
+<td>0.20</td>
+<td>3.84</td>
+<td>44</td>
+<td>657</td>
+</tr>
+<tr class="even">
+<td>Ecuador</td>
+<td>0.30</td>
+<td>5.23</td>
+<td>60</td>
+<td>894</td>
+</tr>
+<tr class="odd">
+<td>Guatemala</td>
+<td>0.21</td>
+<td>3.88</td>
+<td>44</td>
+<td>663</td>
+</tr>
+<tr class="even">
+<td>Honduras</td>
+<td>0.32</td>
+<td>5.47</td>
+<td>62</td>
+<td>935</td>
+</tr>
+<tr class="odd">
+<td>México</td>
+<td>0.22</td>
+<td>4.09</td>
+<td>47</td>
+<td>699</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>0.21</td>
+<td>3.98</td>
+<td>45</td>
+<td>681</td>
+</tr>
+<tr class="odd">
+<td>Panamá</td>
+<td>0.33</td>
+<td>5.68</td>
+<td>65</td>
+<td>971</td>
+</tr>
+<tr class="even">
+<td>Paraguay</td>
+<td>0.32</td>
+<td>5.46</td>
+<td>62</td>
+<td>934</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>0.40</td>
+<td>6.64</td>
+<td>76</td>
+<td>1135</td>
+</tr>
+<tr class="even">
+<td>República Dominicana</td>
+<td>0.12</td>
+<td>2.71</td>
+<td>31</td>
+<td>463</td>
+</tr>
+<tr class="odd">
+<td>Uruguay</td>
+<td>0.21</td>
+<td>3.91</td>
+<td>45</td>
+<td>669</td>
+</tr>
+<tr class="even">
+<td>Venezuela</td>
+<td>0.26</td>
+<td>4.7</td>
+<td>54</td>
+<td>804</td>
+</tr>
+<tr class="odd">
+<td>Cuba</td>
+<td>0.26</td>
+<td>4.7</td>
+<td>54</td>
+<td>804</td>
+</tr>
+<tr class="even">
+<td>El Salvador</td>
+<td>0.26</td>
+<td>4.7</td>
+<td>54</td>
+<td>804</td>
+</tr>
+<tr class="odd">
+<td>Bolivia</td>
+<td>0.26</td>
+<td>4.7</td>
+<td>54</td>
+<td>804</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tercero-escenario-m20" class="section level3" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> tercero escenario (<span class="math inline">\(m=20\)</span>)</h3>
+<p>La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 20 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Países</th>
+<th>rho</th>
+<th>DEFF(m=20)</th>
+<th>Muestras de escuelas</th>
+<th>Muestra de estudiantes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argentina</td>
+<td>0.27</td>
+<td>6.11</td>
+<td>52</td>
+<td>1045</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>0.29</td>
+<td>6.53</td>
+<td>56</td>
+<td>1117</td>
+</tr>
+<tr class="odd">
+<td>Chile</td>
+<td>0.24</td>
+<td>5.49</td>
+<td>47</td>
+<td>939</td>
+</tr>
+<tr class="even">
+<td>Colombia</td>
+<td>0.32</td>
+<td>7.12</td>
+<td>61</td>
+<td>1218</td>
+</tr>
+<tr class="odd">
+<td>Costa Rica</td>
+<td>0.20</td>
+<td>4.86</td>
+<td>42</td>
+<td>831</td>
+</tr>
+<tr class="even">
+<td>Ecuador</td>
+<td>0.30</td>
+<td>6.74</td>
+<td>58</td>
+<td>1153</td>
+</tr>
+<tr class="odd">
+<td>Guatemala</td>
+<td>0.21</td>
+<td>4.91</td>
+<td>42</td>
+<td>840</td>
+</tr>
+<tr class="even">
+<td>Honduras</td>
+<td>0.32</td>
+<td>7.07</td>
+<td>60</td>
+<td>1209</td>
+</tr>
+<tr class="odd">
+<td>México</td>
+<td>0.22</td>
+<td>5.2</td>
+<td>44</td>
+<td>889</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>0.21</td>
+<td>5.04</td>
+<td>43</td>
+<td>862</td>
+</tr>
+<tr class="odd">
+<td>Panamá</td>
+<td>0.33</td>
+<td>7.35</td>
+<td>63</td>
+<td>1257</td>
+</tr>
+<tr class="even">
+<td>Paraguay</td>
+<td>0.32</td>
+<td>7.06</td>
+<td>60</td>
+<td>1207</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>0.40</td>
+<td>8.66</td>
+<td>74</td>
+<td>1481</td>
+</tr>
+<tr class="even">
+<td>República Dominicana</td>
+<td>0.12</td>
+<td>3.32</td>
+<td>28</td>
+<td>568</td>
+</tr>
+<tr class="odd">
+<td>Uruguay</td>
+<td>0.21</td>
+<td>4.95</td>
+<td>42</td>
+<td>846</td>
+</tr>
+<tr class="even">
+<td>Venezuela</td>
+<td>0.26</td>
+<td>6.03</td>
+<td>52</td>
+<td>1031</td>
+</tr>
+<tr class="odd">
+<td>Cuba</td>
+<td>0.26</td>
+<td>6.03</td>
+<td>52</td>
+<td>1031</td>
+</tr>
+<tr class="even">
+<td>El Salvador</td>
+<td>0.26</td>
+<td>6.03</td>
+<td>52</td>
+<td>1031</td>
+</tr>
+<tr class="odd">
+<td>Bolivia</td>
+<td>0.26</td>
+<td>6.03</td>
+<td>52</td>
+<td>1031</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTA</strong>: <em>A modo de referencia, los participantes en el estudio piloto<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> del TXXXXXXX fueron 15.484 estudiantes en tercero grado y 15.840 en sexto grado. Para un total de 31.324 niños en 16 economías (15 países y el Estado mexicano de Nuevo León). Por lo tanto, TXXXXXXX tuvo un promedio por país de 968 estudiantes en tercero grado y de 990 estudiantes en sexto grado.</em></p>
+<p><strong>NOTA</strong>: <em>Otro enfoque común que se utiliza para calcular el tamaño de muestra requerido en el estudio piloto es satisfacer una muestra mínima de estudiantes presentando cuadernillos con ítems de pilotaje. Por ejemplo, la muestra del piloto<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> para TIMSS y PIRLS se extrae al mismo tiempo y de la misma población de escuelas que la muestra completa. El requisito de tamaño de muestra de la prueba piloto es de 200 estudiantes por cuadernillo. El tamaño final de la muestra del piloto es una función del número de cuadernillos cognitivos que se están probando en el campo. Normalmente, PIRLS tiene cuatro cuadernillos de prueba y por lo tanto requiere una muestra piloto de no menos de 800 estudiantes, mientras que TIMSS con seis cuadernillos requiere una muestra de más de 1200 estudiantes en cada grado.</em></p>
+<p>La siguiente tabla muestra la distribución de escuelas en el piloto del TXXXXXXX para algunas economías participantes.</p>
+<table>
+<thead>
+<tr class="header">
+<th>País</th>
+<th>terceroo</th>
+<th>Sexto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argentina</td>
+<td>46</td>
+<td>43</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>34</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td>Chile</td>
+<td>37</td>
+<td>35</td>
+</tr>
+<tr class="even">
+<td>Colombia</td>
+<td>54</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td>Guatemala</td>
+<td>55</td>
+<td>49</td>
+</tr>
+<tr class="even">
+<td>Honduras</td>
+<td>52</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>México</td>
+<td>48</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>73</td>
+<td>54</td>
+</tr>
+<tr class="odd">
+<td>Nuevo León</td>
+<td>42</td>
+<td>42</td>
+</tr>
+<tr class="even">
+<td>Paraguay</td>
+<td>55</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>54</td>
+<td>49</td>
+</tr>
+<tr class="even">
+<td>República Dominicana</td>
+<td>54</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Uruguay</td>
+<td>43</td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="tratamiento-de-las-escuelas-pequeñas" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Tratamiento de las escuelas pequeñas</h2>
+<p>Tener muchas escuelas pequeñas en la muestra final es poco deseable, puesto que puede reducir significativamente el tamaño de la muestra de estudiantes esperada para el país. Se considera que una escuela es pequeña cuando el número de estudiantes elegibles es menor al número de estudiantes que se esperaba seleccionar dentro de ella. Por ejemplo, en PISA<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> se definieron las siguientes categorías, teniendo en cuenta que se esperaba seleccionar 35 estudiantes en cada escuela:</p>
+<ul>
+<li>Escuelas grandes: el número de estudiantes elegibles era mayor a 35.</li>
+<li>Escuelas medianas: el número de estudiantes elegibles estaba entre 18 (la mitad del valor que se esperaba seleccionar) y 35.</li>
+<li>Escuelas pequeñas: el número de estudiantes elegibles era mayor a dos, pero menor a 18.</li>
+<li>Escuelas muy pequeñas: el número de estudiantes elegibles era cero, uno o dos.</li>
+</ul>
+<p>Para seleccionar un número apropiado de escuelas pequeñas en la muestra, estas se submuestrean, aumentando proporcionalmente el número de grandes escuelas. Las escuelas pequeñas se submuestrean con un factor de dos (su probabilidad de inclusión se reduce a la mitad) y las escuelas muy pequeñas con un factor de cuatro (su probabilidad de inclusión se reduce tres cuartas partes). Para definir si un país debe realizar este proceso se consideran los siguientes casos:</p>
+<ul>
+<li>Si el porcentaje de estudiantes en escuelas pequeñas y muy pequeñas es igual o mayor al 1%, entonces estas se submuestrean y se aumenta el tamaño de la muestra para compensarlas.</li>
+<li>Si el porcentaje de estudiantes en escuelas pequeñas y muy pequeñas es menor al 1% y el porcentaje de estudiantes en escuelas medianas es igual o mayor al 4%, entonces no es necesario el proceso de submuestreo, pero el tamaño de la muestra se incrementa.</li>
+<li>Si ninguna de las anteriores condiciones se cumple, quiere decir que el número de estudiantes en las escuelas pequeñas es muy pequeño para afectar la muestra. Por lo tanto, no es necesario el proceso de submuestreo y tampoco el aumento de la muestra.</li>
+</ul>
+<p>En caso de que el proceso de submuestreo sea necesario, se propone adaptar el siguiente algoritmo (asumiendo un tamaño inicial de muestra igual a <span class="math inline">\(n_I\)</span> escuelas y <span class="math inline">\(n_{2E}\)</span> estudiantes):</p>
+<ul>
+<li><p>Definir la proporción de estudiantes en cada una de las cuatro categorías de escuela definidas (la suma de ellas debe ser 1).</p></li>
+<li><p>Calcular la siguiente cantidad
+<span class="math display">\[L = 1 + \frac{3}{4}p_{mp}+\frac{1}{2}p_{pq} \]</span>
+en donde <span class="math inline">\(p_{mp}\)</span> es la proporción de estudiantes en escuelas muy pequeñas y <span class="math inline">\(p_{pq}\)</span> es la proporción de estudiantes en escuelas pequeñas.</p></li>
+<li><p>El tamaño mínimo de la muestra para las escuelas grandes será
+<span class="math display">\[n_I^{eg}=n_I*L*p_{eg}\]</span>
+en donde <span class="math inline">\(p_{eg}\)</span> hacer referencia a la proporción de estudiantes en escuelas grandes. Este tamaño puede incrementarse según los requerimientos del país.</p></li>
+<li><p>Calcular el valor promedio de estudiantes elegibles en las escuelas moderadamente pequeñas, pequeñas y muy pequeñas. El tamaño de la muestra para las escuelas medianas será
+<span class="math display">\[n_I^{me}=\frac{n_{2E}}{m_{me}}*p_{me}\]</span>
+en donde <span class="math inline">\(m_{me}\)</span> y <span class="math inline">\(p_{me}\)</span> es el valor promedio de estudiantes elegibles en las escuelas medianas y la proporción de estudiantes en escuelas medianas, respectivamente.</p></li>
+<li><p>Definir el tamaño de la muestra para las escuelas pequeñas como
+<span class="math display">\[n_I^{pq}=\frac{n_{2E}}{2*m_{me}}*p_{ep}*L\]</span></p></li>
+<li><p>Definir el tamaño de la muestra para las escuelas muy pequeñas como
+<span class="math display">\[n_I^{mp}=\frac{n_{2E}}{4*m_{mp}}*p_{mp}*L\]</span>
+en donde <span class="math inline">\(m_{mp}\)</span> y <span class="math inline">\(p_{mp}\)</span> es el valor promedio de estudiantes elegibles en las escuelas muy pequeñas y la proporción de estudiantes en escuelas muy pequeñas, respectivamente.</p></li>
+<li><p>Definir el tamaño final de la muestra, sumando los tamaños obtenidos para cada categoría de escuela.</p></li>
+</ul>
+<p>Es posible realizar este análisis de escuelas pequeñas para los estratos y sobremuetras de interés, indicando cuántas escuelas de cada categoría deben ser seleccionadas en cada estrato explícito (definiendo previamente si era necesario realizar submuestreo).</p>
+</div>
+<div id="tamaño-de-muestra-ajustado-por-ausencia-de-respuesta" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Tamaño de muestra ajustado por ausencia de respuesta</h2>
+<p>La tasa de participación de las escuelas y la tasa de respuesta de los estudiantes pueden afectar los análisis estadísticos si son muy bajas. Cada país realiza un esfuerzo para que todas las escuelas seleccionadas en la muestra accedan a participar y para que los estudiantes elegidos dentro de ellas contesten la prueba. Sin embargo, en ocasiones es difícil obtener el compromiso de las escuelas y, más aún el de los estudiantes, quienes pueden no asistir el día de la evaluación o asistir pero dejar el cuadernillo en blanco.</p>
+<p>Para mitigar esta situación es necesario aumentar el tamaño de muestra, así, en caso de que se pierdan estudiantes o escuelas, esto no afectará la representatividad de la muestra. De esta forma, siendo <span class="math inline">\(\phi\)</span> la probabilidad esperada de que una escuela acceda a aplicar la prueba, entonces el tamaño de muestra de escuelas, ajustado por este factor será:</p>
+<p><span class="math display">\[n_I^{(adj)} = \frac{n_I}{\phi}\]</span></p>
+<p>Por ejemplo, considerando una tasa de respuesta esperada del 85% y una muestra mínima de 50 escuelas, el incremento por ausencia de respuesta sería de 9 escuelas aproximadamente, así el tamaño de muestra ajustado sería <span class="math inline">\(n_I^{(adj)} = \frac{50}{0.85} = 59\)</span> escuelas.</p>
+<div id="afijación-de-la-muestra-en-los-estratos" class="section level3" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> Afijación de la muestra en los estratos</h3>
+<p>En el diseño de muestreo propuesto se realizará el cálculo del tamaño de muestra global y, a partir de este, se realizará la asignación de los tamaños de muestra dentro de los estratos con el fin de garantizar suficiente información dentro de estos, para luego cumplir los objetivos del presente estudio.</p>
+<p>Como el objetivo principal del XXXXXXX es comparar los resultados de los logros de aprendizaje en cada uno de los sistemas educativos para cada uno de los países participantes, se debe calcular un tamaño de muestra de forma independiente para cada estrato y así garantizar la precisión determinada en cada uno de ellos.</p>
+<p>Si <span class="math inline">\(N_{Ih}\)</span> es el total de escuelas en el estrato <span class="math inline">\(h\)</span> para uno de los países del estudio (con <span class="math inline">\(H\)</span>, el total de estratos definidos para este), la asignación de la muestra de escuelas en cada estrato se realiza por medio de una afijación de potencia con <span class="math inline">\(0.5 \leq \alpha \leq 1\)</span> empleando la siguiente fórmula:</p>
+<p><span class="math display">\[n_{Ih}=\dfrac{N_{Ih}^\alpha}{\sum_{h=1}^H N_{Ih}^\alpha} *n_I\]</span></p>
+<p>Con <span class="math inline">\(n_I\)</span> el número total de escuelas en la muestra para el país en cuestión.</p>
+<p><strong>NOTA 1</strong>: <em>si <span class="math inline">\(\alpha=1\)</span>, entonces el método de afijación de potencia induce una repartición proporcional al tamaño de cada estrato.</em></p>
+<p><strong>NOTA 2</strong>: <em>si <span class="math inline">\(\alpha&lt;1\)</span>, entonces el método de afijación de potencia induce un mayor tamaño de muestra en aquellos estratos que tienen una proporción de estudiantes menor que otros estratos más grandes.</em></p>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="22">
+<li id="fn22"><p>Esta medida toma valores positivos si los estudiantes dentro de las escuelas tienen un desempeño similar y ligeramente negativo cuando el logro de los estudiantes dentro de las escuelas es muy disperso. Es decir, el coeficiente informa qué tan similares son los estudiantes dentro de las escuelas, proporcionando una medida de homogeneidad dentro de las escuelas.<a href="tamaño-de-muestra.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>Para los países que no participaron en el TXXXXXXX se asumió que el coeficiente de correlación intraclase es igual al promedio de los demás países. Note que se podría indagar más y estimar este coeficiente con algún país que tenga un comportamiento similar.<a href="tamaño-de-muestra.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>Este cálculo se realizó para la prueba de matemáticas de grado sexto.<a href="tamaño-de-muestra.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>ver UNESCO – OREALC (2016), Reporte Técnico TXXXXXXX pg. 66<a href="tamaño-de-muestra.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>ver Joncas, M. &amp; Foy, P. (2013), pg. 8<a href="tamaño-de-muestra.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>ver PISA Technical Report, págs. 76 y 77<a href="tamaño-de-muestra.html#fnref27" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="diseño-de-muestreo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estrategia-de-estimación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MuestreoEducacionales.pdf", "MuestreoEducacionales.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

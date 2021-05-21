@@ -1,4 +1,4 @@
-#Tamaño de muestra
+# Tamaño de muestra
 
 El diseño muestral propuesto para el XXXXXXX sigue un método de selección por etapas. Los estudiantes en una misma escuela y una misma aula tienden a compartir distintas características, las cuales están relacionadas con los logros de aprendizaje. Esto hace que la variabilidad observada en los resultados *dentro* de las escuelas sea menor a la observada *entre* ellas, lo cual puede arrojar una estimación precisa o no, dependiendo del tamaño de la muestra.
 
