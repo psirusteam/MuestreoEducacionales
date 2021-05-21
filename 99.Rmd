@@ -1,0 +1,88 @@
+# Referencias
+
+- Bautista, L. (1998). Diseños de Muestreo Estadístico. Universidad Nacional de Colombia.
+
+- Caro, D. & Biecek, P. (2015),intsvy: An R Package for Analysing International Large-Scale Assessment Data.
+
+- Cervantes, V. H., Cepeda, E. & Camargo, S. L. (2008), `Una propuesta para la obtención de niveles de desempeño en los modelos de teoría de respuesta al ítem',
+Avances en Medición 6(1), 49-58.
+
+- Elosua, P. (2011), Introducción al entorno R. Argitalpen Zerbitzua.
+
+- Fernández, J. M. (1997), Introducción a la teoría de respuesta a los ítems, Ediciones
+Pirámide.
+
+- Frankel (1971). Inference from Survey Samples. Michigan University.  
+
+- Greaney, V. & Kellaghan, T. (2016), Volumen 3, Implementación de una evaluación nacional del rendimientoacadémico. Grupo Banco Mundial.
+
+- Gutiérrez, A. (2015), Estrategias de muestreo, Diseño de encuestas y estimación de parámetros. Universidad Santo Tomás.
+
+- Gutiérrez, A. (2017), TeachingSampling: Selection of Samples and Parameter Estimation in Finite Population. R package version 3.2.2. https://CRAN.R-project.org/package=TeachingSampling
+
+- Gutiérrez, A. (2017), samplesize4surveys: Sample Size Calculations for Complex Surveys. R package version 3.1.2.400. https://CRAN.R-project.org/package=samplesize4surveys
+
+- Gutiérrez, A. and Rojas, L. (2013), Ajuste de estimadores mediante la técnica de propensity score en encuestas complejas. Revista IB (DANE).
+
+- Joncas, M. & Foy, P. (2013), Sample Design in TIMSS and PIRLS.
+
+- Kim, J. and Riddles, F. (2012). Some theory for propensity-score-adjustment estimators in survey sampling. Survey Methodology.
+
+- Kish, L (1995). Survey Sampling. Wiley.
+
+- Korn, E., and Graubard, B. (1999) Analysis of Health Surveys. Wiley.
+
+- Lazarsfeld, P. F. (1955), Recent developments in latent structure analysis. Sociometry 18(4), 391-403.
+
+- Lord, F. M. & Novick, M. R. (1968), Statistical theories of mental test scores, Information Age Publishing.
+
+- Lumley, T. (2004). Analysis of complex survey samples. Wiley.
+
+- Lumley, T. (2017). survey: analysis of complex survey samples. R package version 3.32.
+
+- Martin, M., Mullis, I. & Hooper, M. (2016), Methods and Procedures in TIMSS 2015. International Association for the Evaluation of Educational Achievement (IEA).
+
+- Mosteller, F., and Tukey, J. (1968). Data analysis, including statistics. Handbook of Social Psychology. 
+
+- PISA (2009), PISA Data Analysis Manual. SPSS, Second Edition. OECD Publishing.
+
+- PISA (2012), Technical Report. OECD Publishing.
+
+- PISA (2016), Annex A6, The PISA 2015 Field Trial Mode-Effect Study. OECD Publishing.
+
+- PISA (2017), Main Survey School Sampling Preparation Manual, Overview. OECD Publishing.
+
+- PISA-based Test for Schools (2017), Technical Report (Draft version). OECD Publishing.
+
+- Quenouille, M. H. (1956), Notes on bias in estimation, Biometrika.
+
+- Ross, K. (2005), Module 1, Educational research: some basic concepts and terminology. UNESCO.
+
+- Ross, K. (2005), Module 3, Sample design for educational survey research. UNESCO.
+
+- Rutkowski, L., von Davier, M. & Rutkowski, D. (2014), Handbook of International Large-Scale Assessment. Background, Technical Issues, and Methods of Data Analysis. CRC.
+
+- Särndal, Swensson & Wretman (2003). Model Assisted Survey Sampling. Springer.
+
+- Särndal y Lundstrom (2005). Estimation in Surveys with Nonresponse. Wiley.
+
+- Shao, J. and Tu, D. (1995). The Jackknife and Bootstrap. Springer-Verlag
+
+- TERCE (2015), Informe de Resultados Tercer Estudio Regional Comparativo y Explicativo. Logros de Aprendizaje. Ediciones UNESCO.
+
+- TERCE (2015), Informe de Resultados Tercer Estudio Regional Comparativo y Explicativo. Factores Asociados. Ediciones UNESCO.
+
+- Tillé, Y. and Matei, A. (2016). sampling: Survey Sampling. R package version 2.8. https://CRAN.R-project.org/package=sampling
+
+- Tukey, J. (1949), `Bias and confidence in not quite-large samples', Annals of Mathematical Statistics 2(29), 614.
+
+- UNESCO – OREALC (2016), Reporte Técnico TERCE. Ediciones UNESCO.
+
+- van Buuren (2012). Flexible Imputation of Missing Data. CRC Press.
+
+- von Davier, M., and Gonzalez, E., and Mislevy, R. (2009). What are Plausible Values and Why are They Useful?. IERI Monograph Series: Issues and Methodologies in Large-Scale Assessments.
+
+- Westat (2007), WesVar 4.3, user’s guide.
+
+- Wolter, K. (1985). Introduction to Variance Estimation. Springer.
+

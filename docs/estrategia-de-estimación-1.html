@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 12 Estrategia de estimación | Muestreo y análisis de estudios educacionales con R</title>
+  <meta name="description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 12 Estrategia de estimación | Muestreo y análisis de estudios educacionales con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 12 Estrategia de estimación | Muestreo y análisis de estudios educacionales con R" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  
+
+<meta name="author" content="Andrés Gutiérrez" />
+
+
+<meta name="date" content="2021-05-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="diseño-de-muestreo-1.html"/>
+<link rel="next" href="cálculo-de-la-varianza-muestral-1.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Muestreo en estudios educacionales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i><b>1</b> Resumen</a></li>
+<li class="chapter" data-level="2" data-path="introducción-al-xxxxxxx-2019.html"><a href="introducción-al-xxxxxxx-2019.html"><i class="fa fa-check"></i><b>2</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html"><i class="fa fa-check"></i><b>3</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-la-población-de-interés"><i class="fa fa-check"></i><b>3.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-las-subpoblaciones-de-interés"><i class="fa fa-check"></i><b>3.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-explícita"><i class="fa fa-check"></i><b>3.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="3.2.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-implícita"><i class="fa fa-check"></i><b>3.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="3.2.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#dominios-poblacionales"><i class="fa fa-check"></i><b>3.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="3.2.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#post-estratos"><i class="fa fa-check"></i><b>3.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="3.2.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#sobremuestras-de-interés"><i class="fa fa-check"></i><b>3.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="3.2.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#medidas-de-tamaño"><i class="fa fa-check"></i><b>3.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#marco-de-muestreo"><i class="fa fa-check"></i><b>3.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-muestreo"><i class="fa fa-check"></i><b>3.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="3.3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-observación"><i class="fa fa-check"></i><b>3.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="3.3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-análisis"><i class="fa fa-check"></i><b>3.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="3.3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#periodo-de-referencia"><i class="fa fa-check"></i><b>3.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusiones"><i class="fa fa-check"></i><b>3.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-escuela"><i class="fa fa-check"></i><b>3.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="3.4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-estudiante"><i class="fa fa-check"></i><b>3.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#tasas-de-participación-y-cobertura"><i class="fa fa-check"></i><b>3.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="3.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-de-interés"><i class="fa fa-check"></i><b>3.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-estudiantes"><i class="fa fa-check"></i><b>3.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="3.6.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-docentes-y-escuelas"><i class="fa fa-check"></i><b>3.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html"><i class="fa fa-check"></i><b>4</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-general"><i class="fa fa-check"></i><b>4.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="4.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-cada-etapa"><i class="fa fa-check"></i><b>4.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-las-escuelas"><i class="fa fa-check"></i><b>4.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-dentro-de-las-escuelas"><i class="fa fa-check"></i><b>4.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#definición-de-los-algoritmos-de-selección"><i class="fa fa-check"></i><b>4.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-sunter"><i class="fa fa-check"></i><b>4.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="4.3.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-fan-muller-rezucha"><i class="fa fa-check"></i><b>4.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#estratificación"><i class="fa fa-check"></i><b>4.4</b> Estratificación</a></li>
+<li class="chapter" data-level="4.5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#selección-de-los-reemplazos"><i class="fa fa-check"></i><b>4.5</b> Selección de los reemplazos</a></li>
+<li class="chapter" data-level="4.6" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#precisión-de-la-inferencia"><i class="fa fa-check"></i><b>4.6</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="4.7" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-por-país"><i class="fa fa-check"></i><b>4.7</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio"><i class="fa fa-check"></i><b>4.7.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="4.7.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas"><i class="fa fa-check"></i><b>4.7.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx"><i class="fa fa-check"></i><b>4.8</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="4.9" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tablas-de-muestreo"><i class="fa fa-check"></i><b>4.9</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#primer-escenario-m10"><i class="fa fa-check"></i><b>4.9.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#segundo-escenario-m15"><i class="fa fa-check"></i><b>4.9.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="4.9.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tercero-escenario-m20"><i class="fa fa-check"></i><b>4.9.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tratamiento-de-las-escuelas-pequeñas"><i class="fa fa-check"></i><b>4.10</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="4.11" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>4.11</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#afijación-de-la-muestra-en-los-estratos"><i class="fa fa-check"></i><b>4.11.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html"><i class="fa fa-check"></i><b>5</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-de-los-parámetros-de-interés"><i class="fa fa-check"></i><b>5.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="5.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo"><i class="fa fa-check"></i><b>5.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-las-escuelas"><i class="fa fa-check"></i><b>5.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-los-estudiantes"><i class="fa fa-check"></i><b>5.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-house-weight"><i class="fa fa-check"></i><b>5.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="5.2.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight"><i class="fa fa-check"></i><b>5.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="5.2.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto"><i class="fa fa-check"></i><b>5.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ajuste-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>5.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-escuelas"><i class="fa fa-check"></i><b>5.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="5.3.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-estudiantes"><i class="fa fa-check"></i><b>5.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="5.3.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-en-cuestionarios-de-contexto"><i class="fa fa-check"></i><b>5.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-ajustados"><i class="fa fa-check"></i><b>5.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="5.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#calibración-de-los-pesos-de-muestreo-iniciales"><i class="fa fa-check"></i><b>5.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html"><i class="fa fa-check"></i><b>6</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-técnica-de-jackknife"><i class="fa fa-check"></i><b>6.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="6.2" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#el-método-de-las-réplicas-repetidas-balanceadas"><i class="fa fa-check"></i><b>6.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#modificación-de-fay"><i class="fa fa-check"></i><b>6.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-estimación-de-la-varianza-con-valores-plausibles"><i class="fa fa-check"></i><b>6.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="6.4" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#detalles-computacionales"><i class="fa fa-check"></i><b>6.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="chapter" data-level="8" data-path="resumen-1.html"><a href="resumen-1.html"><i class="fa fa-check"></i><b>8</b> Resumen</a></li>
+<li class="chapter" data-level="9" data-path="introducción-al-xxxxxxx-2019-1.html"><a href="introducción-al-xxxxxxx-2019-1.html"><i class="fa fa-check"></i><b>9</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="10" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html"><i class="fa fa-check"></i><b>10</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#descripción-de-la-población-de-interés-1"><i class="fa fa-check"></i><b>10.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="10.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#descripción-de-las-subpoblaciones-de-interés-1"><i class="fa fa-check"></i><b>10.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#estratificación-explícita-1"><i class="fa fa-check"></i><b>10.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="10.2.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#estratificación-implícita-1"><i class="fa fa-check"></i><b>10.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="10.2.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#dominios-poblacionales-1"><i class="fa fa-check"></i><b>10.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="10.2.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#post-estratos-1"><i class="fa fa-check"></i><b>10.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="10.2.5" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#sobremuestras-de-interés-1"><i class="fa fa-check"></i><b>10.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="10.2.6" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#medidas-de-tamaño-1"><i class="fa fa-check"></i><b>10.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#marco-de-muestreo-1"><i class="fa fa-check"></i><b>10.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-muestreo-1"><i class="fa fa-check"></i><b>10.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="10.3.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-observación-1"><i class="fa fa-check"></i><b>10.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="10.3.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-análisis-1"><i class="fa fa-check"></i><b>10.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="10.3.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#periodo-de-referencia-1"><i class="fa fa-check"></i><b>10.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusiones-1"><i class="fa fa-check"></i><b>10.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusión-a-nivel-de-escuela-1"><i class="fa fa-check"></i><b>10.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="10.4.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusión-a-nivel-de-estudiante-1"><i class="fa fa-check"></i><b>10.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#tasas-de-participación-y-cobertura-1"><i class="fa fa-check"></i><b>10.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="10.6" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-de-interés-1"><i class="fa fa-check"></i><b>10.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-con-información-de-estudiantes-1"><i class="fa fa-check"></i><b>10.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="10.6.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-con-información-de-docentes-y-escuelas-1"><i class="fa fa-check"></i><b>10.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html"><i class="fa fa-check"></i><b>11</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-general-1"><i class="fa fa-check"></i><b>11.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="11.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-en-cada-etapa-1"><i class="fa fa-check"></i><b>11.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-en-las-escuelas-1"><i class="fa fa-check"></i><b>11.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="11.2.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-dentro-de-las-escuelas-1"><i class="fa fa-check"></i><b>11.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#definición-de-los-algoritmos-de-selección-1"><i class="fa fa-check"></i><b>11.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#algoritmo-de-sunter-1"><i class="fa fa-check"></i><b>11.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="11.3.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#algoritmo-de-fan-muller-rezucha-1"><i class="fa fa-check"></i><b>11.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#estratificación-1"><i class="fa fa-check"></i><b>11.4</b> Estratificación</a></li>
+<li class="chapter" data-level="11.5" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#selección-de-los-reemplazos-1"><i class="fa fa-check"></i><b>11.5</b> Selección de los reemplazos</a></li>
+<li class="chapter" data-level="11.6" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#precisión-de-la-inferencia-1"><i class="fa fa-check"></i><b>11.6</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="11.7" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-por-país-1"><i class="fa fa-check"></i><b>11.7</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio-1"><i class="fa fa-check"></i><b>11.7.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="11.7.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas-1"><i class="fa fa-check"></i><b>11.7.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx-1"><i class="fa fa-check"></i><b>11.8</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="11.9" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tablas-de-muestreo-1"><i class="fa fa-check"></i><b>11.9</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#primer-escenario-m10-1"><i class="fa fa-check"></i><b>11.9.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="11.9.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#segundo-escenario-m15-1"><i class="fa fa-check"></i><b>11.9.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="11.9.3" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tercero-escenario-m20-1"><i class="fa fa-check"></i><b>11.9.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tratamiento-de-las-escuelas-pequeñas-1"><i class="fa fa-check"></i><b>11.10</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="11.11" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta-1"><i class="fa fa-check"></i><b>11.11</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="11.11.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#afijación-de-la-muestra-en-los-estratos-1"><i class="fa fa-check"></i><b>11.11.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html"><i class="fa fa-check"></i><b>12</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#estimadores-de-los-parámetros-de-interés-1"><i class="fa fa-check"></i><b>12.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="12.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-1"><i class="fa fa-check"></i><b>12.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-para-las-escuelas-1"><i class="fa fa-check"></i><b>12.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="12.2.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-para-los-estudiantes-1"><i class="fa fa-check"></i><b>12.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="12.2.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#modificación-de-los-pesos-de-estudiantes-student-house-weight-1"><i class="fa fa-check"></i><b>12.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="12.2.4" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight-1"><i class="fa fa-check"></i><b>12.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="12.2.5" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto-1"><i class="fa fa-check"></i><b>12.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ajuste-por-ausencia-de-respuesta-1"><i class="fa fa-check"></i><b>12.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-de-escuelas-1"><i class="fa fa-check"></i><b>12.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="12.3.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-de-estudiantes-1"><i class="fa fa-check"></i><b>12.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="12.3.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-en-cuestionarios-de-contexto-1"><i class="fa fa-check"></i><b>12.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#estimadores-ajustados-1"><i class="fa fa-check"></i><b>12.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="12.5" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#calibración-de-los-pesos-de-muestreo-iniciales-1"><i class="fa fa-check"></i><b>12.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html"><i class="fa fa-check"></i><b>13</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#la-técnica-de-jackknife-1"><i class="fa fa-check"></i><b>13.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="13.2" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#el-método-de-las-réplicas-repetidas-balanceadas-1"><i class="fa fa-check"></i><b>13.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#modificación-de-fay-1"><i class="fa fa-check"></i><b>13.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#la-estimación-de-la-varianza-con-valores-plausibles-1"><i class="fa fa-check"></i><b>13.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="13.4" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#detalles-computacionales-1"><i class="fa fa-check"></i><b>13.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="referencias-1.html"><a href="referencias-1.html"><i class="fa fa-check"></i><b>14</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Muestreo y análisis de estudios educacionales con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estrategia-de-estimación-1" class="section level1" number="12">
+<h1><span class="header-section-number">Capítulo 12</span> Estrategia de estimación</h1>
+<div id="estimadores-de-los-parámetros-de-interés-1" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Estimadores de los parámetros de interés</h2>
+<p>Con base en los parámetros definidos anteriormente, y teniendo en cuenta el diseño de muestreo que se propone en este documento, se definen las siguientes expresiones que inducen una estructura inferencial insesgada.</p>
+<ul>
+<li><strong>Estimación de un total poblacional</strong>: para estimar el total poblacional de una variable de interés se utiliza el estimador de Horvitz-Thompson dado por la siguiente ecuación (Särndal, Swensson &amp; Wretman, 2003):</li>
+</ul>
+<p><span class="math display">\[\hat{t}_{y, \pi}= \sum_s w_k^{(design)} y_k\]</span></p>
+<p>En donde <span class="math inline">\(w_k^{(design)}=1/\pi_k\)</span> es el inverso de la probabilidad de inclusión (<span class="math inline">\(\pi_k = Pr(k\in s)\)</span>) del <span class="math inline">\(k\)</span>-ésimo estudiante en la muestra. El estimador anterior puede ser reescrito considerando el diseño muestral propuesto como se especifica en la siguiente expresión:</p>
+<p><span class="math display">\[\hat{t}_{y, \pi}= 
+\sum_{h=1}^H\sum_{i\in s_{hI}}\sum_{k\in s_i}\frac{y_k}{\pi_k}
+=\sum_{h=1}^H\sum_{i\in s_{hI}}\frac{1}{\pi_{Ihi}}\sum_{k\in s_i}\frac{y_k}{\pi_{k|i}}
+=\sum_{h=1}^H\sum_{i\in s_{hI}}\frac{t_{xh}}{n x_i}\sum_{k\in s_i}\frac{N_i}{n_i}y_k\]</span></p>
+<p>En donde</p>
+<ul>
+<li><p><span class="math inline">\(i\)</span> denota el subíndice de las escuelas seleccionadas en la muestra estratificada de la primera etapa <span class="math inline">\(s_{hI}\)</span>,</p></li>
+<li><p><span class="math inline">\(h\)</span> denota el subíndice del estrato explícito y <span class="math inline">\(H\)</span> denota el número total de estratos explícitos definidos por cada país,</p></li>
+<li><p><span class="math inline">\(s_i\)</span> hace referencia a la muestra de estudiantes en la escuela <span class="math inline">\(i\)</span>,</p></li>
+<li><p><span class="math inline">\(\pi_{Ihi} \propto \frac{n_{Ih} x_i}{t_{xh}} \leq 1\)</span> es la probabilidad de inclusión de la <span class="math inline">\(i\)</span>-ésima escuela en el estrato explícito <span class="math inline">\(h\)</span>,</p></li>
+<li><p><span class="math inline">\(n_{Ih}\)</span> es el número de escuelas seleccionadas en el estrato explicito <span class="math inline">\(h\)</span>.</p></li>
+<li><p><span class="math inline">\(x_i\)</span> es la medida de tamaño de la <span class="math inline">\(i\)</span>-ésima escuela en el estrato explícito <span class="math inline">\(h\)</span>,</p></li>
+<li><p><span class="math inline">\(t_{xh}\)</span> es el total agregado de la medida de tamaño <span class="math inline">\(x\)</span> en el estrato <span class="math inline">\(h\)</span>,</p></li>
+<li><p><span class="math inline">\(N_i\)</span> es el número de estudiantes en la escuela <span class="math inline">\(i\)</span>,</p></li>
+<li><p><span class="math inline">\(n_i\)</span> es el número de estudiantes seleccionados en la muestra de la escuela <span class="math inline">\(i\)</span>.</p></li>
+<li><p><strong>Estimación de una razón poblacional</strong>: para obtener la estimación de una razón (<span class="math inline">\(\hat{R}\)</span>) se deben estimar los totales asociados a una variable de interés <span class="math inline">\(y\)</span>, y el total asociado a una variable de interés <span class="math inline">\(\mathbf{Z}\)</span>. Posteriormente realizar el cociente entre estas estimaciones, es decir:</p></li>
+</ul>
+<p><span class="math display">\[\hat{R}=\frac{\hat{t}_{y, \pi}}{\hat{t}_{z, \pi}}
+=\frac{\sum_s w_k^{(design)} y_k}{\sum_s w_k^{(design)} z_k}\]</span></p>
+<p>Para la estimación de los anteriores totales se utilizan las mismas expresiones utilizadas para estimar un total poblacional.</p>
+<ul>
+<li><strong>Estimación del promedio poblacional</strong>: para estimar un promedio basta con aplicar las expresiones para estimar una razón considerando <span class="math inline">\(z_k=1\)</span> <span class="math inline">\(\forall k \in U\)</span>; es decir, <span class="math inline">\(\hat{t}_{z, \pi}=\hat{N}\)</span>. Por tanto, la estimación del promedio se estima como sigue:</li>
+</ul>
+<p><span class="math display">\[\tilde{Y} = \frac{\hat{t}_{y, \pi}}{\hat{N}}
+=\frac{\sum_s w_k^{(design)} y_k}{\sum_s w_k^{(design)}}\]</span></p>
+<p>Tanto <span class="math inline">\(\hat{t}_{y, \pi}\)</span> como <span class="math inline">\(\hat{N}\)</span> son estimaciones de totales. Para estimar estos totales son utilizadas las expresiones detalladas anteriormente para estimar un total poblacional. Es posible también estimar insesgadamente al dividir por <span class="math inline">\(N\)</span>, aunque es posible que esta última estimación arroje una mayor varianza.</p>
+<ul>
+<li><strong>Estimación de una proporción poblacional</strong>: para estimar la proporción poblacional se siguen los mismos principios que en la estimación de un promedio, pero sobre una variable dicotómica <span class="math inline">\(z_{dk}\)</span> que toma el valor de 1 si el <span class="math inline">\(k\)</span>-ésimo individuo tiene el atributo de interés <span class="math inline">\(d\)</span> y de 0 en otro caso. Se obtiene la estimación de una proporción realizando la estimación del total de la variable y dividido sobre la estimación del total poblacional como se presenta a continuación:</li>
+</ul>
+<p><span class="math display">\[\tilde{P} = \frac{\hat{t}_{z_d, \pi}}{\hat{N}}
+=\frac{\sum_s w_k^{(design)} z_{dk}}{\sum_s w_k^{(design)}}\]</span></p>
+</div>
+<div id="pesos-de-muestreo-1" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Pesos de muestreo</h2>
+<p>Los pesos de muestreo se calculan para escuelas y estudiantes, según el diseño muestral del estudio para el piloto y aplicación principal del XXXXXXX. Como se mencionó en secciones anteriores, el muestreo se realiza en dos etapas. En cada una de las etapas, la unidad que será seleccionada, ya sean escuelas o estudiantes, tiene una probabilidad de ser elegida (en el caso de las escuelas dependiendo de la medida de tamaño o del número de estudiantes en la escuela). Los pesos de muestreo reflejan esas probabilidades de selección, teniendo en cuenta procesos de ajuste por ausencia de respuesta y el recorte de pesos en cada estrato (para reducir el error estándar al reducir la influencia de los sub-grupos pequeños de escuelas o estudiantes).</p>
+<p>Estos pesos evidencian el diseño de la muestra y corresponden al recíproco de la probabilidad de inclusión de la unidad que será seleccionada (con algunos ajustes por las razones ya mencionadas). Dado el diseño bietápico, primero se calculan los pesos muestrales de las escuelas y después los del estudiante (considerando la probabilidad de ser elegido, dado que la escuela ya fue seleccionada en la muestra de la primera etapa. En principio, el peso muestral total de los estudiantes se define como el producto de estos dos resultados y es el que se requiere para el cálculo de estimadores de las características de la población objetivo, que sean imparciales o consistentes.</p>
+<p>En el caso de las escuelas, aquellas más grandes tienen una mayor probabilidad de inclusión, en comparación con aquellas más pequeñas. Por lo tanto, los pesos muestrales para las escuelas más grandes tienden a ser más pequeños que los asociados a las escuelas más pequeñas. Además, es importante destacar que estos pesos indican el número de escuelas que la escuela seleccionada en la muestra está representando.</p>
+<p>En el caso de los estudiantes, las probabilidades de inclusión reflejan la probabilidad de ser seleccionados dado que la escuela fue seleccionada en la muestra, es decir, se trata de una probabilidad condicional. Dentro de la escuela, cada estudiante tiene la misma probabilidad de ser elegido. Así, los pesos muestrales de los estudiantes en cada escuela serán los mismos.</p>
+<p>Las muestras de escuelas y estudiantes deben ser representativas de la población objetivo y están diseñadas para obtener estimadores precisos, considerando un margen de error específico. Una vez se han recolectado todos los datos (provenientes de los instrumentos cognitivos y de los cuestionarios que contestan estudiantes, familias, profesores y directores), las estimaciones estadísticas se realizan teniendo en cuenta los pesos de muestreo como factor de ponderación, por esta razón es muy importante calcularlos correctamente.</p>
+<p>Nótese que el peso muestral total no será el mismo para todos los estudiantes y esto puede deberse a varias razones. Por ejemplo, la información de los marcos de muestreo no fue exacta y una escuela que se esperaba fuera grande en realidad fue pequeña, lo que modifica la probabilidad de selección de los estudiantes dentro de ella (será mayor en comparación al resto de estudiantes de la muestra); o también puede suceder que la ausencia de respuesta en una escuela conduzca a una subrepresentación de los estudiantes en el estrato al que la escuela pertenece. En cualquier caso es necesario realizar un ajuste para que al final los pesos de muestreo representen correctamente a la población de interés.</p>
+<div id="pesos-de-muestreo-para-las-escuelas-1" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Pesos de muestreo para las escuelas</h3>
+<p>El peso muestral de la escuela es el recíproco de su probabilidad de inclusión (proporcional a su medida de tamaño), con algunos ajustes como la corrección por ausencia de respuesta. Recordemos que la medida de tamaño para XXXXXXX son los estudiantes en los grados de interés. Para minimizar el efecto de las escuelas pequeñas en el cálculo de los pesos muestrales, es posible modificar la medida de tamaño. Por ejemplo, en PISA 2015 el tamaño esperado de la muestra por escuela era 35 estudiantes. Si el número de estudiantes de 15 años (medida de tamaño) es menor a ese valor esperado, pero mayor a 17, la medida de tamaño era 35. Si el número de estudiantes de 15 años era menor o igual a 17, pero mayor a 3, entonces la medida de tamaño es la mitad del tamaño esperado de la muestra por escuela. Y, si en la escuela había entre uno y dos estudiantes de 15 años, la medida de tamaño era la cuarta parte del tamaño esperado de la muestra por escuela.</p>
+<p>El factor de expansión a nivel de la escuela (UPM) <span class="math inline">\(i\)</span> en el estrato explícito <span class="math inline">\(h\)</span> está dado por la siguiente expresión:</p>
+<p><span class="math display">\[w_{hi}^{(school)}=\frac{1}{\pi_{Ihi}}\propto\frac{t_{xh}}{n_{Ih} x_i}\]</span></p>
+<p>En donde <span class="math inline">\(\pi_{Ihi}\)</span> se definió anteriormente y corresponde a la probabilidad de inclusión de primer orden de la escuela <span class="math inline">\(i\)</span> y es obtenida a partir de la implementación del diseño muestral proporcional a la medida de tamaño.</p>
+</div>
+<div id="pesos-de-muestreo-para-los-estudiantes-1" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Pesos de muestreo para los estudiantes</h3>
+<p>Las probabilidades de inclusión para los estudiantes indican la probabilidad de ser seleccionados dado que la escuela a la que pertenece fue seleccionada en la muestra, es decir, como se mencionó anteriormente, se trata de una probabilidad condicional. El peso de muestreo para los estudiantes es el recíproco de esa probabilidad, con dos ajustes: primero se aplica un factor de corrección por ausencia de respuesta y después se usa un recorte definido.</p>
+<p>Cabe resaltar que todos los estudiantes de una misma escuela tienen igual probabilidad de ser elegidos. Si todos los estudiantes en un grado de interés (o ambos) son seleccionados, su peso de muestreo será igual a uno (puesto que cada estudiante se representa a si mismo), pero si no todos fueron seleccionados, los pesos de muestreo serán mayores.</p>
+<p>En el caso de la segunda etapa, en donde el muestreo de los estudiantes es aleatorio simple sin reemplazo, el peso de muestreo de un estudiante <span class="math inline">\(k\)</span> adscrito a la escuela <span class="math inline">\(i\)</span> en el estrato explícito <span class="math inline">\(h\)</span> está dada por la siguiente expresión:</p>
+<p><span class="math display">\[w_{k|i}^{(student|school)}
+=\frac{1}{\pi_{k|i}}
+=\frac{N_i}{n_i}\]</span></p>
+<p>Por la anterior, y debido a que el muestreo es independiente en cada etapa, el factor de expansión general para un estudiante que pertenece a una escuela del estrato explícito <span class="math inline">\(h\)</span> está dado por la multiplicación de los anteriores pesos:</p>
+<p><span class="math display">\[w_{k}^{(design)}
+=w_{hi}^{(school)}w_{k|i}^{(student|school)}
+\propto\frac{t_{xh}}{n_{Ih} x_i}\frac{N_i}{n_i}\]</span></p>
+</div>
+<div id="modificación-de-los-pesos-de-estudiantes-student-house-weight-1" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Modificación de los pesos de estudiantes: <em>Student house-weight</em></h3>
+<p>El método <em>house-weight</em> permite realizar transformaciones proporcionales en los pesos de muestreo para que sumen un tamaño determinado dentro de cada país. Estas transformaciones no afectan las estimaciones de medias o parámetros de interés, aunque sí modifican la suma del propio peso de muestreo.</p>
+<p>El <em>house-weight</em> le da un peso diferente a cada país, dependiendo del tamaño de población. Se utiliza cuando el error estándar está siendo calculado en la suma de los pesos de muestreo y no en el propio tamaño de la muestra y se requiere corregir esta situación (con los avances en los softwares de análisis de datos, esta necesidad es cada vez menor).</p>
+<p>Este tipo de ponderación, también llamado peso normalizado, se utiliza cuando los análisis son sensibles al tamaño de la muestra y representa, esencialmente, una transformación lineal del peso total del estudiante de modo que la suma de los pesos sea igual al tamaño de la muestra de cada país <span class="math inline">\(n\)</span>. En general, se tiene que</p>
+<p><span class="math display">\[w_{k}^{(house)}=\frac{w_{k}^{(design)}}{\sum_s{w_{k}^{(design)}}}*n\]</span></p>
+</div>
+<div id="modificación-de-los-pesos-de-estudiantes-student-senate-weight-1" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></h3>
+<p>Al igual que la modificación anterior, el método <em>senate-weight</em> permite realizar transformaciones proporcionales en los pesos de muestreo para que sumen un tamaño determinado dentro de cada país, sin afectar las estimaciones de medias o coeficientes (se modifica la suma del propio peso de muestreo). En este método, a diferencia de <em>house-weight</em>, los países tienen el mismo peso, sin que se considere el tamaño de la población (las poblaciones objetivo dentro de cada país participante serán del mismo tamaño), por lo que es útil para realizar análisis entre países.</p>
+<p>Este método se utiliza cuando los análisis involucran más de un país porque es el peso total del estudiante escalado de tal manera que los pesos de senado de todos los estudiantes suman a 500 (o 1000)<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> en cada país. De esta forma, la siguiente ecuación define la forma estructural de estos pesos:</p>
+<p><span class="math display">\[w_{k}^{(senate)}=\frac{w_{k}^{(design)}}{\sum_s{w_{k}^{(design)}}}*\kappa\]</span></p>
+<p>En donde <span class="math inline">\(\kappa\)</span> es un número que se fija de antemano, y que puede ser igual a 500 o 1000.</p>
+</div>
+<div id="acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto-1" class="section level3" number="12.2.5">
+<h3><span class="header-section-number">12.2.5</span> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</h3>
+<p>Por la naturaleza del estudio, en donde un mismo marco de muestreo cuenta con escuelas de grados terceroo y sexto, se necesita plantear un diseño que
+contemple los pesos de muestreo que sean representativos para esta
+realidad. Para empezar, utilizaremos tres estratos, definido a continuación.</p>
+<ul>
+<li>Estrato 1: escuelas que cuentan solo con el grado terceroo.</li>
+<li>Estrato 2: escuelas que cuentan con el grado terceroo y sexto conjuntamente.</li>
+<li>Estrato 3: escuelas que cuentan solo con el grado sexto.</li>
+</ul>
+<p>Ahora bien, nótese que para seleccionar las escuelas dentro de cada estrato,
+se utiliza un diseño proporcional, cuya medida de tamaño es el número
+de estudiantes en los grados terceroo y sexto. Teniendo esto en mente, para construir un diseño eficiente y que sea representativo, debemos garantizar que</p>
+<p><span class="math display">\[\sum_{s}w_{k}^{(design)} = \hat{N} \approx N\]</span>.</p>
+<p>Por ejemplo, para el caso del grado terceroo, si asumimos que <span class="math inline">\(N_{3}^{schools}\)</span> representa el total de estudiantes de este grado, entonces:</p>
+<p><span class="math display">\[\sum_{i\in s_{36}}w_{2i}^{(school)}+\sum_{i\in s_{3}}w_{3i}^{(school)} \approx N_{3}^{schools}\]</span></p>
+<p>En donde <span class="math inline">\(w_{2i}^{(school)}=\frac{t_{x2}}{n_{I2}x_{i}}\)</span> es el peso de la escuela en el Estrato 2; <span class="math inline">\(w_{3i}^{(school)}=\frac{t_{x3}}{n_{I3}x_{i}}\)</span> es el peso de la escuela en el Estrato 3; <span class="math inline">\(t_{x2}\)</span> es el total de estudiantes de grado terceroo y sexto; <span class="math inline">\(t_{x3}\)</span> total de estudiantes del grado sexto; <span class="math inline">\(n_{Ii}\)</span> es el tamaño de la muestra seleccionada en el estrato <span class="math inline">\(i\)</span> con <span class="math inline">\(i=1,2,3\)</span>; <span class="math inline">\(s_{36}\)</span> es la muestra obtenida en el Estrato 2 y <span class="math inline">\(s_{3}\)</span> es la muestra obtenida en el Estrato 1.</p>
+</div>
+</div>
+<div id="ajuste-por-ausencia-de-respuesta-1" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Ajuste por ausencia de respuesta</h2>
+<p>Las tasas de respuesta de escuelas y estudiantes no siempre corresponden al 100% de la población muestreada. La ausencia de respuesta en ambas unidades afecta los análisis estadísticos, razón por la cual deben ajustarse los pesos de muestreo por medio de factores que disminuyan el sesgo ocasionado por la ausencia de respuesta. Estos factores deben ser una función de una variable que esté disponible para aquellos que contestaron y para los que no, y que esté correlacionada con la tasa de respuesta y las variables de interés.</p>
+<p>Para encontrar esta variable es posible buscar variables que estén relacionadas con el hecho de responder o no a la prueba y esperar que estén relacionadas también con las variables de interés (teniendo en cuenta los datos del estudio), o buscar variables que cumplan ambos requisitos con seguridad (considerando datos históricos de otro estudio que tenga características similares).</p>
+<p>Esta última técnica es la más utilizada, puesto que ofrece más estabilidad (las tasas de respuesta pueden variar mucho en cada aplicación), permite la estandarización de procesos, lo cual es útil para generar ajustes en cortos periodos de tiempo, y facilita la identificación y uso de las variables de mayor interés en el estudio, como el logro de aprendizaje que es evaluado. Una vez definida la variable los ajustes se aplican a las escuelas y, posteriormente, a los estudiantes.</p>
+<p>Generalmente en una investigación por muestreo se presentan dos tipos de ausencia de respuesta: una es cuando la persona seleccionada se niega a responder algunas preguntas del cuestionario, la otra es cuando hay imposibilidad de levantar toda la información del cuestionario por cualquier razón. El primer tipo de ausencia de respuesta se puede solucionar a través de métodos de imputación que buscan asignar información plausible a las variables no levantadas en campo, usando la información de individuos similares. La mayoría de textos de análisis de datos presentan los métodos de imputación con sus ventajas y desventajas; lo más importante es controlar adecuadamente los niveles de ausencia de respuesta, pues se aconseja que los datos imputados no tengan una tasa alta.</p>
+<p>Särndal y Lundstrom (2005) muestran diferentes métodos para el tratamiento de la ausencia de respuesta, donde además se enfatiza en los supuestos para poder llevar a cabo este tipo de procedimientos de imputación de datos entre los cuales se destaca que el esquema de datos faltantes sea aleatorio. El tratamiento de la ausencia de respuesta implicará el uso de estimadores de calibración, como información auxiliar se considerará el total de estudiantes y demás parámetros disponibles para este grupo poblacional, si es posible.</p>
+<div id="ausencia-de-respuesta-de-escuelas-1" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Ausencia de respuesta de escuelas</h3>
+<p>La ausencia de respuesta en las escuelas no está relacionada fuertemente con los logros de aprendizaje, puesto que estas tasas de respuesta se ven afectadas por otros temas del contexto de cada país que no afectan el rendimiento promedio de los estudiantes. Sin embargo, las tasas de respuesta pueden variar mucho entre los estratos y países, por lo cual un ajuste es necesario para mitigar el sesgo. Además, si una escuela originalmente muestreada decide no participar y sus dos reemplazos no acceden a ser parte del estudio, el peso de la escuela debe ajustarse para compensar la pérdida.
+El factor de ajuste por ausencia de respuesta permite ponderar las escuelas para representar a todos los estudiantes. El mecanismo es crear distintos grupos de escuelas con características similares y, dentro de cada grupo, ajustar los pesos de las escuelas para compensar aquellas sin respuesta.</p>
+<p>Las variables utilizadas para realizar el ajuste son, por lo general, variables de estratificación, porque están relacionadas con las variables de interés y representan subpoblaciones de interés para los países participantes. De igual forma, en el cálculo del factor de ajuste se considera la matrícula estimada de estudiantes para cada escuela, con el fin de reconocer el número de estudiantes que están representados por cada escuela en la muestra.</p>
+</div>
+<div id="ausencia-de-respuesta-de-estudiantes-1" class="section level3" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Ausencia de respuesta de estudiantes</h3>
+<p>La ausencia de respuesta de los estudiantes es, por lo general, mayor que la observada en las escuelas y, de igual forma, se relaciona en mayor medida con los logros de aprendizaje. Con frecuencia, los estudiantes que se ausentan de la prueba son aquellos con el rendimiento académico más bajo, quienes no muestran interés en asistir a la escuela o que tienen alguna condición de salud deficiente, lo cual puede causar un sesgo en las estimaciones, presentando resultados más altos que los reales. El ajuste por ausencia de respuesta de estudiantes disminuye ese sesgo.</p>
+<p>Debido a que la información sobre las características de los estudiantes es usualmente limitada, es posible utilizar otras variables (de la escuela) como predictores de la respuesta del estudiante. Así, los ajustes se realizan formando grupos de estudiantes de escuelas similares: se puede comparar estudiantes en escuelas públicas y privadas o de alto y bajo desempeño, por ejemplo.</p>
+</div>
+<div id="ausencia-de-respuesta-en-cuestionarios-de-contexto-1" class="section level3" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Ausencia de respuesta en cuestionarios de contexto</h3>
+<p>Es posible que los cuestionarios de contexto (no cognitivos) - que indagan al estudiante, profesor o rector acerca de los factores asociados al desempeño escolar - no sean diligenciados en su totalidad por los respondientes. En este caso, es posible considerar procedimientos de imputación. Son varios los autores que han propuesto diferentes procedimientos para tratar la ausencia de respuesta, existen diversos paquetes en <code>R</code> que permiten modelar este fenómeno. Por ejemplo, los paquetes <code>MissMDA</code>, <code>mice</code>, <code>statmatch</code>, <code>hotdeck</code>, `mitools entre otros. Sin embargo, el propósito debe ser siempre garantizar que el método que se utiliza es apropiado y se ajusta bien al esquema de ausencia de respuesta del estudio. Por esta razón se propone realizar una prueba usando una muestra de entrenamiento con la cual se genera el modelo de imputación, se deja una muestra de comprobación donde no se tenga valores faltantes, con esta se calcula la tasa de error aparente con el fin de identificar si el modelo de imputación es apropiado o haciendo pruebas de hipótesis sobre la distribución de los datos sin imputar e imputados.</p>
+<p>Para el tratamiento de la ausencia de respuesta, como se mencionó, se puede usar la función mice del paquete de R con el mismo nombre, considerando el método que viene por defecto, el método de predicción de emparejamiento por la media (Predictive mean matching). Los detalles de este método de imputación se describen en van Buuren (2012).</p>
+<p>En el segundo tipo de ausencia de respuesta, se da cuando la sobremuestra generada no logra cubrir la ausencia de respuesta y esta se considera no ignorable por las características de las unidades finales de muestreo que no respondieron, se debe llevar a cabo un ajuste a los factores de expansión. El ajuste de los factores de expansión busca fundamentalmente evitar sesgos debidos a la ausencia de respuesta.</p>
+</div>
+</div>
+<div id="estimadores-ajustados-1" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Estimadores ajustados</h2>
+<p>La falta de respuesta de unidades finales de muestreo no ignorables obliga a realizar una calibración o ajuste al factor inicial calculado en el diseño, a través del cálculo de un factor de ajuste. El peso muestral total de los estudiantes se define como el producto de los pesos de muestreo de las escuelas y de los estudiantes, después de ajustar por ausencia de respuesta y recortes por estrato. Este resultado permite calcular de forma precisa los estimadores de las características de la población objetivo. La expresión matemática para el cálculo del factor de expansión final es:</p>
+<p><span class="math display">\[w_k^{(nonr)} = w_k^{(design)} * w_k^{(adj)}\]</span></p>
+<p>En donde <span class="math inline">\(w_k^{(design)}\)</span> hace referencia al peso de muestreo inducido por el diseño de muestreo aplicado en cada país y <span class="math inline">\(w_k^{(adj)}\)</span> hace referencia al factor de ajuste que debe realizarse para modelar la ausencia de respuesta (no ignorable) en cada país.</p>
+<p>El principal reto para la calibración del factor debido a la ausencia de respuesta es que implica disponer de información secundaria para las unidades finales de muestreo, de modo que los resultados de los que efectivamente respondieron sean extrapolables al universo; aún en el caso en que haya una fracción de éstos que inicialmente fueron seleccionados en la muestra y que no respondieron o no pudieron ser contactados. En esté documento se propone utilizar la metodología definida por Gutiérrez &amp; Rojas (2013) donde se ajusta la forma funcional del estimador final utilizando la metodología de <em>propensity score</em>.</p>
+<p>Para esto, se denota la muestra de los respondientes como <span class="math inline">\(s_r\)</span> y para cada individuo <span class="math inline">\(k \in s\)</span> se observa la variable <span class="math inline">\(R_k\)</span>, la cual es una variable indicadora para el evento <em>el <span class="math inline">\(k\)</span>-ésimo individuo es respondiente</em>. Por lo anterior, <span class="math inline">\(R_k\)</span> tiene distribución Bernoulli con parámetro</p>
+<p><span class="math display">\[\phi_k = Pr(R_k = 1) = Pr(k \in s_r)\]</span></p>
+<p>Por otro lado, para estimar correctamente <span class="math inline">\(\phi_k\)</span>, se debe contar con un vector de información auxiliar <span class="math inline">\(\mathbf{z}_k\)</span> conocido para todo <span class="math inline">\(k\in s\)</span> se puede estimar por medio de un modelo de regresión logística; esto es,</p>
+<p><span class="math display">\[ \hat{\phi}_k = \frac{\exp\{\mathbf{z}_k&#39;\hat{\mathbf{\beta}\}}}{1 + \exp\{\mathbf{z}_k&#39;\hat{\mathbf{\beta}\}}}\]</span></p>
+<p>donde <span class="math inline">\(\hat{\mathbf{\beta}}\)</span> es el vector de coeficientes estimado de la regresión logística. Finalmente, el estimador para un total poblacional, con el ajuste debido a la ausencia de respuesta no ignorable, queda expresado como</p>
+<p><span class="math display">\[\hat{t}_{adj}= \sum_{k\in s_r}w_k^{(nonr)}y_k\]</span></p>
+<p>En donde</p>
+<p><span class="math display">\[w_k^{(nonr)} = w_k^{(design)} * w_k^{(adj)}
+= \frac{w_k^{(design)}}{\hat{\phi}_k}\]</span></p>
+<p>La varianza de este estimador está dada por</p>
+<p><span class="math display">\[\widehat{Var}(\hat{t}_{adj}) = 
+\frac{1}{N^2} \sum_{k\in s_r} \frac{(1-\hat{\phi}_k)}{\pi_k \hat{\phi}_k^2} (y_k - \mathbf{z}_k&#39;\hat{\phi}_k\hat{\mathbf{\gamma}})^2\]</span></p>
+<p>En donde la expresión para <span class="math inline">\(\hat{\gamma}\)</span> puede ser consultada en Kim &amp; Riddles (2012). En ausencia de información auxiliar que permita establecer una buena estrategia de modelamiento para la ausencia de respuesta, es posible recurrir a métodos de ajuste tradicionales como por ejemplo el que Bautista (1998) presenta, en donde se supone un factor de ajuste clásico para corregir defectos del marco, cobertura y de ausencia de respuesta, el cual tiene la siguiente expresión matemática:</p>
+<p><span class="math display">\[w_k^{(adj)}=\frac{n + n_{add} - n_{out}}{n + n_{add} - n_{out} - n_{rej}}\]</span></p>
+<p>donde <span class="math inline">\(n\)</span> es el tamaño de muestra propuesto, <span class="math inline">\(n_{add}\)</span> es la cantidad de elementos adicionales que se encuentran por defectos del marco, <span class="math inline">\(n_{out}\)</span> es la cantidad de elementos que están fuera del universo de estudiantes y <span class="math inline">\(n_{rej}\)</span> es la cantidad de rechazos en la muestra.</p>
+</div>
+<div id="calibración-de-los-pesos-de-muestreo-iniciales-1" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Calibración de los pesos de muestreo iniciales</h2>
+<p>Después de considerar el ajuste por ausencia de respuesta, es posible calibrar los pesos de muestreo sobre la información auxiliar disponible en los sistemas educativos de cada país, a nivel nacional, por estratos de interés, e incluso por las sobremuestras definidas por los coordinadores nacionales.</p>
+<p>Es posible utilizar un enfoque de calibración funcional para el ajuste de los factores de expansión bajo información faltante. Así, Särndal y Lundström (2005) afirman que cuando los estudios por muestreo están afectados por la ausencia de respuesta, es deseable tener las siguientes propiedades en la estructura inferencial que sustenta el muestreo:</p>
+<ol style="list-style-type: decimal">
+<li>Sesgo pequeño o nulo.</li>
+<li>Errores estándares pequeños.</li>
+<li>Un sistema de ponderación que reproduzca la información auxiliar disponible<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>.</li>
+<li>Un sistema de ponderación que sea eficiente al momento de estimar cualquier característica de interés en un estudio multipropósito.</li>
+</ol>
+<p>Las anteriores características son satisfechas al usar el enfoque de calibración (Deville, Särndal, Swensson &amp; Wretman, 2003) que induce una estructura inferencial robusta en presencia de información auxiliar precisa puesto que reduce tanto el error de muestreo como el error debido a la ausencia de respuesta. Por lo anterior, se considera que existe información auxiliar disponible para cada respondiente. Como vector de información auxiliar <span class="math inline">\(\mathbf{t}_\mathbf{Z} = (t_z^*, \hat{t}_z^0)&#39;\)</span>, en donde <span class="math inline">\(t_z^* = \sum_{k\in U}z_k^*\)</span> se define como el total auxiliar disponible a nivel de la población finita <span class="math inline">\(U\)</span>, y <span class="math inline">\(\hat{t}_z^0 = \sum_{k\in s} \frac{z_k^0}{\pi_k}\)</span> representa la información auxiliar disponible a nivel de la muestra <span class="math inline">\(s\)</span>, expandida a la población mediante el estimador de Horvitz-Thompson.</p>
+<p>Esta propuesta considera un procedimiento en dos etapas, en donde primero se calibra el conjunto de pesos ajustados, a partir de la información auxiliar <span class="math inline">\(z_k^0\)</span>. Esta primera etapa calibra desde la muestra efectiva de respondientes <span class="math inline">\(s_r\)</span> a la muestra original <span class="math inline">\(s\)</span>. Luego, se realiza una segunda calibración, a partir de la información auxiliar <span class="math inline">\(z_k^*\)</span>, desde la muestra <span class="math inline">\(s\)</span> a la población de interés <span class="math inline">\(U\)</span>. Luego, como pesos finales se considera el siguiente sistema</p>
+<p><span class="math display">\[w_k^{(cal)} = w_k^{0} v_k^*\]</span></p>
+<p>En donde,</p>
+<p><span class="math display">\[v_k^* = 1 + \lambda_r&#39; \mathbf{z}_k^*\]</span>
+representa el factor de ajuste para la calibración. Nótese que <span class="math inline">\(\lambda_r&#39;=(\sum_U \mathbf{z}_k^* - \sum_{s_r} w_k^{0} \mathbf{z}_k^*)&#39;(\sum{s_r}w_k^{0} \mathbf{z}_k^* \mathbf{z&#39;}_k^* )^{-1}\)</span>.</p>
+<p>Además,</p>
+<p><span class="math display">\[w_k^0 = w_k^{(nonr)}v_k^0\]</span></p>
+<p>En donde, <span class="math inline">\(v_k^0 = 1 + \lambda_r&#39;^0 \mathbf{z}_k^0\)</span> y <span class="math inline">\(\lambda_r&#39;^0=(\sum_s w_k^{(nonr)}\mathbf{z}_k^0 - \sum_{s_r} w_k^{(nonr)} \mathbf{z}_k^0)&#39;(\sum{s_r} w_k^{(nonr)} \mathbf{z}_k^0 \mathbf{z&#39;}_k^0)^{-1}\)</span>. Luego, la estimación del total calibrado se calcula como:</p>
+<p><span class="math display">\[\hat{t}_{cal}= \sum_{k\in s_r}w_k^{(cal)}y_k\]</span></p>
+<p>Para implementar los estimadores de calibración es posible utilizar las siguientes funciones implementadas en el software estadístico <code>R</code>:</p>
+<ul>
+<li><code>calibrate</code> del paquete <code>survey</code> (Lumley, 2017).</li>
+<li><code>Wk</code> del paquete <code>TeachingSampling</code> (Gutiérrez, 2017).</li>
+<li><code>calib</code> del paquete <code>sampling</code> (Tillé &amp; Matei, 2016).</li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="58">
+<li id="fn58"><p>ver Joncas, M. &amp; Foy, P. (2013)<a href="estrategia-de-estimación-1.html#fnref58" class="footnote-back">↩︎</a></p></li>
+<li id="fn59"><p>Por ejemplo, el número de escuelas en el país, o el número de estudiantes en el sistema educativo.<a href="estrategia-de-estimación-1.html#fnref59" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="diseño-de-muestreo-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cálculo-de-la-varianza-muestral-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MuestreoEducacionales.pdf", "MuestreoEducacionales.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

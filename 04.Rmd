@@ -1,0 +1,278 @@
+#Tamaño de muestra
+
+El diseño muestral propuesto para el XXXXXXX sigue un método de selección por etapas. Los estudiantes en una misma escuela y una misma aula tienden a compartir distintas características, las cuales están relacionadas con los logros de aprendizaje. Esto hace que la variabilidad observada en los resultados *dentro* de las escuelas sea menor a la observada *entre* ellas, lo cual puede arrojar una estimación precisa o no, dependiendo del tamaño de la muestra.
+
+Dado un diseño muestral complejo, si el tamaño de la muestra es muy pequeño, los resultados podrían no ser representativos del país evaluado y podrían indicar niveles de variabilidad poco confiables. Para evitar este problema, los tamaños de muestra se calcularon haciendo uso de la metodología del *efecto diseño de Kish*, la cual corrige el tamaño de muestra calculado bajo un muestreo aleatorio simple de estudiantes. 
+
+Los tamaños de muestra que se obtienen después de aplicar este factor de ajuste pueden variar en cada país, debido a procesos de sobremuestreo o a ajustes basados en el error muestral estimado de los estratos. Sin embargo, se definirá un número mínimo de escuelas que deben ser evaluadas en cada país participante y, en caso de que un país tenga un menor número de escuelas elegibles, todas deberán participar en el estudio.
+
+## Precisión de la inferencia
+
+En el XXXXXXX la precisión de la inferencia sobre el logro de aprendizaje de los estudiantes es primordial. Todas las tareas desde la definición de la población objetivo, incluyendo especialmente la elaboración del marco muestral y la identificación de variables de estratificación implícita y explícita apoyan este objetivo. Para que la prueba cumpla con este propósito se deben alcanzar tasas de participación satisfactorias, tener en cuenta la escala de la prueba con media 700 y desviación estándar 100, y además cumplir algunos criterios estadísticos.
+
+En TIMSS y PIRSLS, por ejemplo, el error estándar no debe ser mayor a 0,035 desviaciones estándar para el puntaje promedio del país. Con una desviación estándar de 100, esto corresponde a un intervalo de confianza del 95% de más y menos siete puntos (margen de error) para el promedio. Además, las estimaciones de la muestra de cualquier estimación de porcentaje de estudiantes deben tener un intervalo de confianza de más y menos 3.5%.
+
+**La precisión esperada para este estudio piloto estará dada por un margen de error $\delta$ de 0.035 desviaciones estándar sobre la escala de la prueba.**
+
+## Tamaño de muestra por país 
+
+El proceso de definición del tamaño de la muestra en cada país sigue los siguientes pasos: 
+
+1. Se obtiene el tamaño de muestra de estudiantes por país, suponiendo un muestreo aleatorio simple. 
+1. Se calcula el tamaño de muestra de estudiantes por país corregido por el efecto de diseño *DEFF*.
+1. Se calcula el tamaño de muestra de las escuelas.
+2. Se distribuye el tamaño calculado entre los estratos explícitos (estratos más grandes tendrán asociado un mayor tamaño de muestra).
+3. Se calculan los errores muestrales para cada estrato y se realizan los ajustes pertinentes.
+4. Se seleccionan las escuelas dentro de cada estrato y a los estudiantes por grado de interés dentro de cada escuela.
+
+Nótese que la muestra de estudiantes se obtiene haciendo un submuestreo de los estudiantes por grado de interés en cada escuela. Es decir, el muestreo se realiza entre grupos de estudiantes de una misma escuela, que tienen la misma probabilidad de ser elegidos. Este método facilita la selección de la muestra y presenta errores de muestreo menores a los que se obtendrían muestreando directamente aulas dentro de la escuela.
+
+### Tamaño de muestra para estimar un puntaje promedio
+
+La estrategia metodológica que se utilizará en esta propuesta consta de tres pasos y está alineada con propuestas de pruebas algunas otras pruebas estandarizadas a nivel internacional (Foy and Joy, 2015):
+
+1. Identificar el tamaño de muestra suponiendo un muestreo aleatorio simple sin reemplazo (MAS), de acuerdo a la siguiente expresión:
+
+$$n_{MAS}=\frac{z^2_{\alpha} S^2_y}{\delta^2 + \frac{z^2_{\alpha} S^2_y}{N}}$$
+
+En donde $z^2_{\alpha}$ representa el pXXXXXXXntil asociado a una densidad normal estándar que cubre el $(1-\alpha) \times$ 100% de la distribución, $S^2_y$ es la varianza poblacional de la variable de interés ($y$), $\delta$ es el máximo error admisible en la escala, $N$ es el número de estudiantes del grado en el país. 
+
+2. Calcular el efecto de diseño asociado a cada país, como función del coeficiente de correlación^[Esta medida toma valores positivos si los estudiantes dentro de las escuelas tienen un desempeño similar y ligeramente negativo cuando el logro de los estudiantes dentro de las escuelas es muy disperso. Es decir, el coeficiente informa qué tan similares son los estudiantes dentro de las escuelas, proporcionando una medida de homogeneidad dentro de las escuelas.] intraclase $\rho$ y del número de estudiantes $m$ que serán seleccionados en promedio en cada escuela:
+
+$$DEFF(\rho, m) = 1 + (m-1)\rho $$
+
+3. Calcular el tamaño de muestra final para un muestreo en dos etapas realizando la multiplicación de las anteriores expresiones:
+
+$$n_{2E} = n_{MAS} DEFF(\rho, m)$$
+
+4. Calcular el número de escuelas que se deben seleccionar en la primera etapa de la siguiente manera:
+
+$$n_{I} \approx \frac{n_{2E}}{m}$$
+
+Por ejemplo, en un país con $N=100000$ estudiantes con coeficiente de correlación intraclase $\rho=0.22$ y con desviación estándar de $90$ puntos en la prueba, el tamaño de muestra que garantiza un error de máximo $\delta = 10$ puntos en la prueba, con una confianza estadística del 95% ($z_{\alpha}= 1.96$), entonces 
+$$n_{MAS}=\frac{1.96^2 * 90^2}{10^2 + \frac{1.96^2 * 90^2}{100000}} = 310$$
+
+Luego, suponiendo una selección promedio de 35 estudiantes por escuela, el tamaño de muestra final será
+
+$$n_{2E} = 310 * [1 + (35 - 1) 0.22] = 2629$$
+Estos 2629 estudiantes serán seleccionados en $n_{I} = \frac{2629}{35} \approx 75$ escuelas dentro del país. 
+
+### Tamaño de muestra para estimar el porcentaje de respuestas correctas
+
+Por otro lado, en el XXXXXXX también es posible considerar como parámetro de interés el porcentaje de estudiantes que responde acertadamente un ítem. Para calcular el tamaño de muestra necesario para estimar esta proporción con un error máximo admisible de $\delta \times$ 100%, es necesario recurrir a la siguiente expresión para calcular el tamaño de muestra en un MAS
+
+$$n_{MAS}=\frac{z^2_{\alpha} P(1-P)}{\delta^2 + \frac{z^2_{\alpha} P(1-P)}{N}}$$
+
+En donde $P$ representa la proporción de estudiantes que acierta el ítem, la cual como se supone desconocida se fijará en $P=0.5$, pues este valor hace máxima la varianza del estimador y por tanto nunca inducirá una subestimación del tamaño de muestra. 
+
+Siguiendo con el ejemplo anterior, para estimar la proporción de estudiantes que aciertan una pregunta, admitiendo un error máximo de $\delta = 5$%, se tendría que:
+
+$$n_{MAS}=\frac{1.96^2 * 0.5(1-0.5)}{0.05^2 + \frac{1.96^2 * 0.5(1-0.5)}{100000}}=382$$
+Luego, suponiendo una selección promedio de 35 estudiantes por escuela, el tamaño de muestra final será
+
+$$n_{2E} = 382 * [1 + (35 - 1) 0.22] = 3239$$
+Estos 3239 estudiantes serían seleccionados en $n_{I} = \frac{3239}{35} \approx 93$ escuelas dentro del país. 
+
+## Coeficientes de correlación intraclase en el TXXXXXXX
+
+Nótese que un insumo fundamental para calcular los tamaños de muestra son los coeficientes de correlación intraclase. Debido a que UNESCO-OREALC ha provisto las bases de datos de los anteriores estudios en la web, es posible calcular estos coeficientes para cada país. La siguiente tabla muestra los coeficientes de correlación intraclase para las pruebas del TXXXXXXX para grado terceroo (lectura, matemáticas) y para grado sexto (lectura, matemáticas y ciencias).
+
+| País                 | terceroo Lectura | terceroo Matemáticas | Sexto Lectura | Sexto Matemáticas | Sexto Ciencias |
+|----------------------|-----------------|---------------------|---------------|-------------------|----------------|
+| Argentina            | 0.23            | 0.26                | 0.21          | 0.27              | 0.22           |
+| Brasil               | 0.25            | 0.34                | 0.21          | 0.29              | 0.21           |
+| Chile                | 0.17            | 0.22                | 0.15          | 0.24              | 0.24           |
+| Colombia             | 0.31            | 0.36                | 0.30          | 0.32              | 0.23           |
+| Costa Rica           | 0.17            | 0.19                | 0.17          | 0.20              | 0.18           |
+| Ecuador              | 0.24            | 0.27                | 0.28          | 0.30              | 0.25           |
+| Guatemala            | 0.30            | 0.30                | 0.20          | 0.21              | 0.21           |
+| Honduras             | 0.28            | 0.35                | 0.30          | 0.32              | 0.25           |
+| México               | 0.24            | 0.23                | 0.27          | 0.22              | 0.24           |
+| Nicaragua            | 0.24            | 0.28                | 0.20          | 0.21              | 0.22           |
+| Panamá               | 0.28            | 0.37                | 0.29          | 0.33              | 0.28           |
+| Paraguay             | 0.29            | 0.38                | 0.33          | 0.32              | 0.30           |
+| Perú                 | 0.39            | 0.45                | 0.42          | 0.40              | 0.35           |
+| República Dominicana | 0.19            | 0.26                | 0.19          | 0.12              | 0.14           |
+| Uruguay              | 0.23            | 0.23                | 0.17          | 0.21              | 0.17           |
+
+
+## Tablas de muestreo
+
+Las tablas de muestreo son una herramienta que permite decidir acerca del tamaño de muestra con relación a los costos de la implementación del estudio. Estas tablas están basadas en un diseño de muestreo en dos etapas estratificado. En la primera etapa, se va a seleccionar las escuelas con un algoritmo que le da mayor probabilidad de inclusión a las escuelas más grandes y que permite seleccionar los reemplazos de acuerdo a la estratificación implícita. En la segunda etapa, se
+seleccionan estudiantes dentro de cada escuela seleccionada. 
+
+A modo de ejemplo, tomamos los datos del TXXXXXXX para los países participantes^[Para los países que no participaron en el TXXXXXXX se asumió que el coeficiente de correlación intraclase es igual al promedio de los demás países. Note que se podría indagar más y estimar este coeficiente con algún país que tenga un comportamiento similar.] y calculamos el coeficiente de correlación intraclase para todos los países^[Este cálculo se realizó para la prueba de matemáticas de grado sexto.] y se generaron distintos escenarios de tamaños de muestra de escuelas, de estudiantes dentro de la escuela, y por ende de estudiantes en el país.
+
+Todos estos escenarios son calculados para estimar la proporción de respuestas correctas en los ítems de pilotaje. Estas estimaciones finales tendrán un error máximo de 7.5% puntos porcentuales. Note que todos los escenarios inducen el mismo error de muestreo y la única diferencia radica en los costos de aplicación de la prueba. Todas las  tablas fueron generadas utilizando las funciones `ICC`y `ss2s4p` del paquete `samplesize4surveys` (Gutiérrez, 2017) del software estadístico `R`.
+
+### Primer escenario ($m=10$)
+
+La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 10 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país. 
+
+| Países               | rho  | DEFF(m=10) | Muestras de escuelas | Muestra de estudiantes |
+|----------------------|------|------------|----------------------|------------------------|
+| Argentina            | 0.27 | 3.42       | 59                   | 585                    |
+| Brasil               | 0.29 | 3.62       | 62                   | 619                    |
+| Chile                | 0.24 | 3.12       | 53                   | 534                    |
+| Colombia             | 0.32 | 3.9        | 67                   | 667                    |
+| Costa Rica           | 0.20 | 2.83       | 48                   | 484                    |
+| Ecuador              | 0.30 | 3.72       | 64                   | 636                    |
+| Guatemala            | 0.21 | 2.85       | 49                   | 487                    |
+| Honduras             | 0.32 | 3.88       | 66                   | 663                    |
+| México               | 0.22 | 2.99       | 51                   | 511                    |
+| Nicaragua            | 0.21 | 2.92       | 50                   | 499                    |
+| Panamá               | 0.33 | 4.01       | 69                   | 686                    |
+| Paraguay             | 0.32 | 3.87       | 66                   | 662                    |
+| Perú                 | 0.40 | 4.63       | 79                   | 792                    |
+| República Dominicana | 0.12 | 2.1        | 36                   | 359                    |
+| Uruguay              | 0.21 | 2.87       | 49                   | 491                    |
+| Venezuela            | 0.26 | 3.38       | 58                   | 578                    |
+| Cuba                 | 0.26 | 3.38       | 58                   | 578                    |
+| El Salvador          | 0.26 | 3.38       | 130                  | 1298                   |
+| Bolivia              | 0.26 | 3.38       | 130                  | 1298                   |
+
+### Segundo escenario ($m=15$)
+
+La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 15 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país. 
+
+
+| Países               | rho  | DEFF(m=15) | Muestras de escuelas | Muestra de estudiantes |
+|----------------------|------|----------|----------------------|------------------------|
+| Argentina            | 0.27 | 4.77     | 54                   | 816                    |
+| Brasil               | 0.29 | 5.07     | 58                   | 867                    |
+| Chile                | 0.24 | 4.31     | 49                   | 737                    |
+| Colombia             | 0.32 | 5.51     | 63                   | 942                    |
+| Costa Rica           | 0.20 | 3.84     | 44                   | 657                    |
+| Ecuador              | 0.30 | 5.23     | 60                   | 894                    |
+| Guatemala            | 0.21 | 3.88     | 44                   | 663                    |
+| Honduras             | 0.32 | 5.47     | 62                   | 935                    |
+| México               | 0.22 | 4.09     | 47                   | 699                    |
+| Nicaragua            | 0.21 | 3.98     | 45                   | 681                    |
+| Panamá               | 0.33 | 5.68     | 65                   | 971                    |
+| Paraguay             | 0.32 | 5.46     | 62                   | 934                    |
+| Perú                 | 0.40 | 6.64     | 76                   | 1135                   |
+| República Dominicana | 0.12 | 2.71     | 31                   | 463                    |
+| Uruguay              | 0.21 | 3.91     | 45                   | 669                    |
+| Venezuela            | 0.26 | 4.7      | 54                   | 804                    |
+| Cuba                 | 0.26 | 4.7      | 54                   | 804                    |
+| El Salvador          | 0.26 | 4.7      | 54                   | 804                    |
+| Bolivia              | 0.26 | 4.7      | 54                   | 804                    |
+
+### tercero escenario ($m=20$)
+
+La siguiente tabla propone un tamaño de muestra (tanto de las escuelas como de los estudiantes dentro de cada escuela con una confianza del 95% y un error máximo admisible de 7.5%) teniendo en cuenta la selección de 20 alumnos en promedio en cada escuela incluida en la muestra de la primera etapa para cada país. 
+
+| Países               | rho  | DEFF(m=20) | Muestras de escuelas | Muestra de estudiantes |
+|----------------------|------|------------|----------------------|------------------------|
+| Argentina            | 0.27 | 6.11       | 52                   | 1045                   |
+| Brasil               | 0.29 | 6.53       | 56                   | 1117                   |
+| Chile                | 0.24 | 5.49       | 47                   | 939                    |
+| Colombia             | 0.32 | 7.12       | 61                   | 1218                   |
+| Costa Rica           | 0.20 | 4.86       | 42                   | 831                    |
+| Ecuador              | 0.30 | 6.74       | 58                   | 1153                   |
+| Guatemala            | 0.21 | 4.91       | 42                   | 840                    |
+| Honduras             | 0.32 | 7.07       | 60                   | 1209                   |
+| México               | 0.22 | 5.2        | 44                   | 889                    |
+| Nicaragua            | 0.21 | 5.04       | 43                   | 862                    |
+| Panamá               | 0.33 | 7.35       | 63                   | 1257                   |
+| Paraguay             | 0.32 | 7.06       | 60                   | 1207                   |
+| Perú                 | 0.40 | 8.66       | 74                   | 1481                   |
+| República Dominicana | 0.12 | 3.32       | 28                   | 568                    |
+| Uruguay              | 0.21 | 4.95       | 42                   | 846                    |
+| Venezuela            | 0.26 | 6.03       | 52                   | 1031                   |
+| Cuba                 | 0.26 | 6.03       | 52                   | 1031                   |
+| El Salvador          | 0.26 | 6.03       | 52                   | 1031                   |
+| Bolivia              | 0.26 | 6.03       | 52                   | 1031                   |
+
+**NOTA**: *A modo de referencia, los participantes en el estudio piloto^[ver UNESCO – OREALC (2016), Reporte Técnico TXXXXXXX pg. 66] del TXXXXXXX fueron 15.484 estudiantes en tercero grado y 15.840 en sexto grado. Para un total de 31.324 niños en 16 economías (15 países y el Estado mexicano de Nuevo León). Por lo tanto, TXXXXXXX tuvo un promedio por país de 968 estudiantes en tercero grado y de 990 estudiantes en sexto grado.*
+
+**NOTA**: *Otro enfoque común que se utiliza para calcular el tamaño de muestra requerido en el estudio piloto es satisfacer una muestra mínima de estudiantes presentando cuadernillos con ítems de pilotaje. Por ejemplo, la muestra del piloto^[ver Joncas, M. & Foy, P. (2013), pg. 8] para TIMSS y PIRLS se extrae al mismo tiempo y de la misma población de escuelas que la muestra completa. El requisito de tamaño de muestra de la prueba piloto es de 200 estudiantes por cuadernillo. El tamaño final de la muestra del piloto es una función del número de cuadernillos cognitivos que se están probando en el campo. Normalmente, PIRLS tiene cuatro cuadernillos de prueba y por lo tanto requiere una muestra piloto de no menos de 800 estudiantes, mientras que TIMSS con seis cuadernillos requiere una muestra de más de 1200 estudiantes en cada grado.*
+
+La siguiente tabla muestra la distribución de escuelas  en el piloto del TXXXXXXX para algunas economías participantes. 
+
+| País                 | terceroo | Sexto |
+|----------------------|---------|-------|
+| Argentina            | 46      | 43    |
+| Brasil               | 34      | 27    |
+| Chile                | 37      | 35    |
+| Colombia             | 54      | 34    |
+| Guatemala            | 55      | 49    |
+| Honduras             | 52      | 50    |
+| México               | 48      | 48    |
+| Nicaragua            | 73      | 54    |
+| Nuevo León           | 42      | 42    |
+| Paraguay             | 55      | 55    |
+| Perú                 | 54      | 49    |
+| República Dominicana | 54      | 50    |
+| Uruguay              | 43      | 45    |
+
+## Tratamiento de las escuelas pequeñas
+
+Tener muchas escuelas pequeñas en la muestra final es poco deseable, puesto que puede reducir significativamente el tamaño de la muestra de estudiantes esperada para el país. Se considera que una escuela es pequeña cuando el número de estudiantes elegibles es menor al número de estudiantes que se esperaba seleccionar dentro de ella. Por ejemplo, en PISA^[ver PISA Technical Report, págs. 76 y 77] se definieron las siguientes categorías, teniendo en cuenta que se esperaba seleccionar 35 estudiantes en cada escuela:
+
+-	Escuelas grandes: el número de estudiantes elegibles era mayor a 35.
+-	Escuelas medianas: el número de estudiantes elegibles estaba entre 18 (la mitad del valor que se esperaba seleccionar) y 35.
+-	Escuelas pequeñas: el número de estudiantes elegibles era mayor a dos, pero menor a 18.
+-	Escuelas muy pequeñas: el número de estudiantes elegibles era cero, uno o dos.
+  
+Para seleccionar un número apropiado de escuelas pequeñas en la muestra, estas se submuestrean, aumentando proporcionalmente el número de grandes escuelas. Las escuelas pequeñas se submuestrean con un factor de dos (su probabilidad de inclusión se reduce a la mitad) y las escuelas muy pequeñas con un factor de cuatro (su probabilidad de inclusión se reduce tres cuartas partes). Para definir si un país debe realizar este proceso se consideran los siguientes casos:
+
+-	Si el porcentaje de estudiantes en escuelas pequeñas y muy pequeñas es igual o mayor al 1%, entonces estas se submuestrean y se aumenta el tamaño de la muestra para compensarlas.
+-	Si el porcentaje de estudiantes en escuelas pequeñas y muy pequeñas es menor al 1% y el porcentaje de estudiantes en escuelas medianas es igual o mayor al 4%, entonces no es necesario el proceso de submuestreo, pero el tamaño de la muestra se incrementa.
+-	Si ninguna de las anteriores condiciones se cumple, quiere decir que el número de estudiantes en las escuelas pequeñas es muy pequeño para afectar la muestra. Por lo tanto, no es necesario el proceso de submuestreo y tampoco el aumento de la muestra.
+
+En caso de que el proceso de submuestreo sea necesario, se propone adaptar el siguiente algoritmo (asumiendo un tamaño inicial de muestra igual a $n_I$ escuelas y $n_{2E}$ estudiantes):
+
+-	Definir la proporción de estudiantes en cada una de las cuatro categorías de escuela definidas (la suma de ellas debe ser 1). 
+
+-	Calcular la siguiente cantidad
+$$L = 1 + \frac{3}{4}p_{mp}+\frac{1}{2}p_{pq} $$
+en donde $p_{mp}$ es la proporción de estudiantes en escuelas muy pequeñas y $p_{pq}$ es la proporción de estudiantes en escuelas pequeñas.
+
+-	El tamaño mínimo de la muestra para las escuelas grandes será
+$$n_I^{eg}=n_I*L*p_{eg}$$
+en donde $p_{eg}$ hacer referencia a la proporción de estudiantes en escuelas grandes. Este tamaño puede incrementarse según los requerimientos del país. 
+
+-	Calcular el valor promedio de estudiantes elegibles en las escuelas moderadamente pequeñas, pequeñas y muy pequeñas. El tamaño de la muestra para las escuelas medianas será
+$$n_I^{me}=\frac{n_{2E}}{m_{me}}*p_{me}$$
+en donde $m_{me}$ y $p_{me}$ es el valor promedio de estudiantes elegibles en las escuelas medianas y la proporción de estudiantes en escuelas medianas, respectivamente.
+
+-	Definir el tamaño de la muestra para las escuelas pequeñas como 
+$$n_I^{pq}=\frac{n_{2E}}{2*m_{me}}*p_{ep}*L$$
+
+-	Definir el tamaño de la muestra para las escuelas muy pequeñas como 
+$$n_I^{mp}=\frac{n_{2E}}{4*m_{mp}}*p_{mp}*L$$
+en donde $m_{mp}$ y $p_{mp}$ es el valor promedio de estudiantes elegibles en las escuelas muy pequeñas y la proporción de estudiantes en escuelas muy pequeñas, respectivamente.
+
+-	Definir el tamaño final de la muestra, sumando los tamaños obtenidos para cada categoría de escuela.
+
+Es posible realizar este análisis de escuelas pequeñas para los estratos y sobremuetras de interés, indicando cuántas escuelas de cada categoría deben ser seleccionadas en cada estrato explícito (definiendo previamente si era necesario realizar submuestreo).
+
+## Tamaño de muestra ajustado por ausencia de respuesta
+
+La tasa de participación de las escuelas y la tasa de respuesta de los estudiantes pueden afectar los análisis estadísticos si son muy bajas. Cada país realiza un esfuerzo para que todas las escuelas seleccionadas en la muestra accedan a participar y para que los estudiantes elegidos dentro de ellas contesten la prueba. Sin embargo, en ocasiones es difícil obtener el compromiso de las escuelas y, más aún el de los estudiantes, quienes pueden no asistir el día de la evaluación o asistir pero dejar el cuadernillo en blanco.
+
+Para mitigar esta situación es necesario aumentar el tamaño de muestra, así, en caso de que se pierdan estudiantes o escuelas, esto no afectará la representatividad de la muestra. De esta forma, siendo $\phi$ la probabilidad esperada de que una escuela acceda a aplicar la prueba, entonces el tamaño de muestra de escuelas, ajustado por este factor será:
+
+$$n_I^{(adj)} = \frac{n_I}{\phi}$$
+
+Por ejemplo, considerando una tasa de respuesta esperada del 85% y una muestra mínima de 50 escuelas, el incremento por ausencia de respuesta sería de 9 escuelas aproximadamente, así el tamaño de muestra ajustado sería $n_I^{(adj)} = \frac{50}{0.85} = 59$ escuelas.
+
+### Afijación de la muestra en los estratos
+
+En el diseño de muestreo propuesto se realizará el cálculo del tamaño de muestra global y, a partir de este, se realizará la asignación de los tamaños de muestra dentro de los estratos con el fin de garantizar suficiente información dentro de estos, para luego cumplir los objetivos del presente estudio. 
+
+Como el objetivo principal del XXXXXXX es comparar los resultados de los logros de aprendizaje en cada uno de los sistemas educativos para cada uno de los países participantes, se debe calcular un tamaño de muestra de forma independiente para cada estrato y así garantizar la precisión determinada en cada uno de ellos.
+
+Si $N_{Ih}$ es el total de escuelas en el estrato $h$ para uno de los países del estudio (con $H$, el total de estratos definidos para este), la asignación de la muestra de escuelas en cada estrato se realiza por medio de una afijación de potencia con $0.5 \leq \alpha \leq 1$ empleando la siguiente fórmula:
+
+$$n_{Ih}=\dfrac{N_{Ih}^\alpha}{\sum_{h=1}^H N_{Ih}^\alpha} *n_I$$
+
+Con $n_I$ el número total de escuelas en la muestra para el país en cuestión. 
+
+**NOTA 1**: *si $\alpha=1$, entonces el método de afijación de potencia induce una repartición proporcional al tamaño de cada estrato.* 
+
+**NOTA 2**: *si $\alpha<1$, entonces el método de afijación de potencia induce un mayor tamaño de muestra en aquellos estratos que tienen una proporción de estudiantes menor que otros estratos más grandes.*
+
+
+\newpage

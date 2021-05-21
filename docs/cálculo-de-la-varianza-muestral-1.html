@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 13 Cálculo de la varianza muestral | Muestreo y análisis de estudios educacionales con R</title>
+  <meta name="description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 13 Cálculo de la varianza muestral | Muestreo y análisis de estudios educacionales con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 13 Cálculo de la varianza muestral | Muestreo y análisis de estudios educacionales con R" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Diseño y análisis de estudios educacionales." />
+  
+
+<meta name="author" content="Andrés Gutiérrez" />
+
+
+<meta name="date" content="2021-05-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estrategia-de-estimación-1.html"/>
+<link rel="next" href="referencias-1.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Muestreo en estudios educacionales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i><b>1</b> Resumen</a></li>
+<li class="chapter" data-level="2" data-path="introducción-al-xxxxxxx-2019.html"><a href="introducción-al-xxxxxxx-2019.html"><i class="fa fa-check"></i><b>2</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html"><i class="fa fa-check"></i><b>3</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-la-población-de-interés"><i class="fa fa-check"></i><b>3.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-las-subpoblaciones-de-interés"><i class="fa fa-check"></i><b>3.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-explícita"><i class="fa fa-check"></i><b>3.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="3.2.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-implícita"><i class="fa fa-check"></i><b>3.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="3.2.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#dominios-poblacionales"><i class="fa fa-check"></i><b>3.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="3.2.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#post-estratos"><i class="fa fa-check"></i><b>3.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="3.2.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#sobremuestras-de-interés"><i class="fa fa-check"></i><b>3.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="3.2.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#medidas-de-tamaño"><i class="fa fa-check"></i><b>3.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#marco-de-muestreo"><i class="fa fa-check"></i><b>3.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-muestreo"><i class="fa fa-check"></i><b>3.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="3.3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-observación"><i class="fa fa-check"></i><b>3.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="3.3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-análisis"><i class="fa fa-check"></i><b>3.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="3.3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#periodo-de-referencia"><i class="fa fa-check"></i><b>3.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusiones"><i class="fa fa-check"></i><b>3.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-escuela"><i class="fa fa-check"></i><b>3.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="3.4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-estudiante"><i class="fa fa-check"></i><b>3.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#tasas-de-participación-y-cobertura"><i class="fa fa-check"></i><b>3.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="3.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-de-interés"><i class="fa fa-check"></i><b>3.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-estudiantes"><i class="fa fa-check"></i><b>3.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="3.6.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-docentes-y-escuelas"><i class="fa fa-check"></i><b>3.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html"><i class="fa fa-check"></i><b>4</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-general"><i class="fa fa-check"></i><b>4.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="4.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-cada-etapa"><i class="fa fa-check"></i><b>4.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-las-escuelas"><i class="fa fa-check"></i><b>4.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-dentro-de-las-escuelas"><i class="fa fa-check"></i><b>4.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#definición-de-los-algoritmos-de-selección"><i class="fa fa-check"></i><b>4.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-sunter"><i class="fa fa-check"></i><b>4.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="4.3.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-fan-muller-rezucha"><i class="fa fa-check"></i><b>4.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#estratificación"><i class="fa fa-check"></i><b>4.4</b> Estratificación</a></li>
+<li class="chapter" data-level="4.5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#selección-de-los-reemplazos"><i class="fa fa-check"></i><b>4.5</b> Selección de los reemplazos</a></li>
+<li class="chapter" data-level="4.6" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#precisión-de-la-inferencia"><i class="fa fa-check"></i><b>4.6</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="4.7" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-por-país"><i class="fa fa-check"></i><b>4.7</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio"><i class="fa fa-check"></i><b>4.7.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="4.7.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas"><i class="fa fa-check"></i><b>4.7.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx"><i class="fa fa-check"></i><b>4.8</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="4.9" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tablas-de-muestreo"><i class="fa fa-check"></i><b>4.9</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#primer-escenario-m10"><i class="fa fa-check"></i><b>4.9.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#segundo-escenario-m15"><i class="fa fa-check"></i><b>4.9.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="4.9.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tercero-escenario-m20"><i class="fa fa-check"></i><b>4.9.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tratamiento-de-las-escuelas-pequeñas"><i class="fa fa-check"></i><b>4.10</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="4.11" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>4.11</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#afijación-de-la-muestra-en-los-estratos"><i class="fa fa-check"></i><b>4.11.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html"><i class="fa fa-check"></i><b>5</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-de-los-parámetros-de-interés"><i class="fa fa-check"></i><b>5.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="5.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo"><i class="fa fa-check"></i><b>5.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-las-escuelas"><i class="fa fa-check"></i><b>5.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-los-estudiantes"><i class="fa fa-check"></i><b>5.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-house-weight"><i class="fa fa-check"></i><b>5.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="5.2.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight"><i class="fa fa-check"></i><b>5.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="5.2.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto"><i class="fa fa-check"></i><b>5.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ajuste-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>5.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-escuelas"><i class="fa fa-check"></i><b>5.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="5.3.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-estudiantes"><i class="fa fa-check"></i><b>5.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="5.3.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-en-cuestionarios-de-contexto"><i class="fa fa-check"></i><b>5.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-ajustados"><i class="fa fa-check"></i><b>5.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="5.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#calibración-de-los-pesos-de-muestreo-iniciales"><i class="fa fa-check"></i><b>5.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html"><i class="fa fa-check"></i><b>6</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-técnica-de-jackknife"><i class="fa fa-check"></i><b>6.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="6.2" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#el-método-de-las-réplicas-repetidas-balanceadas"><i class="fa fa-check"></i><b>6.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#modificación-de-fay"><i class="fa fa-check"></i><b>6.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-estimación-de-la-varianza-con-valores-plausibles"><i class="fa fa-check"></i><b>6.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="6.4" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#detalles-computacionales"><i class="fa fa-check"></i><b>6.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="chapter" data-level="8" data-path="resumen-1.html"><a href="resumen-1.html"><i class="fa fa-check"></i><b>8</b> Resumen</a></li>
+<li class="chapter" data-level="9" data-path="introducción-al-xxxxxxx-2019-1.html"><a href="introducción-al-xxxxxxx-2019-1.html"><i class="fa fa-check"></i><b>9</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="10" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html"><i class="fa fa-check"></i><b>10</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#descripción-de-la-población-de-interés-1"><i class="fa fa-check"></i><b>10.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="10.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#descripción-de-las-subpoblaciones-de-interés-1"><i class="fa fa-check"></i><b>10.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#estratificación-explícita-1"><i class="fa fa-check"></i><b>10.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="10.2.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#estratificación-implícita-1"><i class="fa fa-check"></i><b>10.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="10.2.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#dominios-poblacionales-1"><i class="fa fa-check"></i><b>10.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="10.2.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#post-estratos-1"><i class="fa fa-check"></i><b>10.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="10.2.5" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#sobremuestras-de-interés-1"><i class="fa fa-check"></i><b>10.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="10.2.6" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#medidas-de-tamaño-1"><i class="fa fa-check"></i><b>10.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#marco-de-muestreo-1"><i class="fa fa-check"></i><b>10.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-muestreo-1"><i class="fa fa-check"></i><b>10.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="10.3.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-observación-1"><i class="fa fa-check"></i><b>10.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="10.3.3" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#unidades-de-análisis-1"><i class="fa fa-check"></i><b>10.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="10.3.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#periodo-de-referencia-1"><i class="fa fa-check"></i><b>10.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusiones-1"><i class="fa fa-check"></i><b>10.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusión-a-nivel-de-escuela-1"><i class="fa fa-check"></i><b>10.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="10.4.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#exclusión-a-nivel-de-estudiante-1"><i class="fa fa-check"></i><b>10.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#tasas-de-participación-y-cobertura-1"><i class="fa fa-check"></i><b>10.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="10.6" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-de-interés-1"><i class="fa fa-check"></i><b>10.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-con-información-de-estudiantes-1"><i class="fa fa-check"></i><b>10.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="10.6.2" data-path="definiciones-básicas-del-muestreo-1.html"><a href="definiciones-básicas-del-muestreo-1.html#parámetros-con-información-de-docentes-y-escuelas-1"><i class="fa fa-check"></i><b>10.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html"><i class="fa fa-check"></i><b>11</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-general-1"><i class="fa fa-check"></i><b>11.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="11.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-en-cada-etapa-1"><i class="fa fa-check"></i><b>11.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-en-las-escuelas-1"><i class="fa fa-check"></i><b>11.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="11.2.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#diseño-de-muestreo-dentro-de-las-escuelas-1"><i class="fa fa-check"></i><b>11.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#definición-de-los-algoritmos-de-selección-1"><i class="fa fa-check"></i><b>11.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#algoritmo-de-sunter-1"><i class="fa fa-check"></i><b>11.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="11.3.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#algoritmo-de-fan-muller-rezucha-1"><i class="fa fa-check"></i><b>11.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#estratificación-1"><i class="fa fa-check"></i><b>11.4</b> Estratificación</a></li>
+<li class="chapter" data-level="11.5" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#selección-de-los-reemplazos-1"><i class="fa fa-check"></i><b>11.5</b> Selección de los reemplazos</a></li>
+<li class="chapter" data-level="11.6" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#precisión-de-la-inferencia-1"><i class="fa fa-check"></i><b>11.6</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="11.7" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-por-país-1"><i class="fa fa-check"></i><b>11.7</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio-1"><i class="fa fa-check"></i><b>11.7.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="11.7.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas-1"><i class="fa fa-check"></i><b>11.7.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx-1"><i class="fa fa-check"></i><b>11.8</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="11.9" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tablas-de-muestreo-1"><i class="fa fa-check"></i><b>11.9</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#primer-escenario-m10-1"><i class="fa fa-check"></i><b>11.9.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="11.9.2" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#segundo-escenario-m15-1"><i class="fa fa-check"></i><b>11.9.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="11.9.3" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tercero-escenario-m20-1"><i class="fa fa-check"></i><b>11.9.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tratamiento-de-las-escuelas-pequeñas-1"><i class="fa fa-check"></i><b>11.10</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="11.11" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta-1"><i class="fa fa-check"></i><b>11.11</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="11.11.1" data-path="diseño-de-muestreo-1.html"><a href="diseño-de-muestreo-1.html#afijación-de-la-muestra-en-los-estratos-1"><i class="fa fa-check"></i><b>11.11.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html"><i class="fa fa-check"></i><b>12</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#estimadores-de-los-parámetros-de-interés-1"><i class="fa fa-check"></i><b>12.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="12.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-1"><i class="fa fa-check"></i><b>12.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-para-las-escuelas-1"><i class="fa fa-check"></i><b>12.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="12.2.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#pesos-de-muestreo-para-los-estudiantes-1"><i class="fa fa-check"></i><b>12.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="12.2.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#modificación-de-los-pesos-de-estudiantes-student-house-weight-1"><i class="fa fa-check"></i><b>12.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="12.2.4" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight-1"><i class="fa fa-check"></i><b>12.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="12.2.5" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto-1"><i class="fa fa-check"></i><b>12.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ajuste-por-ausencia-de-respuesta-1"><i class="fa fa-check"></i><b>12.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-de-escuelas-1"><i class="fa fa-check"></i><b>12.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="12.3.2" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-de-estudiantes-1"><i class="fa fa-check"></i><b>12.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="12.3.3" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#ausencia-de-respuesta-en-cuestionarios-de-contexto-1"><i class="fa fa-check"></i><b>12.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#estimadores-ajustados-1"><i class="fa fa-check"></i><b>12.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="12.5" data-path="estrategia-de-estimación-1.html"><a href="estrategia-de-estimación-1.html#calibración-de-los-pesos-de-muestreo-iniciales-1"><i class="fa fa-check"></i><b>12.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html"><i class="fa fa-check"></i><b>13</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#la-técnica-de-jackknife-1"><i class="fa fa-check"></i><b>13.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="13.2" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#el-método-de-las-réplicas-repetidas-balanceadas-1"><i class="fa fa-check"></i><b>13.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#modificación-de-fay-1"><i class="fa fa-check"></i><b>13.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#la-estimación-de-la-varianza-con-valores-plausibles-1"><i class="fa fa-check"></i><b>13.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="13.4" data-path="cálculo-de-la-varianza-muestral-1.html"><a href="cálculo-de-la-varianza-muestral-1.html#detalles-computacionales-1"><i class="fa fa-check"></i><b>13.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="referencias-1.html"><a href="referencias-1.html"><i class="fa fa-check"></i><b>14</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Muestreo y análisis de estudios educacionales con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cálculo-de-la-varianza-muestral-1" class="section level1" number="13">
+<h1><span class="header-section-number">Capítulo 13</span> Cálculo de la varianza muestral</h1>
+<p>Las fórmulas computacionales requeridas para estimar la varianza de estadísticas descriptivas como la media muestral están disponibles para algunos diseños complejos que incorporan elementos como la estratificación y el muestreo por conglomerados. Sin embargo, en el caso de estadísticas analíticas más complejas, tales como coeficientes de correlación y coeficientes de regresión, no se encuentra fácilmente las fórmulas específicas en diseños muestrales que se aparten del muestreo aleatorio simple. Estas fórmulas son enormemente complicadas o, en última instancia, se resisten al análisis matemático (Frankel, 1971).</p>
+<p>En ausencia de fórmulas adecuadas, en los últimos años han aparecido una variedad de técnicas empíricas que proporcionan <em>varianzas aproximadas que parecen satisfactorias para fines prácticos</em> (Kish, 1995). Estos métodos utilizan una muestra de datos para construir submuestras y generar una distribución para las estimaciones de los parámetros de interés utilizando cada submuestra. Los resultados de la submuestra se analizan para obtener una estimación del parámetro, así como intervalos de confianza para esa estimación.</p>
+<p>De forma alternativa, la aproximación en series de Taylor se puede utilizar para proporcionar un método de estimación de la varianza más “directo” que los proporcionados por los tres enfoques mencionados previamente. Las series de Taylor se utilizan para aproximar numéricamente los primeros términos de una expansión en serie de la fórmula de varianza. En la actualidad existe un buen número de programas informáticos que fueron diseñados para llevar a cabo los intensivos cálculos numéricos requeridos por el enfoque (Wolter, 1985).</p>
+<div id="la-técnica-de-jackknife-1" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> La técnica de Jackknife</h2>
+<p>Es posible estimar la varianza de los estimadores de interés usando la técnica de Jackknife. El desarrollo del procedimiento de Jackknife se remonta a un método utilizado por Quenouille (1956) para reducir el sesgo de las estimaciones. El refinamiento ulterior del método (Mosteller &amp; Tukey, 1968) llevó a su aplicación en una serie de situaciones de las ciencias sociales en las que las fórmulas no están fácilmente disponibles para el cálculo de errores de muestreo.</p>
+<p>Este procedimiento ofrece los siguientes beneficios:</p>
+<ol style="list-style-type: decimal">
+<li><em>Mayor flexibilidad</em>: el Jackknife puede implementarse en una amplia variedad de diseños muestrales.</li>
+<li><em>Facilidad de uso</em>: el Jackknife no requiere de software especializado.</li>
+</ol>
+<p>El concepto principal de esta técnica parte de una muestra de tamaño <span class="math inline">\(n\)</span>, la cual se divide en <span class="math inline">\(A\)</span> grupos de igual
+tamaño <span class="math inline">\(m=n/A\)</span>, a partir de esta división, la varianza de un estimador <span class="math inline">\(\hat{\theta}\)</span> se estima a partir de la varianza observada en los <span class="math inline">\(A\)</span> grupos.</p>
+<p>Para cada grupo <span class="math inline">\((a=1,2,...,A)\)</span>, se calcula <span class="math inline">\(\hat{\theta}_{(a)}\)</span>, una estimación para el parámetro <span class="math inline">\(\theta\)</span>, calculada de la misma forma que la estimación <span class="math inline">\(\hat{\theta}\)</span> obtenida con la muestra completa, pero solo con la información restante (luego de la eliminación del grupo <span class="math inline">\(a\)</span>). Para <span class="math inline">\(a=1,2,...,A\)</span> se define</p>
+<p><span class="math display">\[\hat{\theta}_{a}=A\hat{\theta}-(A-1)\hat{\theta}_{(a)}\]</span></p>
+<p>como un pseudovalor de <span class="math inline">\(\theta\)</span>. El estimador obtenido mediante Jackknife se presenta como una alternativa a <span class="math inline">\(\hat{\theta}\)</span> y se define como:</p>
+<p><span class="math display">\[\hat{\theta}_{JK}=\dfrac{1}{A}\sum_{a=1}^{A}\hat{\theta}_{a}\]</span></p>
+<p>mientras que el estimador de la varianza obtenido mediante Jackknife se obtiene como:</p>
+<p><span class="math display">\[\hat{V}_{JK1}=\dfrac{1}{A(A-1)}\sum_{a=1}^{A}\left(\hat{\theta}_{a}-\hat{\theta}_{JK}\right)^{2}\]</span></p>
+<p>También es posible utilizar como estimador alternativo:</p>
+<p><span class="math display">\[\hat{V}_{JK2}=\dfrac{1}{A(A-1)}\sum_{a=1}^{A}\left(\hat{\theta}_{a}-\hat{\theta}\right)^{2}\]</span></p>
+<p>Para diseños estratificados y multietápicos en los cuales unidades primarias de muestreo han sido seleccionadas en el estrato <span class="math inline">\(h\)</span>, para <span class="math inline">\(h=1, \ldots, H\)</span>, el estimador de varianza de Jackknife para la estimación de un parámetro poblacional está dado por</p>
+<p><span class="math display">\[ \hat{V}_{JK}(\hat{\theta}) = \sum_{h=1}^H \frac{n_h - 1}{n_h} \sum_{i=1}^{n_h}
+(\hat{\theta}_{(hi)}-\hat{\theta})^2\]</span></p>
+<p>donde <span class="math inline">\(\hat{\theta}_{(hi)}\)</span> es la estimación de <span class="math inline">\(\theta\)</span> usando los datos de la muestra excluyendo las observaciones en la <span class="math inline">\(i\)</span>-ésima unidad primaria de muestreo (Korn &amp; Graubard, 1999, pg. 29 – 30). Shao &amp; Tu (1995, Teorema 6.2) garantiza la convergencia en probabilidad de este estimador hacia la varianza teórica, de donde se puede concluir que es un estimador aproximadamente insesgado para la varianza teórica. Computacionalmente, se puede obtener la estimación Jackknife por medio de la creación de la base de datos omitiendo las observaciones necesarias usando comando <code>as.svrepdesign</code> de la librería <code>survey</code> del software estadístico `R para calcular <span class="math inline">\(\hat{V}_{JK}(\hat{\theta})\)</span>, y posteriormente calcular el valor de la estimación Jackknife.</p>
+</div>
+<div id="el-método-de-las-réplicas-repetidas-balanceadas-1" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> El método de las Réplicas Repetidas Balanceadas</h2>
+<p>Las varianzas de muestreo pueden ser calculadas haciendo uso del método conocido como Réplicas Repetidas Balanceadas, el cual permite explicar la varianza que se obtiene en las estimaciones debido al muestreo. Este método es el que utilizan pruebas internacionales como PISA para realizar los análisis de datos.</p>
+<p>Para la aplicación de la Réplicas Repetidas Balanceadas es recomendable usar el método de Fay, el cual es similar al método Jackknife, pero es más apropiado cuando hay funciones no diferenciables en el estudio. En PISA, por ejemplo, el método de Fay es preferido porque el método Jackknife no proporciona un estimador de varianza estadísticamente consistente para los cuantiles. Por otro lado, la Réplicas Repetidas Balanceadas brinda estimadores lineales simples que son imparciales y consistentes. Además, tiene una consistencia asintótica deseable para un conjunto amplio de estimadores, bajo diseños complejos y estudios de simulación empírica.</p>
+<p>Para la aplicación de este método, los pesos de muestreo se ajustan para generar los pesos de repetición y, posteriormente, se repiten los ajustes por ausencia de respuesta de escuelas y estudiantes para estos nuevos pesos. Con estos pesos de repetición se estiman los errores de muestreo y la varianza de muestreo, incluyendo el impacto de la ausencia de respuesta, el cual se espera que sea pequeño, pero relevante en el momento de calcular estimadores más precisos.</p>
+<p>En TXXXXXXX se aplicó este método de la siguiente manera: primero, las unidades de muestreo (escuelas y estudiantes) fueron agrupadas en pares y se construyeron unos pseudo-estratos; segundo, dentro de cada pseudo-estrato se eliminó una de las unidades (siguiendo una matriz de Hadamard) y se recalculó el peso (peso replicado) para la otra; y terceroo, para cada conjunto de pesos replicados se obtuvo el estadístico de interés y se determinó su error estándar.</p>
+<div id="modificación-de-fay-1" class="section level3" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Modificación de Fay</h3>
+<p>La técnica de Fay sigue el mismo proceso que la técnica de Jackknife para identificar las parejas de escuelas dentro de cada estrato; sin embargo, no elimina una de las dos escuelas, sino que pondera los pesos muestrales de ambas utilizando un coeficiente entre 0 y 1 (la suma de los coeficientes de las escuelas debe ser 1), lo cual permite obtener estimaciones más robustas para los errores estándar.</p>
+<p>En TXXXXXXX los coeficientes que se usaron fueron 1,5 para una escuela y 0,5 para la otra. Las entradas de una matriz de Hadamard<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a> de tamaño 100 y que toma valores de +/- 1 fueron utilizadas para definir el coeficiente asignado a cada escuela. Para este estudio se utilizaron dos procesos diferentes en el caso de escuelas y estudiantes: el peso de muestreo ajustado por ausencia de respuesta para las escuelas se multiplicó por el coeficiente establecido para obtener los ponderadores finales; mientras que, en el caso de los estudiantes, se utilizó el ponderador final de las escuelas para generar ponderadores de replicación, que fueron ajustados por la ausencia de respuesta de estudiantes después de haber sido definidos.</p>
+</div>
+</div>
+<div id="la-estimación-de-la-varianza-con-valores-plausibles-1" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> La estimación de la varianza con valores plausibles</h2>
+<p>Debido a que los estudiantes responden solo un subconjunto de ítems de la totalidad de ítems desarrollados para la prueba, la estimación de su habilidad individual está sujeta a un error de medición. Los enfoques tradicionales de estimación de la habilidad, como la máxima verosimilitud marginal (MML) y estadística bayesiana, arrojan estimaciones óptimas para la habilidad individual, pero sesgadas a nivel de grupo. Una forma de tener en cuenta la incertidumbre asociada a las estimaciones y de obtener estimaciones insesgadas a nivel de grupo, es a partir del uso de múltiples valores plausibles que representan la distribución probable de la habilidad de un estudiante.</p>
+<p>El desempeño de los estudiantes que presentan las pruebas estandarizadas, es obtenido a partir de cinco valores (denominados valores plausibles). Estos valores son útiles, pues tienen en cuenta la aleatoriedad producida por el hecho de que los estudiantes responden a un número pequeño de preguntas (lo cual permite obtener mejores estimaciones
+de las estadísticas de interés relacionadas con el desempeño en las pruebas a nivel agregado) y no todos los estudiantes responde el mismo conjunto de ítems (von Davier, M., González, E. &amp; Mislevy, R., 2009).</p>
+<p>Por ejemplo, es posible modelar la probabilidad de que un indiviudo <span class="math inline">\(j\)</span> de habilidad <span class="math inline">\(\theta_j\)</span> conteste acertadamente el item <span class="math inline">\(i\)</span>. En particular, al asumir un modelo de califiación logístico de tres parámetros (3PL), el modelo toma la siguiente forma:</p>
+<p><span class="math display">\[P(U_i = 1 | \theta_{j},a_{i},b_{i},c_{i}) = c_i + (1-c_i)\frac{\exp\{a_i(\theta_j-b_i)\}}{1+\exp\{a_i(\theta_j-b_i)\}}\]</span>
+En donde para el item <span class="math inline">\(i\)</span>, se tiene que <span class="math inline">\(a_i\)</span> representa el parámetro de discriminación; <span class="math inline">\(b_i\)</span>, el parámetro de dificultad y <span class="math inline">\(c_i\)</span>, el parámetro asociado al pseudo-azar. Ahora, los valores plausibles se obtienen como una muestra aleatoria de la distribución condicional de la habilidad para cada estudiante, denotada por la siguiente expresión</p>
+<p><span class="math display">\[P(\theta_{j}|U_{i},a_{i},b_{i},c_{i},\mathbf{Z},\beta,\sigma^{2})\]</span></p>
+<p>Nótese que en esta se condiciona tanto por las respuestas dadas por el evaluado a los ítems y los parámetros estimados para el modelo de Teoría de Respuesta al Ítem 3PL (<span class="math inline">\(a_i,b_i,c_i\)</span>), como por toda la información auxiliar disponible para cada evaluado (<span class="math inline">\(\mathbf{Z}\)</span>), y sus relaciones con la habilidad de los evaluados en la población (<span class="math inline">\(\beta\)</span>) y una varianza común a todos los evaluados (<span class="math inline">\(\sigma^{2}\)</span>).</p>
+<p>Dada la estimación de los parámetros para el modelo, es necesario conocer los valores de <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\sigma^{2}\)</span> para definir la distribución condicional de la habilidad. Para esto, se asume un modelo lineal para la habilidad condicional <span class="math inline">\(P(\theta_{j}|\mathbf{Z}_j,\beta,\sigma^{2})=N(\mathbf{Z}_j,\beta,\sigma^{2})\)</span>
+la cual puede ser expresada como:</p>
+<p><span class="math display">\[P(\theta_{j}|U_{i},a_{i},b_{i},c_{i},\mathbf{Z}_j,\beta,\sigma^{2})
+\approx P(U_{i}|\theta_{j},a_{i},b_{i},c_{i})P(\theta_{j}|\mathbf{Z}_j,\beta,\sigma^{2})\]</span></p>
+<p>en la cual, los parámetros se estiman mediante un algoritmo de Esperanza-Maximización. Para realizar estimaciones relacionadas con los puntajes de los estudiantes con base en los valores plausibles, se debe realizar la estimación de la estadística de manera independiente para cada uno de los valores plausibles, teniendo en cuenta, además, los factores de expansión
+correspondientes. De manera que, suponiendo que la estadística que se desea estimar es <span class="math inline">\(\eta\)</span>, se deben encontrar las estimaciones <span class="math inline">\(\hat{\eta}_{1},\cdots,\hat{\eta}_{5}\)</span> para los cinco valores plausibles, y la estimación de interés se obtiene
+de la forma:</p>
+<p><span class="math display">\[\hat{\eta}=\dfrac{1}{5}{\displaystyle \sum_{i=1}^{5}\hat{\eta}_{i}}\]</span></p>
+<p>Por ejemplo, si se desea estimar el puntaje promedio de todos los estudiantes, se estima el promedio con cada uno de los 5 valores plausibles. Al final se obtienen cinco estimaciones, las cuales se promedian para determinar la estimación del puntaje promedio. Los errores estándar asociados a las estimaciones que emplean valores plausibles se obtienen a partir de la raíz cuadrada de la varianza de las estimaciones, para la cual se toman en cuenta los siguientes dos componentes:</p>
+<ol style="list-style-type: decimal">
+<li>La varianza de la estimación debida al diseño muestral.</li>
+<li>La varianza debida a la incertidumbre de la medición.</li>
+</ol>
+<p>Así, contemplando el uso de cinco valores plausibles, el error estándar asociado con una estimación se calcula como:</p>
+<p><span class="math display">\[EE(\hat{\eta})=\sqrt{\dfrac{1}{5}{\displaystyle \sum_{i=1}^{5}Var_{m}(\hat{\eta}_{i})+\left(1+\dfrac{1}{5}\right)\dfrac{1}{4}\sum_{i=1}^{5}(\hat{\eta}_{i}-\hat{\eta})^{2}}}\]</span></p>
+<p>Donde <span class="math inline">\(Var_{m}(\hat{\eta}_{i})\)</span> es la varianza del estimador calculada con el <span class="math inline">\(i\)</span>-ésimo conjunto de valores plausibles y de acuerdo con el diseño muestral.</p>
+<p>El número total de réplicas <span class="math inline">\(L\)</span> consideradas para la estimación de la varianza del estimador es igual al número de establecimientos en la muestra. Si se denomina <span class="math inline">\(\hat{\eta}_{j}\)</span> a cada una de las estimaciones con las réplicas y <span class="math inline">\(\hat{\eta}\)</span> a la estimación con la muestra completa, la estimación de la varianza del estimador queda expresada como</p>
+<p><span class="math display">\[Var_{m}(\eta)={\sum_{l=1}^{L}\dfrac{n_{l}-1}{n_{l}}\sum_{j=1}^{n_{l}}(\hat{\eta}_{j}-\hat{\eta})^{2}}\]</span></p>
+<p>Este tipo de estimadores de varianza dan una gran flexibilidad al momento de estimar diferentes tipos de parámetros (promedios,
+pXXXXXXXntiles, porcentajes), ya que el esquema planteado es transversal ante cualquier diseño de muestreo.</p>
+</div>
+<div id="detalles-computacionales-1" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Detalles computacionales</h2>
+<p>El software que se usará para obtener las estimaciones de varianza es <code>R</code>; el paquete <code>survey</code> (Lumley, 2017) contiene funciones que permiten estimar la varianza de estimadores como totales, proporciones, razones y promedios de diseños muestrales complejos.</p>
+<p>La función <code>svydesign</code> permite ingresar la información de diseño de muestreo elegido (todas las etapas de muestreo y los aspectos de estratificación). Esta función tiene programadas las fórmulas matemáticas para lograr una aproximación de la estimación de la varianza a partir de la linealización de Taylor.</p>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="60">
+<li id="fn60"><p>La matriz de Hadamard se caracteriza porque el producto vectorial de una fila y una columna del mismo número es igual al rango de la matriz y el producto de cualquier fila con una columna de un número distinto es cero. Esta matriz se construye fácilmente, teniendo en cuenta que sus dimensiones son un múltiplo de cuatro (ver Rutkowski, L., von Davier, M. &amp; Rutkowski, D. (2014), pg. 147).<a href="cálculo-de-la-varianza-muestral-1.html#fnref60" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estrategia-de-estimación-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MuestreoEducacionales.pdf", "MuestreoEducacionales.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

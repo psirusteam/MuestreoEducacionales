@@ -1,0 +1,114 @@
+# Cálculo de la varianza muestral
+
+Las fórmulas computacionales requeridas para estimar la varianza de estadísticas descriptivas como la media muestral están disponibles para algunos diseños complejos que incorporan elementos como la estratificación y el muestreo por conglomerados. Sin embargo, en el caso de estadísticas analíticas más complejas, tales como coeficientes de correlación y coeficientes de regresión, no se encuentra fácilmente las fórmulas específicas en diseños muestrales que se aparten del muestreo aleatorio simple. Estas fórmulas son enormemente complicadas o, en última instancia, se resisten al análisis matemático (Frankel, 1971). 
+
+En ausencia de fórmulas adecuadas, en los últimos años han aparecido una variedad de técnicas empíricas que proporcionan *varianzas aproximadas que parecen satisfactorias para fines prácticos* (Kish, 1995). Estos métodos utilizan una muestra de datos para construir submuestras y generar una distribución para las estimaciones de los parámetros de interés utilizando cada submuestra. Los resultados de la submuestra se analizan para obtener una estimación del parámetro, así como intervalos de confianza para esa estimación.
+
+De forma alternativa, la aproximación en series de Taylor se puede utilizar para proporcionar un método de estimación de la varianza más "directo” que los proporcionados por los tres enfoques mencionados previamente. Las series de Taylor se utilizan para aproximar numéricamente los primeros términos de una expansión en serie de la fórmula de varianza. En la actualidad existe un buen número de programas informáticos que fueron diseñados para llevar a cabo los intensivos cálculos numéricos requeridos por el enfoque (Wolter, 1985). 
+
+## La técnica de Jackknife
+
+Es posible estimar la varianza de los estimadores de interés usando la técnica de Jackknife. El desarrollo del procedimiento de Jackknife se remonta a un método utilizado por Quenouille (1956) para reducir el sesgo de las estimaciones. El refinamiento ulterior del método (Mosteller & Tukey, 1968) llevó a su aplicación en una serie de situaciones de las ciencias sociales en las que las fórmulas no están fácilmente disponibles para el cálculo de errores de muestreo. 
+
+Este procedimiento ofrece los siguientes beneficios:
+
+1. *Mayor flexibilidad*: el Jackknife puede implementarse en una amplia variedad de diseños muestrales.
+2. *Facilidad de uso*: el Jackknife no requiere de software especializado.
+
+El concepto principal de esta técnica parte de una muestra de tamaño $n$, la cual se divide en $A$ grupos de igual
+tamaño $m=n/A$, a partir de esta división, la varianza de un estimador $\hat{\theta}$ se estima a partir de la varianza observada en los $A$ grupos.
+
+Para cada grupo $(a=1,2,...,A)$, se calcula $\hat{\theta}_{(a)}$, una estimación para el parámetro $\theta$, calculada de la misma forma que la estimación $\hat{\theta}$ obtenida con la muestra completa, pero solo con la información restante (luego de la eliminación del grupo $a$). Para $a=1,2,...,A$ se define 
+
+$$\hat{\theta}_{a}=A\hat{\theta}-(A-1)\hat{\theta}_{(a)}$$
+
+como un pseudovalor de $\theta$. El estimador obtenido mediante Jackknife se presenta como una alternativa a $\hat{\theta}$ y se define como:
+
+$$\hat{\theta}_{JK}=\dfrac{1}{A}\sum_{a=1}^{A}\hat{\theta}_{a}$$
+
+mientras que el estimador de la varianza obtenido mediante Jackknife se obtiene como: 
+
+$$\hat{V}_{JK1}=\dfrac{1}{A(A-1)}\sum_{a=1}^{A}\left(\hat{\theta}_{a}-\hat{\theta}_{JK}\right)^{2}$$
+
+También es posible utilizar como estimador alternativo: 
+
+$$\hat{V}_{JK2}=\dfrac{1}{A(A-1)}\sum_{a=1}^{A}\left(\hat{\theta}_{a}-\hat{\theta}\right)^{2}$$
+
+Para diseños estratificados y multietápicos en los cuales  unidades primarias de muestreo han sido seleccionadas en el estrato $h$, para $h=1, \ldots, H$, el estimador de varianza de Jackknife para la estimación de un parámetro poblacional  está dado por
+
+$$ \hat{V}_{JK}(\hat{\theta}) = \sum_{h=1}^H \frac{n_h - 1}{n_h} \sum_{i=1}^{n_h}
+(\hat{\theta}_{(hi)}-\hat{\theta})^2$$
+
+donde $\hat{\theta}_{(hi)}$ es la estimación de $\theta$ usando los datos de la muestra excluyendo las observaciones en la $i$-ésima unidad primaria de muestreo (Korn & Graubard, 1999, pg. 29 – 30). Shao & Tu (1995, Teorema 6.2) garantiza la convergencia en probabilidad de este estimador hacia la varianza teórica, de donde se puede concluir que es un estimador aproximadamente insesgado para la varianza teórica. Computacionalmente, se puede obtener la estimación Jackknife por medio de la creación de la base de datos omitiendo las observaciones necesarias usando comando `as.svrepdesign` de la librería `survey` del software estadístico `R para calcular $\hat{V}_{JK}(\hat{\theta})$, y posteriormente calcular el valor de la estimación Jackknife. 
+
+## El método de las Réplicas Repetidas Balanceadas
+
+Las varianzas de muestreo pueden ser calculadas haciendo uso del método conocido como Réplicas Repetidas Balanceadas, el cual permite explicar la varianza que se obtiene en las estimaciones debido al muestreo. Este método es el que utilizan pruebas internacionales como PISA para realizar los análisis de datos.
+
+Para la aplicación de la Réplicas Repetidas Balanceadas es recomendable usar el método de Fay, el cual es similar al método Jackknife, pero es más apropiado cuando hay funciones no diferenciables en el estudio. En PISA, por ejemplo, el método de Fay es preferido porque el método Jackknife no proporciona un estimador de varianza estadísticamente consistente para los cuantiles. Por otro lado, la Réplicas Repetidas Balanceadas brinda estimadores lineales simples que son imparciales y consistentes. Además, tiene una consistencia asintótica deseable para un conjunto amplio de estimadores, bajo diseños complejos y estudios de simulación empírica.
+
+Para la aplicación de este método, los pesos de muestreo se ajustan para generar los pesos de repetición y, posteriormente, se repiten los ajustes por ausencia de respuesta de escuelas y estudiantes para estos nuevos pesos. Con estos pesos de repetición se estiman los errores de muestreo y la varianza de muestreo, incluyendo el impacto de la ausencia de respuesta, el cual se espera que sea pequeño, pero relevante en el momento de calcular estimadores más precisos. 
+
+En TXXXXXXX  se aplicó este método de la siguiente manera: primero, las unidades de muestreo (escuelas y estudiantes) fueron agrupadas en pares y se construyeron unos pseudo-estratos; segundo, dentro de cada pseudo-estrato se eliminó una de las unidades (siguiendo una matriz de Hadamard) y se recalculó el peso (peso replicado) para la otra; y terceroo, para cada conjunto de pesos replicados se obtuvo el estadístico de interés y se determinó su error estándar.
+
+### Modificación de Fay
+
+La técnica de Fay sigue el mismo proceso que la técnica de Jackknife para identificar las parejas de escuelas dentro de cada estrato; sin embargo, no elimina una de las dos escuelas, sino que pondera los pesos muestrales de ambas utilizando un coeficiente entre 0 y 1 (la suma de los coeficientes de las escuelas debe ser 1), lo cual permite obtener estimaciones más robustas para los errores estándar.
+
+En TXXXXXXX los coeficientes que se usaron fueron 1,5 para una escuela y 0,5 para la otra. Las entradas de una matriz de Hadamard^[La matriz de Hadamard se caracteriza porque el producto vectorial de una fila y una columna del mismo número es igual al rango de la matriz y el producto de cualquier fila con una columna de un número distinto es cero. Esta matriz se construye fácilmente, teniendo en cuenta que sus dimensiones son un múltiplo de cuatro (ver Rutkowski, L., von Davier, M. & Rutkowski, D. (2014), pg. 147).] de tamaño 100 y que toma valores de +/- 1 fueron utilizadas para definir el coeficiente asignado a cada escuela. Para este estudio se utilizaron dos procesos diferentes en el caso de escuelas y estudiantes: el peso de muestreo ajustado por ausencia de respuesta para las escuelas se multiplicó por el coeficiente establecido para obtener los ponderadores finales; mientras que, en el caso de los estudiantes, se utilizó el ponderador final de las escuelas para generar ponderadores de replicación, que fueron ajustados por la ausencia de respuesta de estudiantes después de haber sido definidos.
+
+## La estimación de la varianza con valores plausibles
+
+Debido a que los estudiantes responden solo un subconjunto de ítems de la totalidad de ítems desarrollados para la prueba, la estimación de su habilidad individual está sujeta a un error de medición. Los enfoques tradicionales de estimación de la habilidad, como la máxima verosimilitud marginal (MML) y estadística bayesiana, arrojan estimaciones óptimas para la habilidad individual, pero sesgadas a nivel de grupo. Una forma de tener en cuenta la incertidumbre asociada a las estimaciones y de obtener estimaciones insesgadas a nivel de grupo, es a partir del uso de múltiples valores plausibles que representan la distribución probable de la habilidad de un estudiante.
+
+El desempeño de los estudiantes que presentan las pruebas estandarizadas, es obtenido a partir de cinco valores (denominados valores plausibles). Estos valores son útiles, pues tienen en cuenta la aleatoriedad producida por el hecho de que los estudiantes responden a un número pequeño de preguntas (lo cual permite obtener mejores estimaciones
+de las estadísticas de interés relacionadas con el desempeño en las pruebas a nivel agregado) y no todos los estudiantes responde el mismo conjunto de ítems (von Davier, M., González, E. & Mislevy, R., 2009).
+
+Por ejemplo, es posible modelar la probabilidad de que un indiviudo $j$ de habilidad $\theta_j$ conteste acertadamente el item $i$. En particular, al asumir un modelo de califiación logístico de tres parámetros (3PL), el modelo toma la siguiente forma:
+
+$$P(U_i = 1 | \theta_{j},a_{i},b_{i},c_{i}) = c_i + (1-c_i)\frac{\exp\{a_i(\theta_j-b_i)\}}{1+\exp\{a_i(\theta_j-b_i)\}}$$
+En donde para el item $i$, se tiene que $a_i$ representa el parámetro de discriminación; $b_i$, el parámetro de dificultad y $c_i$, el parámetro asociado al pseudo-azar. Ahora, los valores plausibles se obtienen como una muestra aleatoria de la distribución condicional de la habilidad para cada estudiante, denotada por la siguiente expresión
+
+$$P(\theta_{j}|U_{i},a_{i},b_{i},c_{i},\mathbf{Z},\beta,\sigma^{2})$$
+
+Nótese que en esta se condiciona tanto por las respuestas dadas por el evaluado a los ítems y los parámetros estimados para el modelo de Teoría de Respuesta al Ítem 3PL ($a_i,b_i,c_i$), como por toda la información auxiliar disponible para cada evaluado ($\mathbf{Z}$), y sus relaciones con la habilidad de los evaluados en la población ($\beta$) y una varianza común a todos los evaluados ($\sigma^{2}$).
+
+Dada la estimación de los parámetros para el modelo, es necesario conocer los valores de $\beta$ y $\sigma^{2}$ para definir la distribución condicional de la habilidad. Para esto, se asume un modelo lineal para la habilidad condicional $P(\theta_{j}|\mathbf{Z}_j,\beta,\sigma^{2})=N(\mathbf{Z}_j,\beta,\sigma^{2})$
+la cual puede ser expresada como:
+
+$$P(\theta_{j}|U_{i},a_{i},b_{i},c_{i},\mathbf{Z}_j,\beta,\sigma^{2})
+\approx P(U_{i}|\theta_{j},a_{i},b_{i},c_{i})P(\theta_{j}|\mathbf{Z}_j,\beta,\sigma^{2})$$
+ 
+en la cual, los parámetros se estiman mediante un algoritmo de Esperanza-Maximización. Para realizar estimaciones relacionadas con los puntajes de los estudiantes con base en los valores plausibles, se debe realizar la estimación de la estadística de manera independiente para cada uno de los valores plausibles, teniendo en cuenta, además, los factores de expansión 
+correspondientes. De manera que, suponiendo que la estadística que se desea estimar es $\eta$, se deben encontrar las estimaciones $\hat{\eta}_{1},\cdots,\hat{\eta}_{5}$ para los cinco valores plausibles, y la estimación de interés se obtiene
+de la forma:
+
+$$\hat{\eta}=\dfrac{1}{5}{\displaystyle \sum_{i=1}^{5}\hat{\eta}_{i}}$$
+
+Por ejemplo, si se desea estimar el puntaje promedio de todos los estudiantes, se estima el promedio con cada uno de los 5 valores plausibles. Al final se obtienen cinco estimaciones, las cuales se promedian para determinar la estimación del puntaje promedio. Los errores estándar asociados a las estimaciones que emplean valores plausibles se obtienen a partir de la raíz cuadrada de la varianza de las estimaciones, para la cual se toman en cuenta los siguientes dos componentes:
+
+1. La varianza de la estimación debida al diseño muestral.
+2. La varianza debida a la incertidumbre de la medición. 
+
+Así, contemplando el uso de cinco valores plausibles, el error estándar asociado con una estimación se calcula como:
+
+$$EE(\hat{\eta})=\sqrt{\dfrac{1}{5}{\displaystyle \sum_{i=1}^{5}Var_{m}(\hat{\eta}_{i})+\left(1+\dfrac{1}{5}\right)\dfrac{1}{4}\sum_{i=1}^{5}(\hat{\eta}_{i}-\hat{\eta})^{2}}}$$
+
+Donde $Var_{m}(\hat{\eta}_{i})$ es la varianza del estimador calculada con el $i$-ésimo conjunto de valores plausibles y de acuerdo con el diseño muestral. 
+
+El número total de réplicas $L$ consideradas para la estimación de la varianza del estimador es igual al número de establecimientos en la muestra. Si se denomina $\hat{\eta}_{j}$ a cada una de las estimaciones con las réplicas y $\hat{\eta}$ a la estimación con la muestra completa, la estimación de la varianza del estimador queda expresada como
+
+$$Var_{m}(\eta)={\sum_{l=1}^{L}\dfrac{n_{l}-1}{n_{l}}\sum_{j=1}^{n_{l}}(\hat{\eta}_{j}-\hat{\eta})^{2}}$$
+
+Este tipo de estimadores de varianza dan una gran flexibilidad al momento de estimar diferentes tipos de parámetros (promedios,
+pXXXXXXXntiles, porcentajes), ya que el esquema planteado es transversal ante cualquier diseño de muestreo.
+
+## Detalles computacionales
+
+El software que se usará para obtener las estimaciones de varianza es `R`; el paquete `survey` (Lumley, 2017) contiene funciones que permiten estimar la varianza de estimadores como totales, proporciones, razones y promedios de diseños muestrales complejos.
+
+La función `svydesign` permite ingresar la información de diseño de muestreo elegido (todas las etapas de muestreo y los aspectos de estratificación). Esta función tiene programadas las fórmulas matemáticas para lograr una aproximación de la estimación de la varianza a partir de la linealización de Taylor. 
+
+\newpage
+
+

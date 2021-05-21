@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Introducción al XXXXXXX 2019 | Muestreo y análisis de estudios educacionales con R</title>
+  <meta name="description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Introducción al XXXXXXX 2019 | Muestreo y análisis de estudios educacionales con R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Introducción al XXXXXXX 2019 | Muestreo y análisis de estudios educacionales con R" />
+  
+  <meta name="twitter:description" content="Este es el repositorio del libro Muestreo en estudios educacionales." />
+  
+
+<meta name="author" content="Andrés Gutiérrez" />
+
+
+<meta name="date" content="2021-05-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="resumen.html"/>
+<link rel="next" href="definiciones-básicas-del-muestreo.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Muestreo en estudios educacionales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i><b>1</b> Resumen</a></li>
+<li class="chapter" data-level="2" data-path="introducción-al-xxxxxxx-2019.html"><a href="introducción-al-xxxxxxx-2019.html"><i class="fa fa-check"></i><b>2</b> Introducción al XXXXXXX 2019</a></li>
+<li class="chapter" data-level="3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html"><i class="fa fa-check"></i><b>3</b> Definiciones básicas del muestreo</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-la-población-de-interés"><i class="fa fa-check"></i><b>3.1</b> Descripción de la población de interés</a></li>
+<li class="chapter" data-level="3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#descripción-de-las-subpoblaciones-de-interés"><i class="fa fa-check"></i><b>3.2</b> Descripción de las subpoblaciones de interés</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-explícita"><i class="fa fa-check"></i><b>3.2.1</b> Estratificación explícita</a></li>
+<li class="chapter" data-level="3.2.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#estratificación-implícita"><i class="fa fa-check"></i><b>3.2.2</b> Estratificación implícita</a></li>
+<li class="chapter" data-level="3.2.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#dominios-poblacionales"><i class="fa fa-check"></i><b>3.2.3</b> Dominios poblacionales</a></li>
+<li class="chapter" data-level="3.2.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#post-estratos"><i class="fa fa-check"></i><b>3.2.4</b> Post-estratos</a></li>
+<li class="chapter" data-level="3.2.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#sobremuestras-de-interés"><i class="fa fa-check"></i><b>3.2.5</b> Sobremuestras de interés</a></li>
+<li class="chapter" data-level="3.2.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#medidas-de-tamaño"><i class="fa fa-check"></i><b>3.2.6</b> Medidas de tamaño</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#marco-de-muestreo"><i class="fa fa-check"></i><b>3.3</b> Marco de muestreo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-muestreo"><i class="fa fa-check"></i><b>3.3.1</b> Unidades de muestreo</a></li>
+<li class="chapter" data-level="3.3.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-observación"><i class="fa fa-check"></i><b>3.3.2</b> Unidades de observación</a></li>
+<li class="chapter" data-level="3.3.3" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#unidades-de-análisis"><i class="fa fa-check"></i><b>3.3.3</b> Unidades de análisis</a></li>
+<li class="chapter" data-level="3.3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#periodo-de-referencia"><i class="fa fa-check"></i><b>3.3.4</b> Periodo de referencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusiones"><i class="fa fa-check"></i><b>3.4</b> Exclusiones</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-escuela"><i class="fa fa-check"></i><b>3.4.1</b> Exclusión a nivel de escuela</a></li>
+<li class="chapter" data-level="3.4.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#exclusión-a-nivel-de-estudiante"><i class="fa fa-check"></i><b>3.4.2</b> Exclusión a nivel de estudiante</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#tasas-de-participación-y-cobertura"><i class="fa fa-check"></i><b>3.5</b> Tasas de participación y cobertura</a></li>
+<li class="chapter" data-level="3.6" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-de-interés"><i class="fa fa-check"></i><b>3.6</b> Parámetros de interés</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-estudiantes"><i class="fa fa-check"></i><b>3.6.1</b> Parámetros con información de estudiantes</a></li>
+<li class="chapter" data-level="3.6.2" data-path="definiciones-básicas-del-muestreo.html"><a href="definiciones-básicas-del-muestreo.html#parámetros-con-información-de-docentes-y-escuelas"><i class="fa fa-check"></i><b>3.6.2</b> Parámetros con información de docentes y escuelas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html"><i class="fa fa-check"></i><b>4</b> Diseño de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-general"><i class="fa fa-check"></i><b>4.1</b> Diseño de muestreo general</a></li>
+<li class="chapter" data-level="4.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-cada-etapa"><i class="fa fa-check"></i><b>4.2</b> Diseño de muestreo en cada etapa</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-en-las-escuelas"><i class="fa fa-check"></i><b>4.2.1</b> Diseño de muestreo en las escuelas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#diseño-de-muestreo-dentro-de-las-escuelas"><i class="fa fa-check"></i><b>4.2.2</b> Diseño de muestreo dentro de las escuelas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#definición-de-los-algoritmos-de-selección"><i class="fa fa-check"></i><b>4.3</b> Definición de los algoritmos de selección</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-sunter"><i class="fa fa-check"></i><b>4.3.1</b> Algoritmo de Sunter</a></li>
+<li class="chapter" data-level="4.3.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#algoritmo-de-fan-muller-rezucha"><i class="fa fa-check"></i><b>4.3.2</b> Algoritmo de Fan-Muller-Rezucha</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#estratificación"><i class="fa fa-check"></i><b>4.4</b> Estratificación</a></li>
+<li class="chapter" data-level="4.5" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#selección-de-los-reemplazos"><i class="fa fa-check"></i><b>4.5</b> Selección de los reemplazos</a></li>
+<li class="chapter" data-level="4.6" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#precisión-de-la-inferencia"><i class="fa fa-check"></i><b>4.6</b> Precisión de la inferencia</a></li>
+<li class="chapter" data-level="4.7" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-por-país"><i class="fa fa-check"></i><b>4.7</b> Tamaño de muestra por país</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-un-puntaje-promedio"><i class="fa fa-check"></i><b>4.7.1</b> Tamaño de muestra para estimar un puntaje promedio</a></li>
+<li class="chapter" data-level="4.7.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-para-estimar-el-porcentaje-de-respuestas-correctas"><i class="fa fa-check"></i><b>4.7.2</b> Tamaño de muestra para estimar el porcentaje de respuestas correctas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#coeficientes-de-correlación-intraclase-en-el-txxxxxxx"><i class="fa fa-check"></i><b>4.8</b> Coeficientes de correlación intraclase en el TXXXXXXX</a></li>
+<li class="chapter" data-level="4.9" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tablas-de-muestreo"><i class="fa fa-check"></i><b>4.9</b> Tablas de muestreo</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#primer-escenario-m10"><i class="fa fa-check"></i><b>4.9.1</b> Primer escenario (<span class="math inline">\(m=10\)</span>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#segundo-escenario-m15"><i class="fa fa-check"></i><b>4.9.2</b> Segundo escenario (<span class="math inline">\(m=15\)</span>)</a></li>
+<li class="chapter" data-level="4.9.3" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tercero-escenario-m20"><i class="fa fa-check"></i><b>4.9.3</b> tercero escenario (<span class="math inline">\(m=20\)</span>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tratamiento-de-las-escuelas-pequeñas"><i class="fa fa-check"></i><b>4.10</b> Tratamiento de las escuelas pequeñas</a></li>
+<li class="chapter" data-level="4.11" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#tamaño-de-muestra-ajustado-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>4.11</b> Tamaño de muestra ajustado por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="diseño-de-muestreo.html"><a href="diseño-de-muestreo.html#afijación-de-la-muestra-en-los-estratos"><i class="fa fa-check"></i><b>4.11.1</b> Afijación de la muestra en los estratos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html"><i class="fa fa-check"></i><b>5</b> Estrategia de estimación</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-de-los-parámetros-de-interés"><i class="fa fa-check"></i><b>5.1</b> Estimadores de los parámetros de interés</a></li>
+<li class="chapter" data-level="5.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo"><i class="fa fa-check"></i><b>5.2</b> Pesos de muestreo</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-las-escuelas"><i class="fa fa-check"></i><b>5.2.1</b> Pesos de muestreo para las escuelas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#pesos-de-muestreo-para-los-estudiantes"><i class="fa fa-check"></i><b>5.2.2</b> Pesos de muestreo para los estudiantes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-house-weight"><i class="fa fa-check"></i><b>5.2.3</b> Modificación de los pesos de estudiantes: <em>Student house-weight</em></a></li>
+<li class="chapter" data-level="5.2.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#modificación-de-los-pesos-de-estudiantes-student-senate-weight"><i class="fa fa-check"></i><b>5.2.4</b> Modificación de los pesos de estudiantes: <em>Student senate-weight</em></a></li>
+<li class="chapter" data-level="5.2.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#acerca-de-los-pesos-de-muestreo-de-estudiantes-de-terceroo-y-sexto"><i class="fa fa-check"></i><b>5.2.5</b> Acerca de los pesos de muestreo de estudiantes de terceroo y sexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ajuste-por-ausencia-de-respuesta"><i class="fa fa-check"></i><b>5.3</b> Ajuste por ausencia de respuesta</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-escuelas"><i class="fa fa-check"></i><b>5.3.1</b> Ausencia de respuesta de escuelas</a></li>
+<li class="chapter" data-level="5.3.2" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-de-estudiantes"><i class="fa fa-check"></i><b>5.3.2</b> Ausencia de respuesta de estudiantes</a></li>
+<li class="chapter" data-level="5.3.3" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#ausencia-de-respuesta-en-cuestionarios-de-contexto"><i class="fa fa-check"></i><b>5.3.3</b> Ausencia de respuesta en cuestionarios de contexto</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#estimadores-ajustados"><i class="fa fa-check"></i><b>5.4</b> Estimadores ajustados</a></li>
+<li class="chapter" data-level="5.5" data-path="estrategia-de-estimación.html"><a href="estrategia-de-estimación.html#calibración-de-los-pesos-de-muestreo-iniciales"><i class="fa fa-check"></i><b>5.5</b> Calibración de los pesos de muestreo iniciales</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html"><i class="fa fa-check"></i><b>6</b> Cálculo de la varianza muestral</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-técnica-de-jackknife"><i class="fa fa-check"></i><b>6.1</b> La técnica de Jackknife</a></li>
+<li class="chapter" data-level="6.2" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#el-método-de-las-réplicas-repetidas-balanceadas"><i class="fa fa-check"></i><b>6.2</b> El método de las Réplicas Repetidas Balanceadas</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#modificación-de-fay"><i class="fa fa-check"></i><b>6.2.1</b> Modificación de Fay</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#la-estimación-de-la-varianza-con-valores-plausibles"><i class="fa fa-check"></i><b>6.3</b> La estimación de la varianza con valores plausibles</a></li>
+<li class="chapter" data-level="6.4" data-path="cálculo-de-la-varianza-muestral.html"><a href="cálculo-de-la-varianza-muestral.html#detalles-computacionales"><i class="fa fa-check"></i><b>6.4</b> Detalles computacionales</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Muestreo y análisis de estudios educacionales con R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-al-xxxxxxx-2019" class="section level1" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Introducción al XXXXXXX 2019</h1>
+<p>El XXXXXXX (XXXXXXX) es el estudio educativo a gran escala más importante de Latinoamérica y es coordinado por el Laboratorio Latinoamericano de Evaluación de la Calidad de la Educación (LLECE<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>), una red de directores nacionales de evaluación educativa de América Latina y el Caribe, coordinada por la Oficina Regional de la UNESCO en Santiago (Chile).</p>
+<p>El objetivo de este estudio es brindar información válida y confiable que permita evaluar la calidad de la educación en la región y guiar la toma de decisiones en políticas públicas educativas. Para tal fin, XXXXXXX evalúa el desempeño de los estudiantes en las áreas de lenguaje (lectura y escritura) matemáticas y ciencias, a través de pruebas estandarizadas. Además, aplica cuestionarios de contexto a estudiantes, padres de familia, profesores y rectores, los cuales reúnen información sobre los factores asociados al aprendizaje.</p>
+<p>La primera versión del estudio (PXXXXXXX: Primer XXXXXXX) se realizó en 1997 y contó con la participación de 13 países. Este primer estudio evaluó a los estudiantes de tercero y cuarto grado, en las áreas de lectura y matemáticas, y permitió a los países participantes medir el logro de sus estudiantes desde una perspectiva comparativa<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>En 2006 se aplicó la segunda versión del estudio (SXXXXXXX: Segundo XXXXXXX), la cual no solo reunió más países y economías (17 en total), sino que también introdujo novedades a la prueba: primero, su población objetivo cambió y se enfocó en los estudiantes de tercero y sexto grado; segundo, tuvo un alcance más amplio al incorporar la evaluación de los aprendizajes en escritura y ciencias; terceroo, aumentó el número de contenidos compartidos de los currículos de la región; y cuarto, incluyó preguntas abiertas en matemáticas y ciencias. Todas estas innovaciones hacen que los resultados de los dos primeros estudios no sean comparables directamente, pero hicieron posible un notorio desarrollo de la prueba<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Finalmente, la terceroa versión del estudio (TXXXXXXX: tercero XXXXXXX) se llevó a cabo en 2013 y evaluó las áreas de lenguaje (lectura y escritura) y matemáticas en los grados terceroo y sexto y el área de ciencias naturales en sexto, en 16 países y economías participantes. Este estudio tuvo también algunas novedades: primero, incluyó preguntas sobre el uso de las tecnologías de la información y la comunicación (TIC); segundo, permitió que, en los cuestionarios de contexto, los países y economías participantes agregaran un módulo con preguntas enfocadas en el contexto nacional; terceroo, modificó los criterios de exclusión para que fueran coherentes con los criterios utilizados en otras pruebas internacionales; y cuarto, incorporó la técnica de valores plausibles<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>Además de estas innovaciones, algunas características de TXXXXXXX que sirven como referente para XXXXXXX 2019 corresponden al diseño de la prueba. Esta aplicación del estudio tuvo una prueba en papel para los estudiantes de terceroo y sexto, e incluyó también cuestionarios para padres de familia, profesores y rectores. Los estudiantes de terceroo contestaron una prueba con 15 preguntas de selección múltiple con una duración de 20 minutos; mientras que los estudiantes de sexto contestaron una prueba con 39 preguntas de selección múltiple con una duración de 45 minutos. Los cuestionarios de padres de familia, profesores y rectores estuvieron compuestos por alrededor de 40 preguntas cada uno<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Finalmente, los resultados de las pruebas de lectura, matemáticas y ciencias se presentaron siguiendo una escala con media 700 y desviación estándar 100.</p>
+<p>En conjunto, las tres versiones del estudio han sentado las bases para el desarrollo del Cuarto XXXXXXX (XXXXXXX 2019), el cual se enmarca dentro de los mismos lineamientos ya establecidos: evaluará las mismas áreas y grados que TXXXXXXX y hará uso de una prueba estandarizada en papel y la aplicación de los distintos cuestionarios de contexto mencionados.</p>
+<p>Este documento presenta entonces una propuesta muestreo para la aplicación del estudio piloto de XXXXXXX 2019, donde el objetivo principal será evaluar la validez y pertinencia de los ítems. Además, esta es una propuesta para participar activamente en el desarrollo de todas las etapas del estudio y garantizar su ejecución con altos estándares de calidad.</p>
+<p>Una ventaja técnica de esta propuesta es que se usaron las bases de datos<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> del TXXXXXXX, disponibles en el sitio web de la Unesco, para realizar los cálculos pertinentes a configurar una propuesta más cercana a la realidad del estudio. Todos estos cómputos fueron realizados en el software estadístico <code>R</code>, con librerías desarrolladas por el equipo de expertos que presentan esta propuesta, y avaladas directamente por el <code>Comprehensive R Archive Network - CRAN</code>.</p>
+<div style="page-break-after: always;"></div>
+
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>ver <a href="http://www.unesco.org/new/es/santiago/education/education-assessment-llece/">LLECE</a><a href="introducción-al-xxxxxxx-2019.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>ver <a href="http://www.unesco.org/new/es/santiago/education/education-assessment-llece/first-regional-comparative-and-explanatory-study/">PXXXXXXX website</a><a href="introducción-al-xxxxxxx-2019.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>ver <a href="http://www.unesco.org/new/es/santiago/education/education-assessment-llece/second-regional-comparative-and-explanatory-study-sXXXXXXX/">SXXXXXXX website</a><a href="introducción-al-xxxxxxx-2019.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>ver <a href="http://www.unesco.org/new/es/santiago/education/education-assessment-llece/third-regional-comparative-and-explanatory-study-tXXXXXXX/">TXXXXXXX website</a><a href="introducción-al-xxxxxxx-2019.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>ver: UNESCO – OREALC (2016), Reporte Técnico TXXXXXXX pg. 197<a href="introducción-al-xxxxxxx-2019.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>ver <a href="http://www.unesco.org/new/en/santiago/tXXXXXXX/databases/tXXXXXXX-databases/">Bases de datos</a><a href="introducción-al-xxxxxxx-2019.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="resumen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="definiciones-básicas-del-muestreo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MuestreoEducacionales.pdf", "MuestreoEducacionales.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

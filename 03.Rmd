@@ -1,0 +1,120 @@
+# Diseño de muestreo
+
+El diseño muestral del XXXXXXX debe mantener una estructura similar a la del TXXXXXXX (para conservar los criterios de comparabilidad entre las poblaciones objetivo de ambos estudios) y garantizar que la muestra seleccionada para cada país sea representativa de las dos poblaciones de interés: estudiantes en grados terceroo y sexto. 
+
+De esta manera, el diseño de muestreo que se presenta en esta sección sigue dos etapas: en la primera se seleccionan las escuelas que participarán en el estudio y en la segunda se escogen los estudiantes de terceroo y sexto que presentarán la prueba. 
+
+## Diseño de muestreo general
+
+XXXXXXX mantendrá un diseño de muestreo similar al de TXXXXXXX, estudio en que se siguió un método de selección estratificado, por conglomerados y bietápico: en la primera etapa se seleccionan las escuelas (dentro de cada estrato explícito, siguiendo un muestreo sistemático y teniendo en cuenta su medida de tamaño) y en la segunda etapa se escoge aleatoriamente un aula dentro de las escuelas previamente seleccionadas.
+
+Cabe mencionar que en el XXXXXXX se selecciona una sola muestra de escuelas y no dos muestras independientes para cada uno de los grados de interés. Esto puede presentar algunas dificultades, puesto que la selección de estudiantes puede resultar desbalanceada, es decir, puede ser que la muestra de estudiantes en un grado sea muy grande y en el otro grado muy pequeña. Para que esto no suceda, en el TXXXXXXX se definieron tres estratos según la presencia de los grados de interés en la escuela: escuelas solo con terceroo, escuelas solo con sexto y escuelas con ambos grados.
+
+Finalmente, es importante tener en cuenta que cada país participante debe tener un plan de desarrollo de actividades que le permita seguir los lineamientos del diseño de muestreo desde la identificación de la población objetivo hasta la selección de una muestra representativa. Este plan de muestreo debe acordarse con el consorcio de investigación, para garantizar que se ajusta a todas las normas de muestreo.
+
+Además, cada país es responsable de entregar información completa y confiable sobre: la población objetivo, las escuelas que tienen los grados de interés (marco de muestreo), las variables de estratificación explícita e implícita, las exclusiones, entre otras; todos estos datos deben ser debidamente diligenciados en los formatos establecidos. Asimismo, luego de la selección de la muestra los países deben contactar a las escuelas que han sido escogidas, tratar de asegurar su participación y hacer seguimiento a todo el proceso de aplicación.
+
+**Diseño de muestreo propuesto**
+
+El tipo de muestreo que se considerará en esta propuesta es probabilístico, estratificado y bietápico. El muestreo es probabilístico debido a que las unidades de muestreo en cada una de las etapas tienen una probabilidad conocida y mayor que cero de ser seleccionadas. Es estratificado porque se consideran particiones poblacionales, definidas como conjuntos de elementos cuya unión conforma el universo, que no se traslapan y donde todos son diferentes de vacío, esto tratando de lograr homogeneidad dentro de ellas y heterogeneidad entre ellas. Por último, es bietápico puesto que se considera primero la selección de escuelas en una primera etapa y luego la selección de alumnos en una segunda etapa.
+
+Este diseño de muestreo estima el total de cada escuela $t_i$ mediante una sub-muestra seleccionada desde el marco de muestreo de UPM (escuelas). Suponga que la población de estudiantes $U$ se divide en $N_I$ escuelas, que definen una partición de la población, llamados también \textbf{conglomerados} y denotadas como $U_I=\{U_1,\ldots,U_{N_I}\}$ ($U_I$ es la población de todas las escuelas en un país y $N_I$ es el número total de escuelas dentro del país). Note que la $i$-ésima escuela $U_i$ $i=1,\dots,N_I$ contiene $N_i$ estudiantes. Luego, el proceso de selección se surte de la siguiente manera:
+
+- Una muestra $s_I$ de escuelas es seleccionada de $U_I$ de acuerdo a un diseño de muestreo $p_I(s_I)$. El tamaño de la muestra de escuelas se denota como $n_I$. Nótese que $S_I$ representa la muestra aleatoria de escuelas tal que $Pr(S_I=s_I)=p_I(s_I)$.
+- Para cada escuela $U_i$ $i=1,\dots,n_I$ seleccionada en la muestra $s_I$, se selecciona una muestra $s_i$ de estudiantes de acuerdo a un diseño de muestreo $p_i(s_i)$. Nótese que $S_i$ representa la muestra aleatoria de elementos tal que $Pr(S_i=s_i)=p_i(s_i)$.
+
+**NOTA 1.** *Esta propuesta sugiere una variación frente al diseño de muestreo del TXXXXXXX. Mientras que esta propuesta sugiere la selección directa de estudiantes dentro de las escuelas, el diseño de muestreo del TXXXXXXX no seleccionaba alumnos dentro de la escuela, sino que seleccionaba aulas y luego todos los alumnos pertenecientes a esa aula específica eran seleccionados.* 
+
+**NOTA 2.** *Al considerar el tamaño del aula, es posible encontrar que si se muestrean muchas escuelas pequeñas esto puede ocasionar una reducción en la muestra total de estudiantes y conducir a estimaciones poco precisas y confiables. Para mitigar este problema, debería definirse un número mínimo de estudiantes por aula, que sería aceptable para cada país. En caso de que una escuela tenga aulas que no cumplan el mínimo requerido, es posible combinarla con otra para propósitos del muestreo.*
+
+**NOTA 3.** *En el diseño de muestreo del TXXXXXXX, se seleccionaba (en la segunda etapa) un aula dentro de la escuela y todos los estudiantes que pertenecían a esa aula eran evaluados. La selección de estudiantes se realiza de esta manera, no considera que la variabilidad en los resultados entre aulas puede ser alta al suponer que dentro de la escuela es común particionar a los estudiantes con respecto a su desempeño académico. Por lo anterior, la selección de aulas, puede aumentar el error de muestreo y disminuir la precisión y confiabilidad de las estimaciones.*
+
+**NOTA 3.** *El esquema utilizado en TXXXXXXX es un caso particular de un muestreo de conglomerados de tamaños desiguales. Este tipo de muestreo es poco eficiente y tiende a aumentar el error de muestreo^[ver Särndal, Swensson & Wretman (2003), pg. 133] de forma significativa. Por esta razón nuestra propuesta selecciona un número promedio de estudiantes dentro de cada escuela, induciendo un esquema de selección auto ponderado y más eficiente.* 
+
+## Diseño de muestreo en cada etapa
+
+Como ya se mencionó anteriormente, el diseño de muestreo para XXXXXXX seguiría dos etapas: una en la que se seleccionan las escuelas y otra en la que se escogen alumnos dentro de las aulas.
+
+En la primera etapa se identifican todas las escuelas que hacen parte de la población objetivo (generación del marco muestral, siguiendo los criterios definidos en la sección 2); se separan en grupos mutuamente excluyentes, según las variables de estratificación explícita previamente definidas; y se seleccionan aquellas que harán parte del estudio, teniendo en cuenta un muestreo sistemático donde la probabilidad que tiene cada escuela de pertenecer a la muestra está determinada por el número de estudiantes en los grados de interés (medida de tamaño).
+
+En esta etapa es importante tener en cuenta dos puntos. Primero, se seleccionará un número mayor de escuelas en los estratos explícitos más grandes. Segundo, la medida de tamaño permite que las escuelas con mayor cantidad de estudiantes tengan una mayor probabilidad de ser muestreadas (en comparación con las escuelas más pequeñas). Sin embargo, esta diferencia en las probabilidades de selección se compensa en la segunda etapa de muestreo, debido a que cada alumno dentro de las escuelas tiene igual probabilidad de ser elegida. 
+
+Para la segunda etapa se requiere contar con un listado de todas los estudiantes dentro de todas las aulas que tengan estudiantes en los grados de interés, para cada escuela seleccionada en la muestra. De forma aleatoria y teniendo en cuenta la misma probabilidad de selección, se elige una muestra de estudiantes. 
+
+### Diseño de muestreo en las escuelas
+
+Las escuelas se seleccionan en la primera etapa de muestreo, siguiendo un muestreo proporcional a la medida de tamaño previamente definida. Esta medida de tamaño (MOS) corresponde a la matrícula (número de estudiantes matriculados) en terceroo y sexto y es la variable que permite la selección de escuelas con probablidades desiguales, induciendo que las escuelas con mayor cantidad de estudiantes tengan una mayor probabilidad de ser seleccionadas en la muestra de la primera etapa.
+
+La selección de escuelas se realizará de forma independiente a través de un muestreo sistemático proporcional^[Cada escuela tendrá una probabilidad de inclusión desigual y proporcional al número de estudiantes en los grados terceroo y sexto] (**piPS**) sin reemplazo. Por otra parte, el algoritmo de Sunter^[Que es un caso particular de un algoritmo *sistemático proporcional* cuando se hace un ordenamiento conveniente por las variables de estratificación explícita, implícita y por la medida de tamaño.] se encuentra detallado en Gutiérrez (2015) y Särndal, Swensson & Wretman (2003) y se implementará en este estudio utilizando la función `S.piPS` del paquete `TeachingSampling` de `R. Särndal, Swensson & Wretman (2003) aseguran que la utilización de este diseño en la primera etapa contribuye a la reducción de varianza de los estimadores para los parámetros de interés (totales, razones, promedios y proporciones). 
+
+Una vez definida la medida de tamaño, las escuelas se clasifican según las variables de estratificación implícita dentro de cada estrato explícito. Primero se usa la primera variable de estratificación implícita, luego la segunda (dentro de los niveles generados por la primera) y así sucesivamente hasta aplicar todas las variables. La última variable de ordenamiento siempre será la medida de tamaño.
+
+Luego de haber definido la medida de tamaño, se realiza un muestreo (sistemático) proporcional para seleccionar la muestra de escuelas. Para este proceso es importante contar con un marco de muestreo completo (donde cada escuela tenga su medida de tamaño definida) y con el conteo de escuelas a muestrear en cada estrato. El cociente entre estos dos valores: la medida de tamaño dividida entre el número de escuelas a muestrear en el estrato corresponde al intervalo de muestreo.
+
+Por ejemplo, PISA usa esta medida para seleccionar las escuelas^[ver PISA (2012), Technical Report, pg. 74]: primero, las escuelas grandes, cuya medida de tamaño supere dicho intervalo son seleccionadas con probabilidad de inclusión forzosa; luego, se vuelve a calcular el intervalo de muestreo con una escuela menos en el denominador y se seleccionan nuevamente con certeza las escuelas con la medida de tamaño que supere ese valor. Este proceso se repite hasta que no se encuentren más escuelas que superen el intervalo establecido.
+
+Posteriormente, se genera un número aleatorio entre cero y uno para cada estrato, el cual se utiliza para calcular un número de selección para cada escuela. El primer número de selección se obtiene multiplicando el número aleatorio por el intervalo de muestreo (este número identifica la primera escuela muestreada en el estrato). Al número obtenido se le suma el intervalo de muestreo para identificar la segunda escuela muestreada. El proceso se repite sumando el intervalo al último número obtenido e identificando así las escuelas muestreadas. 
+
+
+### Diseño de muestreo dentro de las escuelas
+
+La segunda etapa de muestreo corresponde la selección de los estudiantes que asisten a las escuelas seleccionadas en la primera etapa de muestreo y que deberán presentar la prueba, mediante los instrumentos cognitivos, además de los cuestionarios de factores asociados. Esta selección se realizará a través de un muestreo aleatorio simple sin reemplazo (**MAS**) dentro de cada estrato explícito.
+
+Dentro de cada escuela seleccionada, la muestra de estudiantes (USM) se obtiene empleando el algoritmo de Fan-Muller & Rezucha (algoritmo para selección de unidades en un MAS) dentro de los estratos definidos en cada uno de los grupos de interés. Este algoritmo se encuentra descrito en detalle en Gutiérrez (2015) y puede ser implementado en diferentes funciones de `R` como por ejemplo la función `S.STSI` del paquete `TeachingSampling` (Gutiérrez, 2017). 
+
+## Definición de los algoritmos de selección
+
+El acceso y observación de los elementos de la población se establece mediante un algoritmo de muestreo, que es un mecanismo que asocia los elementos de la población con las unidades de muestreo definidas en el diseño.
+
+### Algoritmo de Sunter
+
+En la primera etapa se seleccionan los municipios mediante un muestreo PPS utilizando el algoritmo de Sunter. Este algoritmo se encuentra detallado en (Gutiérrez, 2015. pág. 155) y es implementado en la función `S.piPS` del paquete `TeachingSampling`. Este es un procedimiento secuencial que funciona cuando los elementos de la población son ordenados descendentemente y cuando los elementos con valores más pequeños comparten las mismas probabilidades de inclusión. Este método asume la existencia de una medida de tamaño (MOS), notada como $x$, y consiste en:
+
+1. Ordenar descendentemente la población de acuerdo con los valores que toma la medida de tamaño $x_k$.
+1. Calcular $\pi_k=\frac{n*x_k}{\sum_{k \in U_i} x_k}$ para cada estudiante $k$ pertenenciente a la escuela $U_i$.
+1. Generar un número aleatorio $\xi_k\sim U(0,1)$.
+1. Para $k=1$, el primer elemento de la lista ordenada es incluido en la muestra sí y solamente sí $\xi_1<\pi_1$.
+1. Para $k\geq2$, el $k$-ésimo elemento de la lista ordenada es incluido en la muestra sí y solamente sí
+
+$$\xi_k \leq \dfrac{n-n_{k-1}}{n-\sum_{i=1}^{k-1}\pi_i}\pi_k$$
+
+donde $n_{k-1}$ representa el número de elementos que ya han sido seleccionados al final del paso $k-1$.
+
+### Algoritmo de Fan-Muller-Rezucha
+
+Al interior de cada uno de las escuelas se seleccionan a los estudiantes en cada estrato mediante el algoritmo de Fan-Muller-Rezucha implementado en el paquete `TeachingSampling` en la función `S.STSI. El algoritmo está descrito detalladamente en Gutiérrez (2015), y consiste en recorrer el marco de muestreo, elemento por elemento, y decidir la pertenencia o el rechazo del estudiante en la muestra. En general se supone que el marco de muestreo tiene $N$ individuos, y se quiere seleccionar una muestra aleatoria de $n$ individuos. Así, para el individuo $k$ $(k=1,2,...,N)$, se tiene que
+
+1. Generar un número aleatorio $\xi_k\sim U(0,1)$
+1. Calcular
+$$c_k=\dfrac{n-n_k}{N-k+1}$$
+donde $n_k$ es la cantidad de objetos seleccionados en los $k-1$ ensayos anteriores.
+1. Si $\xi_k<c_k$, entonces el elemento $k$ pertenece a la muestra.
+1. Detener el proceso cuando $n=n_k$.
+
+Dado que este algoritmo se detiene cuando $n=n_k$, resulta muy eficiente porque asegura una muestra aleatoria simple y en algunas ocasiones no se requiere recorrer todo el marco de muestreo.
+
+## Estratificación
+
+El proceso de estratificación consiste en dividir las escuelas de la población objetivo en grupos o estratos que comparten las mismas características. Como se explicó en la sección 2, la estratificación puede ser explícita o implícita, y es una característica importante de esta propuesta porque hace más eficiente el diseño muestral y asegura la representatividad proporcional de los grupos de interés en la muestra.
+
+En el XXXXXXX (manteniendo los criterios del TXXXXXXX) las variables de estratificación serán:
+
+-	Dependencia administrativa de la escuela: aquí encontramos escuelas con administración pública o privada.
+-	Área: en donde encontramos escuelas rurales y urbanas (según la definición de cada país).
+-	Grados en la escuela: Aquí encontramos escuelas que tienen solo terceroo, o solo sexto, o ambos grados. 
+
+La combinación de estas variables genera doce estratos, cuyo tamaño estará definido de acuerdo a la distribución de escuelas en cada país. 
+
+## Selección de los reemplazos
+
+El escenario ideal en la aplicación de cualquier prueba internacional es que todas las escuelas que son muestreadas originalmente accedan a ser parte del estudio; sin embargo, no es usual tener una tasa de participación del 100%. Así, para evitar una reducción en el tamaño de la muestra y garantizar un nivel de precisión y confiabilidad adecuados para el análisis estadístico, cada escuela cuenta con dos reemplazos en caso de que se rehúse a participar.
+
+Estos corresponden, por lo general, a las escuelas que se encuentran inmediatamente antes y después de la originalmente muestreada en el marco muestral (que debe estar estrictamente ordenado por las variables de estratificación explícitas, implícitas y por la medida de tamaño descentemente). Estos reemplazos siempre se encontrarán en el mismo estrato explícito (aunque es posible que no haga parte del mismo estrato implícito) y tendrá un tamaño similar a la muestreada originalmente. Sin embargo, aun cuando las características son similares realizar estos cambios en la muestra puede producir sesgo, por esta razón es importante que los países se esfuXXXXXXXn por asegurar la participación de las escuelas originalmente muestreadas y solo usen los reemplazos en caso de que sea estrictamente necesario.
+
+En países pequeños, donde puede ser difícil encontrar dos reemplazos para cada escuela, puede evaluarse la posibilidad de que una escuela sea un reemplazo potencial para dos escuelas originalmente muestreadas (sería un reemplazo real solo para una de ellas). También, si es elegida una escuela que se encuentra al inicio o al final de la lista, es posible seleccionar dos reemplazos consecutivos (después de ella, en caso de estar al inicio, y antes de ella, en caso de estar al final). Las siguientes gráficas muestran de forma explicativa el proceso de selección de los reemplazos de las escuelas seleccionadas. 
+
+![Ejemplo de un esquema de selección de reemplazos en el estrato rural](/Users/psirusteam/Desktop/Dropbox/Consultorias/150mil/0. Propuesta/Rmd_Technical/Pics/Rural.png)
+
+![Ejemplo de un esquema de selección de reemplazos en el estrato urbano](/Users/psirusteam/Desktop/Dropbox/Consultorias/150mil/0. Propuesta/Rmd_Technical/Pics/Urbana.png)
+
+\newpage
